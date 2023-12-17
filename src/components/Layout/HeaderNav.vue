@@ -9,11 +9,18 @@
       <li class="nav-item">
         <router-link to="/login" class="p-3 nav-link">會員登入</router-link>
       </li>
-      <!-- <li class="nav-item">
-        <router-link to="" class="p-3 header-link nav-link d-flex align-items-center gap-2">
+      <!-- <li class="nav-item position-relative">
+        <div  class="p-3 header-link nav-link d-flex align-items-center gap-2 pointer" @click="headerMenu.openUserMenu = !headerMenu.openUserMenu">
           <span class="material-symbols-outlined">account_circle</span>
           Jessica
-        </router-link>
+        </div>
+
+        <ul class="position-absolute bg-white rounded-6 end-0 userMenu overflow-hidden" v-if="headerMenu.openUserMenu">
+          <li>
+            <router-link to="/user" class="d-block px-5 py-3 pointer fw-bold bg-primary-10 text-primary text-decoration-none">我的帳戶</router-link>
+          </li>
+          <li class="px-5 py-3 pointer fw-bold">登出</li>
+        </ul>
       </li> -->
       <li class="nav-item">
         <input type="button" value="立即訂房" class="btn btn-primary py-3 px-6" />
@@ -40,21 +47,13 @@
     </ul>
   </div>
 </template>
-<script lang="ts">
-export default{
-  data() {
-    return {
-      menuShow: false
-    }
-  },
-  methods: {
-    
-  },
-  beforeRouteLeave(){
-    console.log(22);
-    
-  }
-}
+<script setup lang="ts">
+import { ref } from 'vue'
+import { headerMenuStore } from '@/stores/headerMenu'
+
+const menuShow = ref<boolean>(false)
+
+const headerMenu = headerMenuStore()
 </script>
 <style lang="scss" scoped>
 .nav-link {
@@ -68,5 +67,10 @@ export default{
   @media (min-width: 992px) {
     height: 72px;
   }
+}
+.userMenu{
+  padding: 12px 0;
+  width: 260px;
+  top: calc(100% + 12px);
 }
 </style>

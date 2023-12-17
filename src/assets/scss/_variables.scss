@@ -303,6 +303,7 @@ $primary:       #BF9D7D; // $blue !default;
 $primary-80:       #AE9984;
 $primary-60:       #E1D1C2;
 $primary-40:       #F1EAE4;
+$primary-10:       #F7F2EE;
 $primary-tint:       #FAF7F5;
 
 $secondary:     $gray-600 !default;
@@ -342,7 +343,8 @@ $theme-colors: (
   "primary-120":    $primary-120,
   "primary-80":    $primary-80,
   "primary-60":    $primary-60,
-  "primary-14":    $primary-40,
+  "primary-40":    $primary-40,
+  "primary-10":    $primary-10,
   "primary-tint":    $primary-tint,
   "secondary":  $secondary,
   "success":    $success,

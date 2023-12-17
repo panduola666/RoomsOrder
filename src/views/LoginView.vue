@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid d-flex align-items-center bg-neutral-bg text-white position-relative">
+  <main class="container-fluid d-flex align-items-center bg-neutral-bg text-white position-relative">
     <img
       src="../assets/image/Line.png"
       alt="Line"
@@ -55,7 +55,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <style lang="scss" scoped>

@@ -66,8 +66,20 @@
   --bs-btn-hover-bg: var(--bs-primary-120);
   --bs-btn-hover-border-color: var(--bs-primary-120);
 }
+.btn-outline-primary{
+  --bs-btn-hover-color: var(--bs-white);
+  --bs-btn-hover-bg: var(--bs-primary-120);
+  --bs-btn-hover-border-color: var(--bs-primary-120);
+}
 .btn.disabled{
   --bs-btn-disabled-color: var(--bs-neutral-60);
   --bs-btn-disabled-bg: var(--bs-neutral-40);
   --bs-btn-disabled-border-color: var(--bs-neutral-40);
+}
+.form-control, .form-select{
+  --bs-border-color: var(--bs-neutral-40);
+  --bs-body-color: var(--bs-neutral-80);
+  &::placeholder{
+    color: var(--bs-neutral-60);
+  }
 }
