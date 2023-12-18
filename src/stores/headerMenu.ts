@@ -3,15 +3,7 @@ import { defineStore } from 'pinia'
 
 export const headerMenuStore = defineStore('headerMenu', () => {
   const openUserMenu = ref(false)
-  
-  function menuOpen() {
-    console.log('open');
-    
-    openUserMenu.value = !openUserMenu.value
-  }
-  function menuClose() {
-    openUserMenu.value = false
-  }
+  const isLogin = ref(false)
 
-  return { openUserMenu, menuOpen, menuClose }
+  return { openUserMenu, isLogin }
 })

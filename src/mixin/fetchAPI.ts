@@ -5,7 +5,8 @@ export default function () {
     const res = await fetch(`${VITE_API_PATH}${url}`, {
       method,
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
       },
       body: JSON.stringify(body)
     })

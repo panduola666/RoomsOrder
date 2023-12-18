@@ -18,25 +18,25 @@ export function checkMail (mail: string) {
  * @param checkPwd 確認密碼
  * @returns Boolean
  */
-export function checkPassword(password: string, checkPwd: string) {
+export function checkPassword(password: string, checkPwd: string = '') {
   if(password.length < 8) {
     Swal.fire({
       icon: 'error',
-      text: '密碼需至少 8 碼以上'
+      title: '密碼需至少 8 碼以上'
     })
     return false
   }
   if(!(/[A-Za-z]+/g.test(password) && /[0-9]+/g.test(password))) {
     Swal.fire({
       icon: 'error',
-      text: '密碼需為英文與數字混合'
+      title: '密碼需為英文與數字混合'
     })
     return false
   }
   if(checkPwd !== password) {
     Swal.fire({
       icon: 'error',
-      text: '兩次密碼不一致'
+      title: '兩次密碼不一致'
     })
     return false
   }

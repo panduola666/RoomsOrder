@@ -12,11 +12,13 @@ import FooterBar from './components/Layout/FooterBar.vue';
 import { watch } from 'vue'
 import { headerMenuStore } from '@/stores/headerMenu'
 import { useRoute } from 'vue-router'
-import { log } from 'console';
+
+
 const headerMenu = headerMenuStore()
 const route = useRoute()
-console.log(route.path)
 watch(() => route.path, () => {
+  headerMenu.isLogin = !!localStorage.getItem('token') && !['null', 'undefined'].includes(localStorage.getItem('token') as string)
+
   headerMenu.openUserMenu = false
 })
 </script>

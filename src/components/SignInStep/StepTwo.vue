@@ -30,13 +30,15 @@
       <label for="year" class="form-label">生日</label>
       <div class="d-flex gap-2">
         <select id="year" class="form-select p-3" v-model="birthYear">
-          <option v-for="i in 100" :key="i" :value="new Date().getFullYear() - (100 - i)">{{ new Date().getFullYear() - (100 - i) }} 年</option>
+          <option v-for="i in 100" :key="i" :value="new Date().getFullYear() - (100 - i)">
+            {{ new Date().getFullYear() - (100 - i) }} 年
+          </option>
         </select>
         <select id="month" class="form-select p-3" v-model="birthMonth">
-          <option v-for="i in 12" :key="i" :value="i">{{i}} 月</option>
+          <option v-for="i in 12" :key="i" :value="i">{{ i }} 月</option>
         </select>
         <select id="day" class="form-select p-3" v-model="birthDay">
-          <option v-for="i in daysRange" :key="i" :value="i">{{i}} 日</option>
+          <option v-for="i in daysRange" :key="i" :value="i">{{ i }} 日</option>
         </select>
       </div>
     </div>
@@ -44,10 +46,14 @@
       <label class="form-label">地址</label>
       <div class="d-flex gap-2">
         <select id="address" class="form-select p-3" v-model="cityName">
-          <option v-for="city in CityCountyData" :key="city.CityName" :value="city.CityName">{{ city.CityName }}</option>
+          <option v-for="city in CityCountyData" :key="city.CityName" :value="city.CityName">
+            {{ city.CityName }}
+          </option>
         </select>
         <select class="form-select p-3" v-model.number="userInfo.address.zipcode">
-          <option v-for="area in areaList" :key="area.ZipCode" :value="area.ZipCode">{{ area.AreaName }}</option>
+          <option v-for="area in areaList" :key="area.ZipCode" :value="area.ZipCode">
+            {{ area.AreaName }}
+          </option>
         </select>
       </div>
       <input
@@ -69,14 +75,20 @@
   </form>
 </template>
 <script setup lang="ts">
-import { ref, watch, defineProps, onMounted } from "vue";
-import type { AccountData, UserInfoData, SignInBody, CityCounty, AreaListData} from '@/interface/signup'
+import { ref, watch, defineProps, onMounted } from 'vue'
+import type {
+  AccountData,
+  UserInfoData,
+  SignInBody,
+  CityCounty,
+  AreaListData
+} from '@/interface/signup'
 import CityCountyData from '/public/CityCountyData'
 import fetchAPI from '@/mixin/fetchAPI'
-import Swal from "sweetalert2";
-import { useRouter } from "vue-router";
+import Swal from 'sweetalert2'
+import { useRouter } from 'vue-router'
 
-const props = defineProps<{account: AccountData}>()
+const props = defineProps<{ account: AccountData }>()
 const router = useRouter()
 
 // 日期區間設定
@@ -85,16 +97,16 @@ const birthMonth = ref(1)
 const birthDay = ref(1)
 const daysRange = ref<number>(31)
 const setDaysRange = () => {
-  if(birthMonth.value === 2) {
+  if (birthMonth.value === 2) {
     daysRange.value = birthYear.value % 4 ? 28 : 29
-  } else if([1,3,5,7,8,10,12].includes(birthMonth.value)) {
+  } else if ([1, 3, 5, 7, 8, 10, 12].includes(birthMonth.value)) {
     daysRange.value = 31
   } else {
     daysRange.value = 30
   }
 }
-watch(() => birthYear.value,setDaysRange)
-watch(() => birthMonth.value,setDaysRange)
+watch(() => birthYear.value, setDaysRange)
+watch(() => birthMonth.value, setDaysRange)
 // 地址設定
 const areaList = ref<AreaListData[]>([])
 const cityName = ref<string>('')
@@ -102,9 +114,12 @@ onMounted(() => {
   cityName.value = CityCountyData[0].CityName
   setAreaList()
 })
-watch(() => cityName.value, () => setAreaList())
+watch(
+  () => cityName.value,
+  () => setAreaList()
+)
 const setAreaList = () => {
-  const currCity = CityCountyData.find((item:CityCounty) => item.CityName === cityName.value)
+  const currCity = CityCountyData.find((item: CityCounty) => item.CityName === cityName.value)
   areaList.value = currCity.AreaList
   userInfo.value.address.zipcode = Number(currCity.AreaList[0].ZipCode)
 }
@@ -120,21 +135,26 @@ const userInfo = ref<UserInfoData>({
   }
 })
 async function singup() {
+  if(userInfo.value.name.length < 2) {
+    Swal.fire({
+      icon: 'error',
+      title: '姓名至少兩個字'
+    })
+    return
+  }
   userInfo.value.birthday = `${birthYear.value}/${birthMonth.value}/${birthDay.value}`
-  const data:SignInBody = {
+  const data: SignInBody = {
     ...props.account,
     ...userInfo.value
   }
 
   const res = await newFetch._fetch('/api/v1/user/signup', 'POST', data)
-  console.log(res);
-  if(res.status) {
-   const swal = await Swal.fire({
-      title: '註冊成功'
-    })
-    if(swal.isConfirmed || swal.isDismissed) {
-      router.push('/login')
-    }
+  const swal = await Swal.fire({
+    icon: res.status ? 'success' : 'error',
+    title: res.status ? '註冊成功' : res.message
+  })
+  if (swal.isConfirmed || swal.isDismissed) {
+    router.push('/login')
   }
 }
 </script>

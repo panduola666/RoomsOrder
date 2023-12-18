@@ -6,10 +6,10 @@
       <li class="nav-item">
         <router-link to="" class="p-3 nav-link">客房旅宿</router-link>
       </li>
-      <li class="nav-item">
+      <li v-if="!headerMenu.isLogin" class="nav-item">
         <router-link to="/login" class="p-3 nav-link">會員登入</router-link>
       </li>
-      <!-- <li class="nav-item position-relative">
+      <li v-else class="nav-item position-relative">
         <div  class="p-3 header-link nav-link d-flex align-items-center gap-2 pointer" @click="headerMenu.openUserMenu = !headerMenu.openUserMenu">
           <span class="material-symbols-outlined">account_circle</span>
           Jessica
@@ -19,9 +19,9 @@
           <li>
             <router-link to="/user" class="d-block px-5 py-3 pointer fw-bold bg-primary-10 text-primary text-decoration-none">我的帳戶</router-link>
           </li>
-          <li class="px-5 py-3 pointer fw-bold">登出</li>
+          <li class="px-5 py-3 pointer fw-bold" @click="signOut">登出</li>
         </ul>
-      </li> -->
+      </li>
       <li class="nav-item">
         <input type="button" value="立即訂房" class="btn btn-primary py-3 px-6" />
       </li>
@@ -39,7 +39,7 @@
         <router-link to="" class="p-3 nav-link" @click="menuShow = false">客房旅宿</router-link>
       </li>
       <li class="nav-item">
-        <router-link to="/login" class="p-3 nav-link" @click="menuShow = false">會員登入</router-link>
+        <router-link :to="headerMenu.isLogin ? '/user' : '/login'" class="p-3 nav-link" @click="menuShow = false">{{ headerMenu.isLogin ? '我的帳戶' : '會員登入'}}</router-link>
       </li>
       <li class="nav-item">
         <input type="button" value="立即訂房" class="btn btn-primary py-3 px-6 w-100" @click="menuShow = false" />
@@ -50,10 +50,16 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { headerMenuStore } from '@/stores/headerMenu'
+import { useRouter } from 'vue-router'
 
 const menuShow = ref<boolean>(false)
-
 const headerMenu = headerMenuStore()
+const router = useRouter()
+
+function signOut() {
+  localStorage.removeItem('token')
+  router.push('/login')
+}
 </script>
 <style lang="scss" scoped>
 .nav-link {
