@@ -14,9 +14,9 @@ app.mixin(fetchAPI)
 
 app.directive('tel', {
   mounted(el) {
-    el.addEventListener('blur', (el:any) => {
+    el.addEventListener('input', (el:any) => {
       if(el.target.tagName === 'INPUT') {
-        el.target.value =  el.target.value.replace(/[^\d\s()]/g, '')
+        el.target.value =  el.target.value.replace(/[^\d\s()+-]/g, '')
       }
     })
   }

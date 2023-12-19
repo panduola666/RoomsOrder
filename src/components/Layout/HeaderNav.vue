@@ -58,6 +58,7 @@ const router = useRouter()
 
 function signOut() {
   localStorage.removeItem('token')
+  localStorage.removeItem('user')
   router.push('/login')
 }
 </script>

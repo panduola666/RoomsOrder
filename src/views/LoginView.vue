@@ -212,7 +212,7 @@ async function forgetPwd() {
   if (swal.isConfirmed || swal.isDismissed) {
     if (modal.value) {
     modal.value.show()
-  }
+    }
   }
 }
 // 重置密碼
