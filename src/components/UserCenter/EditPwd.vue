@@ -53,20 +53,18 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref, defineProps } from 'vue'
+import { ref } from 'vue'
 // @ts-ignore
-import type { userInfo } from '../../interface/user'
 import { checkPassword } from '../../mixin/validate'
 import fetchAPI from '../../mixin/fetchAPI'
 import Swal from 'sweetalert2'
 
 const resetPwd = ref<boolean>(false)
-const props = defineProps<{ user: userInfo }>()
 
 const userData = JSON.parse(localStorage.getItem('user') as string)
 const data = ref({
-  userId: props.user._id || userData._id,
-  email: props.user.email || userData.email,
+  userId: userData._id,
+  email: userData.email,
   oldPassword: '',
   newPassword: '',
 })

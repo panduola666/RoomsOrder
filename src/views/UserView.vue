@@ -18,12 +18,12 @@
       <div class="row g-5 g-lg-7">
         <div class="col-12 col-lg-5">
           <section class="bg-white p-5 p-lg-7 rounded-6">
-            <EditPwd :user="user" />
+            <EditPwd v-if="user._id" />
           </section>
         </div>
         <div class="col-12 col-lg-7">
           <section class="bg-white p-5 p-lg-7 rounded-6">
-            <UserInfo :user="user" />
+            <UserInfo v-if="user._id" />
           </section>
         </div>
       </div>
@@ -70,8 +70,8 @@ onMounted(async () => {
     return
   }
   const userRes = await newFetch._fetch('/api/v1/user')
-  user.value = userRes.result
   localStorage.setItem('user', JSON.stringify(userRes.result))
+  user.value = userRes.result
 })
 </script>
 <style lang="scss" scoped>

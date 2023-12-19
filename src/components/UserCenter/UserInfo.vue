@@ -77,8 +77,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref, defineProps, watch, onMounted } from 'vue'
-import type { userInfo } from '../../interface/user'
+import { ref, watch, onMounted } from 'vue'
 import fetchAPI from '../../mixin/fetchAPI'
 import Swal from 'sweetalert2'
 // @ts-ignore
@@ -86,17 +85,16 @@ import CityCountyData from '/public/CityCountyData'
 import type {CityCounty,AreaListData} from '../../interface/signup'
 
 const editInfo = ref<boolean>(false)
-const props = defineProps<{ user: userInfo }>()
 
 const userData = JSON.parse(localStorage.getItem('user') as string)
 const data = ref({
-  userId: props.user._id || userData._id,
-  name: props.user.name || userData.name,
-  phone: props.user.phone || userData.phone,
-  birthday: new Date(props.user.birthday || userData.birthday).toLocaleDateString(),
+  userId: userData._id,
+  name: userData.name,
+  phone: userData.phone,
+  birthday: new Date(userData.birthday).toLocaleDateString(),
   address: {
-    zipcode: props.user.address.zipcode || userData.address.zipcode,
-    detail: props.user.address.detail || userData.address.detail
+    zipcode: userData.address.zipcode,
+    detail:  userData.address.detail
   }
 })
 const userAddress = ref<string>('')
