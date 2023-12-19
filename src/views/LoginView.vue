@@ -126,14 +126,15 @@
   </main>
 </template>
 <script setup lang="ts">
-import fetchAPI from '@/mixin/fetchAPI'
-import { checkMail, checkPassword } from '@/mixin/validate'
-import type { AccountData } from '@/interface/signup'
+import fetchAPI from '../mixin/fetchAPI'
+import { checkMail, checkPassword } from '../mixin/validate'
+import type { AccountData } from '../interface/signup'
 import Swal from 'sweetalert2'
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+// @ts-ignore
 import { Modal } from 'bootstrap'
-import { headerMenuStore } from '@/stores/headerMenu'
+import { headerMenuStore } from '../stores/headerMenu'
 
 const headerMenu = headerMenuStore()
 const router = useRouter()
@@ -211,6 +212,7 @@ async function forgetPwd() {
   })
   if (swal.isConfirmed || swal.isDismissed) {
     if (modal.value) {
+// @ts-ignore
     modal.value.show()
     }
   }
@@ -227,6 +229,7 @@ async function resetPwd() {
     title: forgot.status ? '變更密碼成功' : forgot.message
   })
   if(forgot.status) {
+// @ts-ignore
     modal.value.hide()
   }
 }

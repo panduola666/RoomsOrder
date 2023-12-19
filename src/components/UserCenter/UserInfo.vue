@@ -78,14 +78,12 @@
 </template>
 <script setup lang="ts">
 import { ref, defineProps, watch, onMounted } from 'vue'
-import type { userInfo } from '@/interface/user'
-import fetchAPI from '@/mixin/fetchAPI'
+import type { userInfo } from '../../interface/user'
+import fetchAPI from '../../mixin/fetchAPI'
 import Swal from 'sweetalert2'
+// @ts-ignore
 import CityCountyData from '/public/CityCountyData'
-import type {
-  CityCounty,
-  AreaListData
-} from '@/interface/signup'
+import type {CityCounty,AreaListData} from '../../interface/signup'
 
 const editInfo = ref<boolean>(false)
 const props = defineProps<{ user: userInfo }>()

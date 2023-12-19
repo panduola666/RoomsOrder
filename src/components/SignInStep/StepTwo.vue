@@ -76,15 +76,10 @@
 </template>
 <script setup lang="ts">
 import { ref, watch, defineProps, onMounted } from 'vue'
-import type {
-  AccountData,
-  UserInfoData,
-  SignInBody,
-  CityCounty,
-  AreaListData
-} from '@/interface/signup'
+import type {AccountData,UserInfoData,SignInBody,CityCounty,AreaListData} from '../../interface/signup'
+// @ts-ignore
 import CityCountyData from '/public/CityCountyData'
-import fetchAPI from '@/mixin/fetchAPI'
+import fetchAPI from '../../mixin/fetchAPI'
 import Swal from 'sweetalert2'
 import { useRouter } from 'vue-router'
 

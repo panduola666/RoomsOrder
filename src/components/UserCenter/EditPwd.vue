@@ -54,9 +54,10 @@
 </template>
 <script setup lang="ts">
 import { ref, defineProps } from 'vue'
-import type { userInfo } from '@/interface/user'
-import { checkPassword } from '@/mixin/validate'
-import fetchAPI from '@/mixin/fetchAPI'
+// @ts-ignore
+import type { userInfo } from '../../interface/user'
+import { checkPassword } from '../../mixin/validate'
+import fetchAPI from '../../mixin/fetchAPI'
 import Swal from 'sweetalert2'
 
 const resetPwd = ref<boolean>(false)

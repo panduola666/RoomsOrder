@@ -7,10 +7,11 @@
 </template>
 
 <script setup lang="ts">
+// @ts-ignore
 import HeaderNav from './components/Layout/HeaderNav.vue';
 import FooterBar from './components/Layout/FooterBar.vue';
 import { watch } from 'vue'
-import { headerMenuStore } from '@/stores/headerMenu'
+import { headerMenuStore } from './stores/headerMenu'
 import { useRoute } from 'vue-router'
 
 

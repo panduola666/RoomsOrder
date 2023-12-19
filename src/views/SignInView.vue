@@ -48,10 +48,12 @@
   </main>
 </template>
 <script setup lang="ts">
-import StepOne from '@/components/SignInStep/StepOne.vue'
-import StepTwo from '@/components/SignInStep/StepTwo.vue'
+// @ts-ignore
+import StepOne from '../components/SignInStep/StepOne.vue'
+// @ts-ignore
+import StepTwo from '../components/SignInStep/StepTwo.vue'
 import { ref } from 'vue'
-import type { AccountData} from '@/interface/signup'
+import type { AccountData} from '../interface/signup'
 
 // 頁面步驟 & 換頁
 const steps = ref<string[]>(['輸入信箱及密碼', '填寫基本資料'])

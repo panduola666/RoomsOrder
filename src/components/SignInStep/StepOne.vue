@@ -43,8 +43,8 @@
 </template>
 <script setup lang="ts">
 import { ref } from 'vue'
-import type { AccountData } from '@/interface/signup'
-import { checkMail, checkPassword } from '@/mixin/validate'
+import type { AccountData } from '../../interface/signup'
+import { checkMail, checkPassword } from '../../mixin/validate'
 
 const account = ref<AccountData>({
   email: '',

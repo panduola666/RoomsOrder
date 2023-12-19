@@ -49,7 +49,7 @@
 </template>
 <script setup lang="ts">
 import { ref } from 'vue'
-import { headerMenuStore } from '@/stores/headerMenu'
+import { headerMenuStore } from '../../stores/headerMenu'
 import { useRouter } from 'vue-router'
 
 const menuShow = ref<boolean>(false)

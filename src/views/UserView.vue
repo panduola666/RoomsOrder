@@ -32,13 +32,15 @@
   </main>
 </template>
 <script setup lang="ts">
-import EditPwd from '@/components/UserCenter/EditPwd.vue'
-import UserInfo from '@/components/UserCenter/UserInfo.vue'
-import fetchAPI from '@/mixin/fetchAPI'
+// @ts-ignore
+import EditPwd from '../components/UserCenter/EditPwd.vue'
+// @ts-ignore
+import UserInfo from '../components/UserCenter/UserInfo.vue'
+import fetchAPI from '../mixin/fetchAPI'
 import { ref, onMounted } from 'vue'
 import Swal from 'sweetalert2'
 import { useRouter } from 'vue-router'
-import type { userInfo } from '@/interface/user'
+import type { userInfo } from '../interface/user'
 const router = useRouter()
 const newFetch = fetchAPI()
 const user = ref<userInfo>({
