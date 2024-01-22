@@ -59,6 +59,7 @@
 @import "bootstrap/scss/utilities/api";
 
 // 8. Add additional custom code here
+@import './mixin';
 
 .btn-primary{
   --bs-btn-color: var(--bs-white);

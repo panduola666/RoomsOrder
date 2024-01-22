@@ -16,21 +16,25 @@ const router = createRouter({
     {
       path: '/user',
       name: 'user',
-      component: () => import('../views/UserView.vue')
+      component: () => import('../views/user/UserIndex.vue'),
+      children: [
+        {
+          path: '',
+          name: 'userInfo',
+          component: () => import('../views/user/UserView.vue'),
+        },
+        {
+          path: 'myOrder',
+          name: 'myOrder',
+          component: () => import('../views/user/MyOrder.vue'),
+        }
+      ]
     },
     {
       path: '/:pathMatch(.*)*',
       name: 'notFound',
       redirect: '/login'
     }
-    // {
-    //   path: '/about',
-    //   name: 'about',
-    //   // route level code-splitting
-    //   // this generates a separate chunk (About.[hash].js) for this route
-    //   // which is lazy-loaded when the route is visited.
-    //   component: () => import('../views/AboutView.vue')
-    // }
   ]
 })
 

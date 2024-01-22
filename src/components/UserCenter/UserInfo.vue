@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 class="fs-6 fs-lg-5 fw-bold mb-5 mb-lg-7">基本資料</h2>
+    <h2 class="title">基本資料</h2>
 
     <div v-if="!editInfo">
         <p class="mb-2 text-neutral-80 fw-medium">姓名</p>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 class="fs-6 fs-lg-5 mb-5 mb-lg-7 fw-bold">修改密碼</h2>
+    <h2 class="title">修改密碼</h2>
 
     <p class="mb-2 text-neutral-80 fw-medium">電子信箱</p>
     <p class="mb-3 mb-lg-5 fw-bold">{{ data.email }}</p>
