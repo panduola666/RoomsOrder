@@ -29,11 +29,11 @@ a{
 }
 
 .sub-title {
- @extend .fw-bold;
  @extend .ps-3;
  @extend .fs-small;
  @extend .fs-lg-0;
  position: relative;
+ font-weight: 700;
  &::before{
   content: '';
   position: absolute;
