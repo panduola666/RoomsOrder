@@ -28,3 +28,25 @@ a{
   @extend .mb-lg-7;
 }
 
+.sub-title {
+ @extend .fw-bold;
+ @extend .ps-3;
+ @extend .fs-small;
+ @extend .fs-lg-0;
+ position: relative;
+ &::before{
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 4px;
+  border-radius: 10px;
+  top: 0;
+  left: 0;
+ }
+ &-primary::before{
+  background-color: $primary;
+ }
+ &-neutral-60::before{
+  background-color: $neutral-60;
+ }
+}

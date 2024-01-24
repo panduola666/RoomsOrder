@@ -1,8 +1,10 @@
 <template>
   <main class="bg-neutral-bg">
     <div class="userBanner">
-      <div class="container position-relative z-3">
-        <div class="d-lg-flex flex-lg-row align-items-center gap-5 fs-1 fw-bold text-white py-7 py-lg-10">
+      <div class="container p-0 position-relative z-3">
+        <div
+          class="d-lg-flex flex-lg-row align-items-center gap-5 fs-1 fw-bold text-white py-7 py-lg-10"
+        >
           <img src="@/assets/image/Avatar _6.png" alt="" class="avatar mb-3 mb-lg-0" />
           <h1 class="fs-1 fw-bold mb-0">Hello，Jessica</h1>
         </div>
@@ -11,7 +13,15 @@
 
     <div class="container my-7 mt-lg-9 mb-lg-10">
       <ul class="tabs d-flex text-white fw-bold p-0 mb-7 mb-lg-9">
-        <li class="tabs-item px-5 py-3 pointer" :class="{active: route.name === item.routeName}" v-for="item in tabs" :key="item.routeName" @click="router.push({name: item.routeName})">{{ item.tabName }}</li>
+        <li
+          class="tabs-item px-5 py-3 pointer"
+          :class="{ active: route.name === item.routeName }"
+          v-for="item in tabs"
+          :key="item.routeName"
+          @click="router.push({ name: item.routeName })"
+        >
+          {{ item.tabName }}
+        </li>
       </ul>
 
       <router-view></router-view>
@@ -20,7 +30,7 @@
   </main>
 </template>
 <script setup lang="ts">
-import { useRoute, useRouter } from "vue-router";
+import { useRoute, useRouter } from 'vue-router'
 import { ref } from 'vue'
 import type { userTab } from '../../interface/user'
 
@@ -55,7 +65,7 @@ const tabs = ref<userTab[]>([
     z-index: 2;
   }
 }
-.avatar{
+.avatar {
   display: block;
   width: 72px;
   height: 72px;
