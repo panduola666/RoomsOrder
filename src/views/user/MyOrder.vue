@@ -12,7 +12,7 @@
     </div>
   </main>
 </template>
-<script>
+<script lang="ts">
 import HistoryOrder from '../../components/UserCenter/HistoryOrder.vue'
 import nextRoom from '../../components/UserCenter/NextRoom.vue'
 export default {
@@ -22,7 +22,6 @@ export default {
     HistoryOrder
   },
   mounted() {
-    console.log(this.fetchAPI);
   },
 }
 </script>

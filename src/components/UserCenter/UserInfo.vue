@@ -100,10 +100,9 @@ const data = ref({
 const userAddress = ref<string>('')
 
 // 修改個資
-const newFetch = fetchAPI()
 async function editUserInfo() {
   data.value.birthday = `${birthYear.value}/${birthMonth.value}/${birthDay.value}`
-  const res = await newFetch._fetch('/api/v1/user/', 'PUT', data.value)
+  const res = await fetchAPI('/api/v1/user/', 'PUT', data.value)
 
   Swal.fire({
     icon: res.status ? 'success' : 'error',
