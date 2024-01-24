@@ -18,11 +18,22 @@
     <p class="fw-bold fs-lg-0 fs-small mb-0">NT$ 10,000</p>
   </div>
 
-  <div>
+  <div class="mb-5 mb-lg-7">
     <p class="sub-title sub-title-primary">房內設備</p>
     <div class="p-5 border border-neutral-40 rounded-3">
       <RoomService :service="service" />
     </div>
+  </div>
+  <div class="mb-5 mb-lg-7">
+    <p class="sub-title sub-title-primary">備品提供</p>
+    <div class="p-5 border border-neutral-40 rounded-3">
+      <RoomService :service="service" />
+    </div>
+  </div>
+
+  <div class="d-flex align-items-center gap-3">
+    <button type="button" class="btn btn-outline-primary rounded-3 fw-bold py-3  px-6 w-50">取消預訂</button>
+    <router-link :to="{name: 'roomDetail', params: {id: 33}}" class="btn btn-primary rounded-3 fw-bold py-3  px-6 w-50">查看詳情</router-link>
   </div>
 </template>
 <script lang="ts">

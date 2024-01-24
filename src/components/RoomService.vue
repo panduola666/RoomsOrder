@@ -1,7 +1,7 @@
 <template>
-  <ul class="d-flex flex-wrap gap-7 p-0 m-0">
+  <ul class="d-flex flex-wrap p-0 m-0">
     <li
-      class="d-flex align-items-center gap-2 fw-bold fs-lg-0 fs-small"
+      class="d-flex align-items-center gap-2 fw-bold fs-lg-0 fs-small me-7 mb-2"
       v-for="item in service"
       :key="item.title"
     >
