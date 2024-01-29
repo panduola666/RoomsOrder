@@ -1,0 +1,48 @@
+<template>
+  <div class="bg-black py-lg-10">
+    <div class="about-us">
+      <div class="container pt-9 position-relative">
+        <div class="about-square py-9 ms-auto position-absolute end-0 border-bottom border-start border-white-100">
+          <div class="text-white ms-9">
+            <div class=" fs-1">
+              <p class="mb-0">關於</p>
+              <p class="mb-9">我們</p>
+            </div>
+            <p class="mb-7">
+              享樂酒店，位於美麗島高雄的心臟地帶，是這座城市的璀璨瑰寶與傲人地標。
+              我們的存在，不僅僅是為了提供奢華的住宿體驗，更是為了將高雄的美麗與活力，獻給每一位蒞臨的旅客。
+            </p>
+            <p class="mb-7">
+              我們的酒店，擁有時尚典雅的裝潢，每一個細節都充滿著藝術與設計的精緻。
+              我們的員工，都以熱情的服務與專業的態度，讓每一位客人都能感受到賓至如歸的溫暖。
+            </p>
+            <p class="mb-7">
+              在這裡，您可以遙望窗外，欣賞高雄的城市景色，感受這座城市的繁華與活力；您也可以舒適地坐在我們的餐廳，品嚐精緻
+              的佳餚，體驗無與倫比的味覺盛宴。
+            </p>
+            <p class="">
+              享樂酒店，不僅是您在高雄的住宿之選，更是您感受高雄魅力的最佳舞台。我們期待著您的蒞臨，讓我們共同編織一段難忘
+              的高雄故事。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style lang="scss" scoped>
+.about-us {
+  background: url('@/assets/image/desktop/About.png') no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 672px;
+}
+.about-square {
+  // width: 500px;
+  width: 1044px;
+  height: 672px;
+  background: linear-gradient(rgba($neutral-bg, .8) 0%, rgba(#BE9C7C, .8) 100%);
+  border-radius: 80px 80px 0;
+}
+</style>

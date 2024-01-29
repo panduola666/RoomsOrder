@@ -1,7 +1,7 @@
 <template>
   <nav class="d-flex align-items-center justify-content-between py-3  py-lg-5 px-2_5 px-lg-9 sticky-top"
   :class="{'bg-neutral-bg': $route.path !== '/'}">
-    <img src="../../assets/image/Logo_White.png" alt="logo" class="logo object-fit-contain " />
+    <img src="../../assets/image/common/Logo_White.png" alt="logo" class="logo object-fit-contain " />
     <ul class="nav align-items-center gap-3 d-none d-lg-flex">
       <li class="nav-item">
         <router-link to="" class="p-3 nav-link">客房旅宿</router-link>
@@ -10,7 +10,7 @@
         <router-link to="/login" class="p-3 nav-link">會員登入</router-link>
       </li>
       <li v-else class="nav-item position-relative">
-        <div  class="p-3 header-link nav-link d-flex align-items-center gap-2 pointer" @click="headerMenu.openUserMenu = !headerMenu.openUserMenu">
+        <div class="p-3 header-link nav-link d-flex align-items-center gap-2 pointer" @click="headerMenu.openUserMenu = !headerMenu.openUserMenu">
           <span class="material-symbols-outlined">account_circle</span>
           Jessica
         </div>

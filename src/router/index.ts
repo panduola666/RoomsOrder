@@ -24,12 +24,15 @@ const router = createRouter({
     {
       path: '/rooms',
       name: 'rooms',
-      component: () => import('../views/room/RoomsView.vue')
+      component: () => import('../views/room/RoomsView.vue'),
+      meta: {
+        hiddenHeader: true,
+      }
     },
     {
       path: '/room/:id',
       name: 'roomDetail',
-      component: () => import('../views/room/DetailView.vue')
+    component: () => import('../views/room/DetailView.vue')
     },
     {
       path: '/user',

@@ -26,7 +26,7 @@
 
       <router-view></router-view>
     </div>
-    <img src="@/assets/image/Line.png" alt="Line" class="line" />
+    <img src="@/assets/image/mobile/Line.png" alt="Line" class="line" />
   </main>
 </template>
 <script setup lang="ts">

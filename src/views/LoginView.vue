@@ -3,7 +3,7 @@
     class="container-fluid d-flex align-items-center bg-neutral-bg text-white position-relative"
   >
     <img
-      src="../assets/image/Line.png"
+      src="../assets/image/mobile/Line.png"
       alt="Line"
       class="position-absolute end-0 top-0 mt-8 py-5"
     />
@@ -223,7 +223,7 @@ async function resetPwd() {
   if(!(checkMail(email) && checkPassword(newPassword,newPassword))) return
   const forgot = await newFetch._fetch('/api/v1/user/forgot', 'POST', forgetData.value)
   console.log(forgot);
-  
+
   Swal.fire({
     icon: forgot.status ? 'success' : 'error',
     title: forgot.status ? '變更密碼成功' : forgot.message
