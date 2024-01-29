@@ -4,7 +4,7 @@
     <ul class="historyList">
       <li
         class="py-5 py-lg-7 d-flex flex-column flex-lg-row gap-5 align-items-start fw-medium border-bottom border-2 border-neutral-40"
-        v-for="item in historyList"
+        v-for="item in historyList.filter((i) => i.status !== -1)"
         :key="item._id"
       >
         <img

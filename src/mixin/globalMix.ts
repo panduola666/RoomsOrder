@@ -31,7 +31,10 @@ const mixin = {
     },
     getHour(timer: string | number) {
       const date = new Date(timer)
-      return `${date.getHours()}:${date.getMinutes()}`
+      const hour = date.getHours().toString().padStart(2, '0')
+      const min = date.getMinutes().toString().padStart(2, '0')
+
+      return `${hour}:${min}`
     },
     moneyFormat(num: number) { // 千分位
       const reg= new RegExp(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/, 'g')
