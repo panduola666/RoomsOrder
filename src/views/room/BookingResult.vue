@@ -9,7 +9,7 @@
         <div class="row">
           <div class="col-md-7">
             <div class="d-flex gap-4">
-              <div>
+              <div class="d-flex justify-content-center">
                 <img
                   class="rounded img-fluid"
                   src="../../assets//svg/BookingSuccess.svg"
@@ -34,15 +34,16 @@
             </div>
 
             <hr />
-            <div class="py-8"></div>
+            <div class="py-5"></div>
 
             立即查看您的訂單紀錄
-            <div class="py-3"></div>
+            <div class="py-4"></div>
 
             <div class="d-flex">
               <button class="btn btn-primary">前往我的訂單</button>
             </div>
-            <div class="py-8"></div>
+
+            <div class="py-5"></div>
 
             <hr />
 
@@ -50,15 +51,15 @@
 
             <div class="py-3"></div>
 
-            <h5>姓名</h5>
+            <div>姓名</div>
             <span>Jessica Ｗang </span>
             <div class="py-3"></div>
 
-            <h5>手機號碼</h5>
+            <div>手機號碼</div>
             <span>+886 912 345 678 </span>
             <div class="py-3"></div>
 
-            <h5>電子信箱</h5>
+            <div>電子信箱</div>
             <span>jessica@sample.com </span>
             <div class="py-3"></div>
           </div>
