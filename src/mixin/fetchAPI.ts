@@ -8,8 +8,7 @@ interface requestFormat {
   body?: any
 }
 
-export default function () {
-  async function _fetch(url: string, method:string = 'GET', body = {}) {
+export default async function (url: string, method:string = 'GET', body = {}) {
     const data: requestFormat = {
       method,
       headers: {
@@ -22,8 +21,4 @@ export default function () {
     }
     const res = await fetch(`${VITE_API_PATH}${url}`, data)
     return res.json()
-  }
-  return {
-    _fetch
-  }
 }

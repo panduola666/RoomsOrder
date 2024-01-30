@@ -19,13 +19,10 @@
 import EditPwd from '../../components/UserCenter/EditPwd.vue'
 // @ts-ignore
 import UserInfo from '../../components/UserCenter/UserInfo.vue'
+import { ref, onMounted  } from 'vue'
 import fetchAPI from '../../mixin/fetchAPI'
-import { ref, onMounted } from 'vue'
-import Swal from 'sweetalert2'
-import { useRouter } from 'vue-router'
+
 import type { userInfo } from '../../interface/user'
-const router = useRouter()
-const newFetch = fetchAPI()
 const user = ref<userInfo>({
   _id: '',
   updatedAt: '',
@@ -39,20 +36,9 @@ const user = ref<userInfo>({
     zipcode: 0
   }
 })
-onMounted(async () => {
-  const res = await newFetch._fetch('/api/v1/user/check')
-  if (!res.status) {
-    const swal = await Swal.fire({
-      icon: 'error',
-      title: res.message
-    })
-    if (swal.isConfirmed || swal.isDismissed) {
-      localStorage.removeItem('token')
-      router.push('/login')
-    }
-    return
-  }
-  const userRes = await newFetch._fetch('/api/v1/user')
+onMounted(async () => {  
+  
+  const userRes = await fetchAPI('/api/v1/user')
   localStorage.setItem('user', JSON.stringify(userRes.result))
   user.value = userRes.result
 })

@@ -1,4 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
+import globalMix from '../mixin/globalMix'
+const { checkAuth } = globalMix.methods
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
@@ -38,16 +40,17 @@ const router = createRouter({
       path: '/user',
       name: 'user',
       component: () => import('../views/user/UserIndex.vue'),
+      beforeEnter: async () => checkAuth(),
       children: [
         {
           path: '',
           name: 'userInfo',
-          component: () => import('../views/user/UserView.vue'),
+          component: () => import('../views/user/UserView.vue')
         },
         {
           path: 'myOrder',
           name: 'myOrder',
-          component: () => import('../views/user/MyOrder.vue'),
+          component: () => import('../views/user/MyOrder.vue')
         }
       ]
     },

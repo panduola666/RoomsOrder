@@ -31,11 +31,13 @@
 </template>
 <script setup lang="ts">
 import { useRoute, useRouter } from 'vue-router'
-import { ref } from 'vue'
+import { ref, watch  } from 'vue'
 import type { userTab } from '../../interface/user'
+import globalMix from '../../mixin/globalMix'
 
 const route = useRoute()
 const router = useRouter()
+const { checkAuth } = globalMix.methods
 const tabs = ref<userTab[]>([
   {
     routeName: 'userInfo',
@@ -46,6 +48,8 @@ const tabs = ref<userTab[]>([
     tabName: '我的訂單'
   }
 ])
+
+watch(() => route.path, () => checkAuth())
 </script>
 <style lang="scss" scoped>
 .userBanner {
