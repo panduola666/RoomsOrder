@@ -1,21 +1,77 @@
 <template>
-  <main class="bg-neutral-bg text-white">
+  <main class="bg-[#F7F2EE]">
     <div class="container">
-      <div>確認訂房資訊</div>
+      <div class="row">
+        <div class="p-5 d-flex gap-3 align-item-center">
+          <img class="rounded img-fluid" src="../../assets//svg/back.svg" alt="Room Image" />
+          <span>確認訂房資訊</span>
+        </div>
+      </div>
 
       <div class="container">
         <div class="row">
-          <div class="col-7">
-            <div>訂房資訊</div>
+          <div class="col-md-7">
+            <h3>訂房資訊</h3>
 
-            選擇房型
+            <div class="d-flex justify-content-between">
+              <span>
+                <img
+                  class="rounded img-fluid"
+                  src="../../assets//svg/divline.svg"
+                  alt="Room Image"
+                />
+
+                選擇房型
+
+                <br />
+                尊爵雙人房
+              </span>
+              <span> 編輯 </span>
+            </div>
+
+            <div class="d-flex py-5 justify-content-between">
+              <span>
+                <img
+                  class="rounded img-fluid"
+                  src="../../assets//svg/divline.svg"
+                  alt="Room Image"
+                />
+
+                訂房日期
+
+                <br />
+                入住：12 月 4 日星期二
+                <br />
+                退房：12 月 6 日星期三
+              </span>
+              <span> 編輯 </span>
+            </div>
+
+            <div class="d-flex justify-content-between">
+              <span>
+                <img
+                  class="rounded img-fluid"
+                  src="../../assets//svg/divline.svg"
+                  alt="Room Image"
+                />
+
+                房客人數
+
+                <br />
+                2 人
+              </span>
+              <span> 編輯 </span>
+            </div>
+
+            <br />
+            <hr />
 
             <div class="py-1 d-flex justify-content-between">
-              <span>訂房人資訊 </span>
-              <span>套用會員資料</span>
+              <h3>訂房人資訊</h3>
+              <span class="text-primary"><a class="link-underline-primary">套用會員資料</a></span>
             </div>
-            <form>
-              <label for="name">姓名</label>
+            <form class="py-5">
+              <label class="" for="name">姓名</label>
               <input
                 id="name"
                 type="text"
@@ -24,6 +80,7 @@
                 aria-label="Username"
                 aria-describedby="addon-wrapping"
               />
+              <div class="py-3" />
 
               <label for="name">手機號碼</label>
               <input
@@ -34,6 +91,7 @@
                 aria-label="Username"
                 aria-describedby="addon-wrapping"
               />
+              <div class="py-3" />
 
               <label for="name">電子信箱</label>
               <input
@@ -44,6 +102,7 @@
                 aria-label="Username"
                 aria-describedby="addon-wrapping"
               />
+              <div class="py-3" />
 
               <label for="name">地址</label>
               <div class="d-flex justify-content-between">
@@ -60,20 +119,330 @@
                   <option value="3">Three</option>
                 </select>
               </div>
+              <div class="py-3" />
 
               <input
                 id="name"
                 type="text"
                 class="form-control"
-                placeholder="請輸入電子信箱"
+                placeholder="請輸入詳細地址"
                 aria-label="Username"
                 aria-describedby="addon-wrapping"
               />
             </form>
             <br />
+            <hr />
+            <div class="py-3" />
+
             <h4>房間資訊</h4>
+            <div class="py-2" />
+
+            <div class="d-flex">
+              <span>
+                <img
+                  class="rounded img-fluid"
+                  src="../../assets//svg/divline.svg"
+                  alt="Room Image"
+                />
+                房型基本資訊
+              </span>
+            </div>
+            <div class="py-2" />
+
+            <div class="d-flex justify-content-center gap-5">
+              <span class="border border-1 w-25 p-3">
+                <img
+                  class="rounded img-fluid"
+                  src="../../assets//svg/RoomSize.svg"
+                  alt="Room Image"
+                />
+                <div>24坪</div>
+              </span>
+
+              <span class="border border-1 w-25 p-3">
+                <img
+                  class="rounded img-fluid"
+                  src="../../assets//svg/RoomBed.svg"
+                  alt="Room Image"
+                />
+                <div>1 張大床</div>
+              </span>
+
+              <span class="border border-1 w-25 p-3">
+                <img
+                  class="rounded img-fluid"
+                  src="../../assets//svg/RoomPeople.svg"
+                  alt="Room Image"
+                />
+                <div>2-4 人</div>
+              </span>
+            </div>
+            <div class="py-3" />
+
+            <div class="d-flex">
+              <span>
+                <img
+                  class="rounded img-fluid"
+                  src="../../assets//svg/divline.svg"
+                  alt="Room Image"
+                />
+                房間格局
+              </span>
+            </div>
+            <div class="py-3" />
+
+            <div>
+              <ul class="d-flex flex-wrap gap-6">
+                <li class="flex-item">
+                  <img
+                    class="rounded img-fluid"
+                    src="../../assets//svg/check.svg"
+                    alt="Room Image"
+                  />
+                  市景
+                </li>
+                <li class="flex-item">
+                  <img
+                    class="rounded img-fluid"
+                    src="../../assets//svg/check.svg"
+                    alt="Room Image"
+                  />
+                  獨立衛浴
+                </li>
+                <li class="flex-item">
+                  <img
+                    class="rounded img-fluid"
+                    src="../../assets//svg/check.svg"
+                    alt="Room Image"
+                  />
+                  客廳
+                </li>
+                <li class="flex-item">
+                  <img
+                    class="rounded img-fluid"
+                    src="../../assets//svg/check.svg"
+                    alt="Room Image"
+                  />
+                  書房
+                </li>
+                <li class="flex-item">
+                  <img
+                    class="rounded img-fluid"
+                    src="../../assets//svg/check.svg"
+                    alt="Room Image"
+                  />
+                  樓層電梯
+                </li>
+              </ul>
+            </div>
+            <div class="py-3" />
+
+            <div class="d-flex">
+              <span>
+                <img
+                  class="rounded img-fluid"
+                  src="../../assets//svg/divline.svg"
+                  alt="Room Image"
+                />
+                房內設備
+              </span>
+            </div>
+            <div class="py-3" />
+
+            <div class=" ">
+              <ul class="d-flex flex-wrap gap-6">
+                <li class="flex-item">
+                  <img
+                    class="rounded img-fluid"
+                    src="../../assets//svg/check.svg"
+                    alt="Room Image"
+                  />
+                  平面電視
+                </li>
+                <li class="flex-item">
+                  <img
+                    class="rounded img-fluid"
+                    src="../../assets//svg/check.svg"
+                    alt="Room Image"
+                  />
+                  吹風機
+                </li>
+                <li class="flex-item">
+                  <img
+                    class="rounded img-fluid"
+                    src="../../assets//svg/check.svg"
+                    alt="Room Image"
+                  />
+                  冰箱
+                </li>
+                <li class="flex-item">
+                  <img
+                    class="rounded img-fluid"
+                    src="../../assets//svg/check.svg"
+                    alt="Room Image"
+                  />
+                  熱水壺
+                </li>
+                <li class="flex-item">
+                  <img
+                    class="rounded img-fluid"
+                    src="../../assets//svg/check.svg"
+                    alt="Room Image"
+                  />
+                  檯燈
+                </li>
+
+                <li class="flex-item">
+                  <img
+                    class="rounded img-fluid"
+                    src="../../assets//svg/check.svg"
+                    alt="Room Image"
+                  />
+                  衣櫃
+                </li>
+
+                <li class="flex-item">
+                  <img
+                    class="rounded img-fluid"
+                    src="../../assets//svg/check.svg"
+                    alt="Room Image"
+                  />
+                  除濕機
+                </li>
+
+                <li class="flex-item">
+                  <img
+                    class="rounded img-fluid"
+                    src="../../assets//svg/check.svg"
+                    alt="Room Image"
+                  />
+                  浴缸
+                </li>
+
+                <li class="flex-item">
+                  <img
+                    class="rounded img-fluid"
+                    src="../../assets//svg/check.svg"
+                    alt="Room Image"
+                  />
+                  書桌
+                </li>
+
+                <li class="flex-item">
+                  <img
+                    class="rounded img-fluid"
+                    src="../../assets//svg/check.svg"
+                    alt="Room Image"
+                  />
+                  音響
+                </li>
+              </ul>
+            </div>
+            <div class="py-3" />
+
+            <div class="d-flex">
+              <span>
+                <img
+                  class="rounded img-fluid"
+                  src="../../assets//svg/divline.svg"
+                  alt="Room Image"
+                />
+                備品提供
+              </span>
+            </div>
+            <div class="py-3" />
+
+            <div class="d-flex">
+              <ul class="d-flex flex-wrap gap-6">
+                <li class="flex-item">
+                  <img
+                    class="rounded img-fluid"
+                    src="../../assets//svg/check.svg"
+                    alt="Room Image"
+                  />
+                  衛生紙
+                </li>
+                <li class="flex-item">
+                  <img
+                    class="rounded img-fluid"
+                    src="../../assets//svg/check.svg"
+                    alt="Room Image"
+                  />
+                  拖鞋
+                </li>
+                <li class="flex-item">
+                  <img
+                    class="rounded img-fluid"
+                    src="../../assets//svg/check.svg"
+                    alt="Room Image"
+                  />
+                  沐浴用品
+                </li>
+                <li class="flex-item">
+                  <img
+                    class="rounded img-fluid"
+                    src="../../assets//svg/check.svg"
+                    alt="Room Image"
+                  />
+                  清潔用品
+                </li>
+                <li class="flex-item">
+                  <img
+                    class="rounded img-fluid"
+                    src="../../assets//svg/check.svg"
+                    alt="Room Image"
+                  />
+                  刮鬍刀
+                </li>
+
+                <li class="flex-item">
+                  <img
+                    class="rounded img-fluid"
+                    src="../../assets//svg/check.svg"
+                    alt="Room Image"
+                  />
+                  吊衣架
+                </li>
+
+                <li class="flex-item">
+                  <img
+                    class="rounded img-fluid"
+                    src="../../assets//svg/check.svg"
+                    alt="Room Image"
+                  />
+                  浴巾
+                </li>
+
+                <li class="flex-item">
+                  <img
+                    class="rounded img-fluid"
+                    src="../../assets//svg/check.svg"
+                    alt="Room Image"
+                  />
+                  刷牙用品
+                </li>
+
+                <li class="flex-item">
+                  <img
+                    class="rounded img-fluid"
+                    src="../../assets//svg/check.svg"
+                    alt="Room Image"
+                  />
+                  罐裝水
+                </li>
+
+                <li class="flex-item">
+                  <img
+                    class="rounded img-fluid"
+                    src="../../assets//svg/check.svg"
+                    alt="Room Image"
+                  />
+                  梳子
+                </li>
+              </ul>
+            </div>
           </div>
-          <div class="p-5 col-5 rounded bg-white text-black">
+          <div class="p-5 col-md-5 rounded bg-white text-black">
             <div class="">
               <img
                 class="rounded img-fluid"
@@ -105,3 +474,20 @@
     </div>
   </main>
 </template>
+
+<style scoped>
+/* Assuming the following classes for your lists */
+.flex-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: blue;
+}
+
+.flex-item {
+  flex-basis: calc(15% - 10px); /* 20% width with 10px spacing */
+  margin-bottom: 10px; /* Adjust spacing as needed */
+}
+</style>
+
+<script setup lang="ts"></script>
