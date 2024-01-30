@@ -1,0 +1,91 @@
+<template>
+  <main class="bg-neutral-bg text-white">
+    <div class="container">
+      <div class="row">
+        <div class="p-5 d-flex gap-3 align-item-center"></div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-7">
+            <div class="d-flex gap-4">
+              <div>
+                <img
+                  class="rounded img-fluid"
+                  src="../../assets//svg/BookingSuccess.svg"
+                  alt="Room Image"
+                />
+              </div>
+              <div>
+                <h3>恭喜，Jessica！</h3>
+                <h3>您已預訂成功</h3>
+              </div>
+            </div>
+            <div class="py-3"></div>
+
+            <div class="d-flex justify-content-between">
+              <span>
+                <p>
+                  我們已發送訂房資訊及詳細內容至你的電子信箱，入住時需向櫃檯人員出示訂房人證件。
+                </p>
+
+                <br />
+              </span>
+            </div>
+
+            <hr />
+            <div class="py-8"></div>
+
+            立即查看您的訂單紀錄
+            <div class="py-3"></div>
+
+            <div class="d-flex">
+              <button class="btn btn-primary">前往我的訂單</button>
+            </div>
+            <div class="py-8"></div>
+
+            <hr />
+
+            <h4>訂房人資訊</h4>
+
+            <div class="py-3"></div>
+
+            <h5>姓名</h5>
+            <span>Jessica Ｗang </span>
+            <div class="py-3"></div>
+
+            <h5>手機號碼</h5>
+            <span>+886 912 345 678 </span>
+            <div class="py-3"></div>
+
+            <h5>電子信箱</h5>
+            <span>jessica@sample.com </span>
+            <div class="py-3"></div>
+          </div>
+          <div class="col-md-5 rounded text-black">
+            <NextRoom />
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</template>
+
+<style scoped>
+/* Assuming the following classes for your lists */
+.flex-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: blue;
+}
+
+.flex-item {
+  flex-basis: calc(15% - 10px); /* 20% width with 10px spacing */
+  margin-bottom: 10px; /* Adjust spacing as needed */
+}
+</style>
+
+<script setup lang="ts">
+import NextRoom from '@/components/UserCenter/NextRoom.vue'
+</script>
