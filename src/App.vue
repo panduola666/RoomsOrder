@@ -1,6 +1,6 @@
 <template>
   <div class="min-vh-100 d-flex flex-column">
-    <HeaderNav v-if="!route.meta.hiddenHeader" />
+    <HeaderNav v-if="!route.meta.hiddenHeader"/>
     <RouterView class="flex-grow-1" @click="headerMenu.openUserMenu = false"/>
     <FooterBar v-if="!['login', 'signIn'].includes($route.name as string)" />
   </div>

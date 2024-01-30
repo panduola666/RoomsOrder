@@ -59,27 +59,56 @@ img {
  }
 }
 
-.btn-line {
-  @extend .fw-bold;
-  @extend .fs-small;
-  @extend .fs-lg-5;
-  &::after {
-    content: '';
-    display: inline-block;
-    width: 150px;
-    height: 1px;
-    margin-left: 16px;
-    background-color: $black;
-    vertical-align: middle;
-    line-height: 36px;
-  }
-}
-
 .cta-btn {
   height: 116px;
   background: $white;
+  @extend .pointer;
   @extend .rounded-3;
   @extend .d-flex;
   @extend .justify-content-end;
   @extend .align-items-center;
+  &:hover {
+    background: $primary;
+    color: $white;
+    .btn-line::after {
+      background: $white;
+    }
+  }
+  .btn-line {
+    @extend .fw-bold;
+    @extend .fs-small;
+    @extend .fs-lg-5;
+    &::after {
+      content: '';
+      display: inline-block;
+      width: 150px;
+      height: 1px;
+      margin-left: 16px;
+      background: $black;
+      vertical-align: middle;
+      line-height: 36px;
+    }
+  }
+}
+
+.banner-wrapper {
+  background: url('@/assets/image/mobile/Banner.png'), rgba($black, .6) no-repeat;
+  object-fit: cover;
+  background-size: cover;
+  background-blend-mode: color-burn;
+  @include lg {
+    background: url('@/assets/image/desktop/Banner.png'), rgba($black, .6) no-repeat;
+    object-fit: cover;
+    background-size: cover;
+    background-blend-mode: color-burn;
+  }
+  .ls-2 {
+    @include letter-spacing(2px);
+  }
+}
+
+.pagination-default {
+  border-radius: 100px;
+  width: 32px;
+  height: 4px;
 }
