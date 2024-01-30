@@ -1,5 +1,5 @@
 <template>
-  <main class="bg-[#F7F2EE]">
+  <main class="bg-primary-10">
     <div class="container">
       <div class="row">
         <div class="p-5 d-flex gap-3 align-item-center">
@@ -26,7 +26,7 @@
                 <br />
                 尊爵雙人房
               </span>
-              <span> 編輯 </span>
+              <span class="underline"> <a class="link-underline-primary">編輯</a> </span>
             </div>
 
             <div class="d-flex py-5 justify-content-between">
@@ -44,7 +44,7 @@
                 <br />
                 退房：12 月 6 日星期三
               </span>
-              <span> 編輯 </span>
+              <span> <a class="link-underline-primary">編輯</a> </span>
             </div>
 
             <div class="d-flex justify-content-between">
@@ -60,7 +60,7 @@
                 <br />
                 2 人
               </span>
-              <span> 編輯 </span>
+              <span> <a class="link-underline-primary">編輯</a> </span>
             </div>
 
             <br />
@@ -150,7 +150,7 @@
             <div class="py-2" />
 
             <div class="d-flex justify-content-center gap-5">
-              <span class="border border-1 w-25 p-3">
+              <span class="rounded bg-white border border-1 w-25 text-center p-3">
                 <img
                   class="rounded img-fluid"
                   src="../../assets//svg/RoomSize.svg"
@@ -159,7 +159,7 @@
                 <div>24坪</div>
               </span>
 
-              <span class="border border-1 w-25 p-3">
+              <span class="rounded bg-white border border-1 w-25 text-center p-3">
                 <img
                   class="rounded img-fluid"
                   src="../../assets//svg/RoomBed.svg"
@@ -168,7 +168,7 @@
                 <div>1 張大床</div>
               </span>
 
-              <span class="border border-1 w-25 p-3">
+              <span class="rounded bg-white border border-1 w-25 text-center p-3">
                 <img
                   class="rounded img-fluid"
                   src="../../assets//svg/RoomPeople.svg"
@@ -191,7 +191,7 @@
             </div>
             <div class="py-3" />
 
-            <div>
+            <div class="bg-white rounded p-4 text-center">
               <ul class="d-flex flex-wrap gap-6">
                 <li class="flex-item">
                   <img
@@ -249,7 +249,7 @@
             </div>
             <div class="py-3" />
 
-            <div class=" ">
+            <div class="bg-white rounded p-4 text-center">
               <ul class="d-flex flex-wrap gap-6">
                 <li class="flex-item">
                   <img
@@ -352,7 +352,7 @@
             </div>
             <div class="py-3" />
 
-            <div class="d-flex">
+            <div class="bg-white rounded p-4 text-center">
               <ul class="d-flex flex-wrap gap-6">
                 <li class="flex-item">
                   <img
@@ -442,7 +442,7 @@
               </ul>
             </div>
           </div>
-          <div class="p-5 col-md-5 rounded bg-white text-black">
+          <div class="p-5 col-md-5 rounded bg-white h-25 text-black">
             <div class="">
               <img
                 class="rounded img-fluid"
