@@ -156,10 +156,9 @@ onMounted(() => {
   modal.value = new Modal(modalPwd.value)
 })
 
-const newFetch = fetchAPI()
 async function login() {
   if (!checkAccount(userInfo.value)) return
-  const res = await newFetch._fetch('/api/v1/user/login', 'POST', userInfo.value)
+  const res = await fetchAPI('/api/v1/user/login', 'POST', userInfo.value)
   if (!res.status) {
     Swal.fire({
       icon: 'error',
@@ -198,7 +197,7 @@ async function forgetPwd() {
     }
   })
   if (!email) return
-  const verify = await newFetch._fetch('/api/v1/verify/email', 'POST', { email })
+  const verify = await fetchAPI('/api/v1/verify/email', 'POST', { email })
   if (!verify.result.isEmailExists) {
     Swal.fire({
       icon: 'error',
@@ -206,7 +205,7 @@ async function forgetPwd() {
     })
   }
 
-  await newFetch._fetch('/api/v1/verify/generateEmailCode', 'POST', { email })
+  await fetchAPI('/api/v1/verify/generateEmailCode', 'POST', { email })
   const swal = await Swal.fire({
     title: '已發送驗證碼至信箱'
   })
@@ -221,7 +220,7 @@ async function forgetPwd() {
 async function resetPwd() {
   const {email, newPassword} = forgetData.value
   if(!(checkMail(email) && checkPassword(newPassword,newPassword))) return
-  const forgot = await newFetch._fetch('/api/v1/user/forgot', 'POST', forgetData.value)
+  const forgot = await fetchAPI('/api/v1/user/forgot', 'POST', forgetData.value)
   console.log(forgot);
   
   Swal.fire({

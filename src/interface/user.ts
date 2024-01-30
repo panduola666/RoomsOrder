@@ -11,3 +11,8 @@ export interface userInfo {
     zipcode: number
   }
 }
+
+export interface userTab {
+  routeName: string,
+  tabName: string
+}
