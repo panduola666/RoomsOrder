@@ -1,5 +1,5 @@
 <template>
+  <!-- banner -->
   <div>
-    房型詳細頁
   </div>
 </template>
