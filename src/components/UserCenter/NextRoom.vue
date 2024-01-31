@@ -147,7 +147,7 @@
   </div>
 </template>
 <script lang="ts">
-import RoomService from '../RoomService.vue'
+import RoomService from '../Common/RoomService.vue'
 import type { orderData } from '../../interface/order'
 import { Modal, Offcanvas } from 'bootstrap'
 import ordersStore from '../../stores/orders'
