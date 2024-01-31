@@ -1,6 +1,5 @@
 <template>
-  <div class="banner-wrapper position-relative">
-    <HeaderNav />
+  <div class="banner-wrapper ">
     <div class="banner d-flex justify-content-between align-items-center px-2_5 px-lg-9">
       <div class="text-primary fw-bold border-bottom border-2 border-gradient">
         <h1 class="ls-2 fs-2 text-heading mb-2 fw-bold">享樂酒店</h1>
@@ -26,7 +25,6 @@
 
 <script setup lang="ts">
 // @ts-ignore
-import HeaderNav from '@/components/Layout/HeaderNav.vue';
 </script>
 
 <style lang="scss" scoped>
@@ -35,6 +33,7 @@ import HeaderNav from '@/components/Layout/HeaderNav.vue';
   object-fit: cover;
   background-size: cover;
   background-blend-mode: color-burn;
+  
   @include lg {
     background: url('@/assets/image/desktop/Banner.png'), rgba($black, .6) no-repeat;
     object-fit: cover;
@@ -46,6 +45,8 @@ import HeaderNav from '@/components/Layout/HeaderNav.vue';
   }
 }
 .banner {
+  padding-top: 236px;
+  padding-bottom: 130px;
   // margin-top: 116px;
   // margin-bottom: 140px;
 }
