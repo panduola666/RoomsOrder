@@ -7,9 +7,16 @@ ul, ol{
   padding: 0;
   margin: 0;
 }
-a{
+
+a {
   text-decoration: none;
 }
+img {
+  max-width: 100%;
+  vertical-align: middle;
+  height: auto;
+}
+
 .material-symbols-outlined.fill{
   font-variation-settings:
   'FILL' 1,
@@ -17,9 +24,11 @@ a{
   'GRAD' 0,
   'opsz' 24
 }
+
 .pointer{
   cursor: pointer;
 }
+
 .title {
   @extend .fs-6;
   @extend .fs-lg-5;
@@ -30,14 +39,13 @@ a{
 
 .sub-title {
  @extend .ps-3;
- @extend .fs-small;
- @extend .fs-lg-0;
+ @extend .fs-lg-5;
  position: relative;
  font-weight: 700;
  &::before{
   content: '';
   position: absolute;
-  height: 100%;
+  height: 100px;
   width: 4px;
   border-radius: 10px;
   top: 0;
@@ -49,4 +57,58 @@ a{
  &-neutral-60::before{
   background-color: $neutral-60;
  }
+}
+
+.cta-btn {
+  height: 116px;
+  background: $white;
+  @extend .pointer;
+  @extend .rounded-3;
+  @extend .d-flex;
+  @extend .justify-content-end;
+  @extend .align-items-center;
+  &:hover {
+    background: $primary;
+    color: $white;
+    .btn-line::after {
+      background: $white;
+    }
+  }
+  .btn-line {
+    @extend .fw-bold;
+    @extend .fs-small;
+    @extend .fs-lg-5;
+    &::after {
+      content: '';
+      display: inline-block;
+      width: 150px;
+      height: 1px;
+      margin-left: 16px;
+      background: $black;
+      vertical-align: middle;
+      line-height: 36px;
+    }
+  }
+}
+
+.banner-wrapper {
+  background: url('@/assets/image/mobile/Banner.png'), rgba($black, .6) no-repeat;
+  object-fit: cover;
+  background-size: cover;
+  background-blend-mode: color-burn;
+  @include lg {
+    background: url('@/assets/image/desktop/Banner.png'), rgba($black, .6) no-repeat;
+    object-fit: cover;
+    background-size: cover;
+    background-blend-mode: color-burn;
+  }
+  .ls-2 {
+    @include letter-spacing(2px);
+  }
+}
+
+.pagination-default {
+  border-radius: 100px;
+  width: 32px;
+  height: 4px;
 }

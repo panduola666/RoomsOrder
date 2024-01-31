@@ -6,6 +6,14 @@ const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
     {
+      path: '/',
+      name: 'home',
+      component: () => import('../views/HomeView.vue'),
+      meta: {
+        hiddenHeader: true,
+      }
+    },
+    {
       path: '/login',
       name: 'login',
       component: () => import('../views/LoginView.vue')
@@ -18,12 +26,15 @@ const router = createRouter({
     {
       path: '/rooms',
       name: 'rooms',
-      component: () => import('../views/room/RoomsView.vue')
+      component: () => import('../views/room/RoomsView.vue'),
+      meta: {
+        hiddenHeader: true,
+      }
     },
     {
       path: '/room/:id',
       name: 'roomDetail',
-      component: () => import('../views/room/DetailView.vue')
+    component: () => import('../views/room/DetailView.vue')
     },
     {
       path: '/roomsReserved',

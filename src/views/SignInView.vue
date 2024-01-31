@@ -3,7 +3,7 @@
     class="container-fluid d-flex align-items-center bg-neutral-bg text-white position-relative"
   >
     <img
-      src="../assets/image/Line.png"
+      src="../assets/image/mobile/Line.png"
       alt="Line"
       class="position-absolute end-0 top-0 mt-8 py-5"
     />
