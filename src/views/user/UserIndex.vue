@@ -5,7 +5,7 @@
         <div
           class="d-lg-flex flex-lg-row align-items-center gap-5 fs-1 fw-bold text-white py-7 py-lg-10"
         >
-          <img src="@/assets/image/Avatar _6.png" alt="" class="avatar mb-3 mb-lg-0" />
+          <img src="@/assets/image/common/Avatar _6.png" alt="" class="avatar mb-3 mb-lg-0" />
           <h1 class="fs-1 fw-bold mb-0">Hello，Jessica</h1>
         </div>
       </div>

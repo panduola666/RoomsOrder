@@ -4,8 +4,6 @@
     <img class="bg-line" src="@/assets/image/desktop/Line.png" alt="line">
   </div>
   <div class="container py-9 py-lg-10">
-    <!-- <div class="position-relative d-inline-block">
-    </div> -->
     <div class="d-flex align-items-center fs-1 text-primary fw-bold mb-7 mb-lg-9">
       <div class="me-7 mb-4">
         <p class="mb-0">佳餚</p>

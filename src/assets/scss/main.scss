@@ -38,35 +38,37 @@ img {
 }
 
 .sub-title {
- @extend .ps-3;
- @extend .fs-lg-5;
- position: relative;
+  @extend .fw-bold;
+  @extend .ps-3;
+  @extend .fs-small;
+  @extend .fs-lg-0;
+  position: relative;
  font-weight: 700;
- &::before{
-  content: '';
-  position: absolute;
-  height: 100px;
-  width: 4px;
-  border-radius: 10px;
-  top: 0;
-  left: 0;
+  &::before{
+   content: '';
+   position: absolute;
+   height: 100%;
+   width: 4px;
+   border-radius: 10px;
+   top: 0;
+   left: 0;
+  }
+  &-primary::before{
+   background-color: $primary;
+  }
+  &-neutral-60::before{
+   background-color: $neutral-60;
+  }
  }
- &-primary::before{
-  background-color: $primary;
- }
- &-neutral-60::before{
-  background-color: $neutral-60;
- }
-}
 
 .cta-btn {
-  height: 116px;
-  background: $white;
   @extend .pointer;
   @extend .rounded-3;
   @extend .d-flex;
   @extend .justify-content-end;
   @extend .align-items-center;
+  height: 116px;
+  background: $white;
   &:hover {
     background: $primary;
     color: $white;
@@ -108,7 +110,8 @@ img {
 }
 
 .pagination-default {
-  border-radius: 100px;
   width: 32px;
   height: 4px;
+  border-radius: 100px;
+  cursor: pointer;
 }
