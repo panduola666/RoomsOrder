@@ -1,10 +1,7 @@
 <template>
   <div class="banner-wrapper position-relative">
-    <HeaderNav />
-    <!-- 外層容器 -->
-    <div class="d-flex flex-column flex-lg-row justify-content-between align-items-center px-4 px-lg-9">
-      <!-- 左半邊 -->
-      <div class="border-gradient text-primary d-flex flex-column justify-content-center align-items-center align-items-lg-start fw-bold">
+    <div class="banner d-flex justify-content-between align-items-center px-2_5 px-lg-9">
+      <div class="text-primary fw-bold border-bottom border-2 border-gradient">
         <h1 class="ls-2 fs-2 text-heading mb-2 fw-bold">享樂酒店</h1>
         <p class="fs-5 mb-5 s-2">Enjoyment Luxury Hotel</p>
       </div>
@@ -31,23 +28,39 @@
 
 <script setup lang="ts">
 // @ts-ignore
-import HeaderNav from '@/components/Layout/HeaderNav.vue';
 </script>
 
 <style lang="scss" scoped>
-.border-gradient {
-  &::after {
-    content: '';
-    display: inline-block;
-    width: 2px;
-    height: 83px;
-    background: linear-gradient(to bottom, #BE9C7C, $white);
-    @include lg {
-      width: 100%;
-      height: 2px;
-      background: linear-gradient(to right, #BE9C7C, $white);
-    }
+.banner-wrapper {
+  background: url('@/assets/image/mobile/Banner.png'), rgba($black, .6) no-repeat;
+  object-fit: cover;
+  background-size: cover;
+  background-blend-mode: color-burn;
+  @include lg {
+    background: url('@/assets/image/desktop/Banner.png'), rgba($black, .6) no-repeat;
+    object-fit: cover;
+    background-size: cover;
+    background-blend-mode: color-burn;
   }
+  .ls-2 {
+    letter-spacing: 2px;
+  }
+}
+.banner {
+  @include lg {
+    padding-top: 236px;
+    padding-bottom: 130px;
+  }
+  // margin-top: 116px;
+  // margin-bottom: 140px;
+}
+.border-gradient {
+  border-bottom-color: linear-gradient(to right, #BE9C7C, $white);
+}
+.right-wrapper {
+  height: 116px;
+
+
 }
 .square {
   width: calc(100% - 48px);

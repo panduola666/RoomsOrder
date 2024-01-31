@@ -19,7 +19,7 @@ const mixin = {
         })
         if (swal.isConfirmed || swal.isDismissed) {
           localStorage.removeItem('token')
-          useRouter().push('/login')
+          useRouter().push('/')
         }
         return
       }
