@@ -4,7 +4,7 @@
     <img src="../../assets/image/Logo_White.png" alt="logo" class="logo object-fit-contain " />
     <ul class="nav align-items-center gap-3 d-none d-lg-flex">
       <li class="nav-item">
-        <router-link to="" class="p-3 nav-link">客房旅宿</router-link>
+        <router-link to="/rooms" class="p-3 nav-link">客房旅宿</router-link>
       </li>
       <li v-if="!headerMenu.isLogin" class="nav-item">
         <router-link to="/login" class="p-3 nav-link">會員登入</router-link>
