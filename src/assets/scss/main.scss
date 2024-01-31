@@ -60,13 +60,13 @@ img {
 }
 
 .cta-btn {
-  height: 116px;
-  background: $white;
   @extend .pointer;
   @extend .rounded-3;
   @extend .d-flex;
   @extend .justify-content-end;
   @extend .align-items-center;
+  height: 116px;
+  background: $white;
   &:hover {
     background: $primary;
     color: $white;
@@ -108,7 +108,8 @@ img {
 }
 
 .pagination-default {
-  border-radius: 100px;
   width: 32px;
   height: 4px;
+  border-radius: 100px;
+  cursor: pointer;
 }

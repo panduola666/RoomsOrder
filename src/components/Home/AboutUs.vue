@@ -1,7 +1,7 @@
 <template>
-  <div class="bg-black py-lg-10">
-    <div class="about-us">
-      <div class="container pt-9 position-relative">
+  <div class="bg-black pt-9 pt-lg-10 pb-10 pb-lg-11">
+    <div class="about-us-bg">
+      <div class="container pt-7 pt-lg-9 mb-9 pb-lg-10 position-relative">
         <div class="about-square py-9 ms-auto position-absolute end-0 border-bottom border-start border-white-100">
           <div class="text-white ms-9">
             <div class=" fs-1">
@@ -32,16 +32,17 @@
 </template>
 
 <style lang="scss" scoped>
-.about-us {
-  background: url('@/assets/image/desktop/About.png') no-repeat;
+.about-us-bg {
+  background: url('@/assets/image/mobile/About.png') no-repeat;
   background-position: center;
   background-size: cover;
   height: 672px;
+  @include lg {
+    background: url('@/assets/image/desktop/About.png') no-repeat;
+  }
 }
 .about-square {
-  // width: 500px;
-  width: 1044px;
-  height: 672px;
+  width: 80%;
   background: linear-gradient(rgba($neutral-bg, .8) 0%, rgba(#BE9C7C, .8) 100%);
   border-radius: 80px 80px 0;
 }

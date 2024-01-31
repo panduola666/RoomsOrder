@@ -2,7 +2,7 @@ import { computed, ref } from 'vue'
 import { defineStore } from 'pinia'
 
 export const useSlideStore = defineStore('slide', () => {
-  const swiperEl: null= ref(null)
+  const swiperEl = ref(null)
   const curSlideShowed = ref(1)
   const slides = ref({
     totalSlides: 4,
