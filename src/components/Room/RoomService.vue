@@ -28,7 +28,7 @@ export default {
     service: {
       type: Array as PropType<Service[]>,
       required: true,
-      default: () => []
+      default: () => ([])
     }
   }
 }

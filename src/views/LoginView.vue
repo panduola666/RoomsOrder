@@ -144,7 +144,7 @@ const userInfo = ref<AccountData>({
   password: ''
 })
 
-onMounted(() => {
+onMounted(async () => {
   if(headerMenu.isLogin) {
     router.push('/user')
     return
@@ -153,7 +153,7 @@ onMounted(() => {
     userInfo.value.email = localStorage.getItem('email') || ''
     rememberAcc.value = true
   }
-  modal.value = new Modal(modalPwd.value)
+  modal.value = new Modal(modalPwd.value as string | Element)
 })
 
 async function login() {
@@ -177,8 +177,8 @@ async function login() {
 }
 
 // 忘記密碼
-const modalPwd = ref(null)
-const modal = ref(null)
+const modalPwd = ref<Element|Modal>()
+const modal = ref<Element|Modal>()
 const forgetData = ref({
   email: '',
   newPassword: '',

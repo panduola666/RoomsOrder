@@ -100,7 +100,7 @@ export default {
     if (res.status) {
       this.newList = res.result
     }
-    this.newsModal = new Modal(this.$refs.newsModal)
+    this.newsModal = new Modal(this.$refs.newsModal as string | Element)
   },
   methods: {
     showModal(item: news) {

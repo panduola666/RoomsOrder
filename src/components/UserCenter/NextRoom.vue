@@ -32,18 +32,21 @@
       <div class="mb-5 mb-lg-7" v-if="roomInfo.roomId.layoutInfo">
         <p class="sub-title sub-title-primary">房間格局</p>
         <div class="p-5 border border-neutral-40 rounded-3">
+          <!-- @vue-skip -->
           <RoomService :service="roomInfo.roomId.layoutInfo" />
         </div>
       </div>
       <div class="mb-5 mb-lg-7" v-if="roomInfo.roomId.facilityInfo">
         <p class="sub-title sub-title-primary">房內設備</p>
         <div class="p-5 border border-neutral-40 rounded-3">
+          <!-- @vue-skip -->
           <RoomService :service="roomInfo.roomId.facilityInfo" />
         </div>
       </div>
       <div class="mb-5 mb-lg-7" v-if="roomInfo.roomId.amenityInfo">
         <p class="sub-title sub-title-primary">備品提供</p>
         <div class="p-5 border border-neutral-40 rounded-3">
+          <!-- @vue-skip -->
           <RoomService :service="roomInfo.roomId.amenityInfo" />
         </div>
       </div>
@@ -63,6 +66,7 @@
         >
           取消預訂
         </button>
+        <!-- @vue-skip -->
         <router-link
           :to="{ name: 'roomDetail', params: { id: roomInfo.roomId._id } }"
           class="btn btn-primary rounded-3 fw-bold py-3 px-6 w-50"
@@ -148,7 +152,7 @@
 </template>
 <script lang="ts">
 import RoomService from '../Common/RoomService.vue'
-import type { orderData, Service } from '../../interface/order'
+import type { orderData } from '../../interface/order'
 import { Modal, Offcanvas } from 'bootstrap'
 import ordersStore from '../../stores/orders'
 import { mapActions } from 'pinia'
@@ -181,8 +185,8 @@ export default {
     RoomService
   },
   mounted() {
-    this.modal = new Modal(this.$refs.cancelModal)
-    this.offcanvas = new Offcanvas(this.$refs.cancelOffcanvas)
+    this.modal = new Modal(this.$refs.cancelModal as string|Element)
+    this.offcanvas = new Offcanvas(this.$refs.cancelOffcanvas as string|Element)
   },
   methods: {
     ...mapActions(ordersStore, ['deleteOrder', 'getOrders']),

@@ -5,6 +5,7 @@
       class="bg-horizontal-line position-absolute end-0"
       src="@/assets/image/desktop/Line3.png"
     />
+    <!-- @vue-ignore -->
     <swiper-container
       ref="swiper"
       :pagination="true"
@@ -12,7 +13,8 @@
       :loop="true"
       class="swiper-container start-0 bottom-0 pb-lg-10"
     >
-      <template v-if="currRoom._id">
+    <template v-if="currRoom._id">
+      <!-- @vue-skip  -->
         <swiper-slide v-for="(img, index) in currRoom.imageUrlList" :key="img">
           <img :src="img" :alt="`詳情圖${index}`" class="" />
         </swiper-slide>
@@ -55,20 +57,26 @@ import { mapActions, mapState } from 'pinia'
 import { roomTypeStore } from '../../stores/room'
 import Swiper from 'swiper'
 import { Pagination } from 'swiper/modules'
+import type { Room } from '../../interface/room'
+import mixin from '../../mixin/globalMix'
+
 export default {
   data() {
     return {
       currIndex: 0,
-      swiper: {}
+      swiper: {
+        init() {}
+      }
     }
   },
+  mixins: [mixin],
   mounted() {
     this.getRoomList()
   },
   watch: {
     currRoom() {
       this.$nextTick(() => {
-        this.swiper = new Swiper(this.$refs.swiper, {
+        this.swiper = new Swiper(this.$refs.swiper as HTMLElement, {
           modules: [Pagination],
           pagination: true,
           autoplay: true,
@@ -81,7 +89,7 @@ export default {
   computed: {
     ...mapState(roomTypeStore, ['roomList']),
     currRoom() {
-      return this.roomList[this.currIndex] || {}
+      return this.roomList[this.currIndex] as Room || {}
     }
   },
   methods: {
