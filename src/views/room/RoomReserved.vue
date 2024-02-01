@@ -466,8 +466,29 @@
               <span> NT$ 19,000 </span>
             </div>
             <div class="d-flex justify-content-center">
-              <button class="btn btn-primary w-100">確認訂房</button>
+              <button class="btn btn-primary w-100" @click="showConfirmationModal">確認訂房</button>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Add this after your main template -->
+    <div
+      class="modal fade"
+      id="confirmationModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="confirmationModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="confirmationModalLabel">Confirming Reservation</h5>
+          </div>
+          <div class="modal-body">
+            <!-- Loading spinner and specific image go here -->
+            <!-- <img src="../../" alt="Loading" /> -->
           </div>
         </div>
       </div>
@@ -490,4 +511,17 @@
 }
 </style>
 
-<script setup lang="ts"></script>
+<script lang="ts">
+export default {
+  data() {
+    return {
+      showModal: false
+    }
+  },
+  methods: {
+    showConfirmationModal() {
+      this.showModal = true
+    }
+  }
+}
+</script>
