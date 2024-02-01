@@ -8,7 +8,7 @@ interface requestFormat {
   body?: any
 }
 
-export default async function (url: string, method:string = 'GET', body = {}) {
+export default async function (url: string, method:string = 'GET', body = {}): Promise<any> {
     const data: requestFormat = {
       method,
       headers: {

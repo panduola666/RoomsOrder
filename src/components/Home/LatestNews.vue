@@ -78,15 +78,20 @@
 <script lang="ts">
 import type { news } from '../../interface/news'
 import { Modal } from 'bootstrap'
+import mixin from '../../mixin/globalMix'
 
 export default {
   data() {
     return {
       newList: [] as news[],
       currNew: {} as news,
-      newsModal: {}
+      newsModal: {
+        show() {},
+        hide() {}
+      }
     }
   },
+  mixins: [mixin],
   async mounted() {
     const res: {
       status: boolean

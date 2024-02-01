@@ -26,7 +26,7 @@
             退房：{{ getDate(roomInfo.checkOutDate) }}，{{ getHour(roomInfo.checkOutDate) }} 前退房
           </p>
         </div>
-        <p class="fw-bold fs-lg-0 fs-small mb-0">NT$ {{ getPrice(roomInfo) }}</p>
+        <p class="fw-bold fs-lg-0 fs-small mb-0">NT$ {{ getPrice(roomInfo as orderData) }}</p>
       </div>
 
       <div class="mb-5 mb-lg-7" v-if="roomInfo.roomId.layoutInfo">
@@ -148,23 +148,33 @@
 </template>
 <script lang="ts">
 import RoomService from '../Common/RoomService.vue'
-import type { orderData } from '../../interface/order'
+import type { orderData, Service } from '../../interface/order'
 import { Modal, Offcanvas } from 'bootstrap'
 import ordersStore from '../../stores/orders'
 import { mapActions } from 'pinia'
+import mixin from '../../mixin/globalMix'
+import type { PropType } from 'vue'
 
 export default {
   name: 'NextRoom',
   props: {
     roomInfo: {
-      type: Object,
-      required: true
+      type: Object as PropType<orderData>,
+      required: true,
+      default: () => ({})
     }
   },
+  mixins: [mixin],
   data() {
     return {
-      modal: {},
-      offcanvas: {}
+      modal: {
+        show() {},
+        hide() {}
+      },
+      offcanvas: {
+        show() {},
+        hide() {}
+      }
     }
   },
   components: {

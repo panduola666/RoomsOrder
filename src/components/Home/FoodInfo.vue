@@ -45,12 +45,14 @@
 </template>
 
 <script lang="ts">
+import mixin from '../../mixin/globalMix'
 export default {
   data() {
     return {
       foodList: []
     }
   },
+  mixins: [mixin],
   async mounted() {
     const res = await this.fetchAPI('/api/v1/home/culinary/', 'GET')
     this.foodList = res.result

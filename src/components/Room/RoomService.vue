@@ -15,7 +15,6 @@
   </ul>
 </template>
 <script lang="ts">
-import { defineComponent } from 'vue'
 import type { PropType } from 'vue'
 
 interface Service {
@@ -23,13 +22,14 @@ interface Service {
   isProvide: boolean
 }
 
-export default defineComponent({
+export default {
   name: 'RoomService',
   props: {
     service: {
       type: Array as PropType<Service[]>,
-      required: true
+      required: true,
+      default: () => []
     }
   }
-})
+}
 </script>
