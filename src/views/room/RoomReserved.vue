@@ -521,7 +521,6 @@ export default {
   methods: {
     showConfirmationModal() {
       this.showModal = true
-      alert('681')
     }
   }
 }

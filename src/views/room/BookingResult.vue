@@ -64,7 +64,8 @@
             <div class="py-3"></div>
           </div>
           <div class="col-md-5 rounded text-black">
-            <NextRoom />
+            {{ roomInfo }}
+            <NextRoom :room-info="{}" />
           </div>
         </div>
       </div>
@@ -91,4 +92,6 @@
 
 <script setup lang="ts">
 import NextRoom from '@/components/UserCenter/NextRoom.vue'
+// const props = defineProps(['roomInfo'])
+const { roomInfo } = defineProps(['roomInfo'])
 </script>
