@@ -21,7 +21,7 @@
             <span class="material-symbols-outlined">account_circle</span>
             Jessica
           </div>
-  
+
           <ul class="position-absolute bg-white rounded-6 end-0 userMenu overflow-hidden" v-if="headerMenu.openUserMenu">
             <li>
               <router-link to="/user" class="d-block px-5 py-3 pointer fw-bold bg-primary-10 text-primary text-decoration-none">我的帳戶</router-link>
@@ -33,7 +33,7 @@
           <input type="button" value="立即訂房" class="btn btn-primary py-3 px-6" />
         </li>
       </ul>
-  
+
       <span class="material-symbols-outlined text-white p-2 d-lg-none" @click="menuShow = true"> menu </span>
     </nav>
 

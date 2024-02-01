@@ -1206,6 +1206,10 @@ $zindex-modal:                      1055 !default;
 $zindex-popover:                    1070 !default;
 $zindex-tooltip:                    1080 !default;
 $zindex-toast:                      1090 !default;
+
+// 自定義
+// $-zindex-10:                        -10 !default;
+// $-zindex-50:                        -50 !default;
 // scss-docs-end zindex-stack
 
 // scss-docs-start zindex-levels-map
@@ -1214,7 +1218,7 @@ $zindex-levels: (
   0: 0,
   1: 1,
   2: 2,
-  3: 3
+  3: 3,
 ) !default;
 // scss-docs-end zindex-levels-map
 
