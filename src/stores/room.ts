@@ -2,9 +2,11 @@ import { defineStore } from 'pinia'
 import fetchAPI from '../mixin/fetchAPI'
 
 export const roomTypeStore = defineStore('roomTypeStore', {
-  state: {
-    roomList: [],
-    roomInfo: {},
+  state() {
+    return {
+      roomList: [],
+      roomInfo: {},
+    }
   },
   actions: {
     async getRoomList(): Promise {
