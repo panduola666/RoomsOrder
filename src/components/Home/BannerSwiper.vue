@@ -5,7 +5,7 @@
     :autoplay="false"
     :loop="true"
       >
-        <swiper-slide class="d-flex flex-lg-row flex-column align-items-center justify-content-between gap-7 gap-lg-9 px-4 px-lg-9 banner" v-for="i in 2">
+        <swiper-slide class="d-flex flex-lg-row flex-column align-items-center justify-content-between gap-7 gap-lg-9 px-4 px-lg-9 banner" v-for="i in 2" :key="i">
           <div class="text-primary left-box d-flex flex-column align-items-center align-items-lg-start">
             <p class="fs-2 mb-2">享樂酒店</p>
             <p class="fs-5">Enjoyment Luxury Hotel</p>
@@ -15,7 +15,7 @@
             <div>
               <h1 class="fs-lg-title fs-1 mb-5 fw-bold">高雄<br/>豪華住宿之選</h1>
               <h2 class="fs-lg-3 sub-title fw-semibold p-0">我們致力於為您提供無與倫比的奢華體驗與優質服務</h2>
-              <router-link to="" class="btn btn-book rounded-3 p-4 p-lg-7 w-100 d-flex align-items-center justify-content-end gap-3">
+              <router-link to="/rooms" class="btn btn-book rounded-3 p-4 p-lg-7 w-100 d-flex align-items-center justify-content-end gap-3">
                 <span class="fs-lg-5">立即訂房</span>
                 <span class="btn-book-line"></span>
               </router-link>
