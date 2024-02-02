@@ -59,10 +59,12 @@ import { ref, computed, onMounted, onDeactivated } from 'vue'
 import { headerMenuStore } from '../../stores/headerMenu'
 import { useRouter, useRoute } from 'vue-router'
 
+
 const menuShow = ref<boolean>(false)
 const headerMenu = headerMenuStore()
 const router = useRouter()
-const fixNav = computed(() => (['home', 'rooms'].includes(useRoute().name as string)))
+const route = useRoute()
+const fixNav = computed(() => (['home', 'rooms'].includes(route.name as string)))
 
 const headerNav = ref(null)
 const navTop = ref(0)
