@@ -1,6 +1,6 @@
 <template>
   <div class="position-relative bg-primary-10 py-10">
-    <!-- 點點會遮到文字 -->
+    <!-- TODO: 點點會遮到文字 -->
     <img
       class="position-absolute dot dot1 dot-top"
       src="@/assets/image/desktop/Dot.png"
@@ -9,7 +9,6 @@
     <img class="position-absolute dot dot2" src="@/assets/image/desktop/Dot.png" alt="dot" />
     <div class="container wrapper d-flex">
       <div class="row">
-        <!-- border -->
         <div class="col-lg-2 border-bottom-2 mb-5 align-self-start">
           <h1 class="fs-3 fs-lg-1 text-primary fw-bold">最新<br />消息</h1>
           <span class="line"></span>
