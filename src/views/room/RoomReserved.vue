@@ -300,7 +300,7 @@
 </style>
 
 <script lang="ts">
-import RoomService from '@/components/Common/RoomService.vue';
+import RoomService from '../../components/Common/RoomService.vue';
 export default {
   data() {
     return {
