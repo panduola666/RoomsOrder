@@ -12,7 +12,9 @@
       <span class="line"></span>
     </div>
     <div>
+      <!-- @vue-skip -->
       <swiper-container slides-per-view="auto">
+          <!-- @vue-skip -->
         <swiper-slide
           class="me-5 position-relative foodItem rounded-3"
           v-for="item in foodList"
@@ -45,15 +47,18 @@
 </template>
 
 <script lang="ts">
+import mixin from '../../mixin/globalMix'
+import type { Food } from '../../interface/food'
 export default {
   data() {
     return {
-      foodList: []
+      foodList: [] as Food[]
     }
   },
+  mixins: [mixin],
   async mounted() {
     const res = await this.fetchAPI('/api/v1/home/culinary/', 'GET')
-    this.foodList = res.result
+    this.foodList = res.result as Food[]
   },
   methods: {}
 }

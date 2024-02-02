@@ -3,8 +3,6 @@
     <swiper-container :pagination="true" :autoplay="false" :loop="true">
       <swiper-slide
         class="d-flex flex-lg-row flex-column align-items-center justify-content-between gap-7 gap-lg-9 px-4 px-lg-9 banner"
-        v-for="i in 2"
-        :key="i"
       >
         <div
           class="text-primary left-box d-flex flex-column align-items-center align-items-lg-start"
@@ -20,7 +18,7 @@
               我們致力於為您提供無與倫比的奢華體驗與優質服務
             </h2>
             <router-link
-              to=""
+              to="/rooms"
               class="btn btn-book rounded-3 p-4 p-lg-7 w-100 d-flex align-items-center justify-content-end gap-3"
             >
               <span class="fs-lg-5">立即訂房</span>

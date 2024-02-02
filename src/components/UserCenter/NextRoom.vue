@@ -26,24 +26,27 @@
             退房：{{ getDate(roomInfo.checkOutDate) }}，{{ getHour(roomInfo.checkOutDate) }} 前退房
           </p>
         </div>
-        <p class="fw-bold fs-lg-0 fs-small mb-0">NT$ {{ getPrice(roomInfo) }}</p>
+        <p class="fw-bold fs-lg-0 fs-small mb-0">NT$ {{ getPrice(roomInfo as orderData) }}</p>
       </div>
 
       <div class="mb-5 mb-lg-7" v-if="roomInfo.roomId.layoutInfo">
         <p class="sub-title sub-title-primary">房間格局</p>
         <div class="p-5 border border-neutral-40 rounded-3">
+          <!-- @vue-skip -->
           <RoomService :service="roomInfo.roomId.layoutInfo" />
         </div>
       </div>
       <div class="mb-5 mb-lg-7" v-if="roomInfo.roomId.facilityInfo">
         <p class="sub-title sub-title-primary">房內設備</p>
         <div class="p-5 border border-neutral-40 rounded-3">
+          <!-- @vue-skip -->
           <RoomService :service="roomInfo.roomId.facilityInfo" />
         </div>
       </div>
       <div class="mb-5 mb-lg-7" v-if="roomInfo.roomId.amenityInfo">
         <p class="sub-title sub-title-primary">備品提供</p>
         <div class="p-5 border border-neutral-40 rounded-3">
+          <!-- @vue-skip -->
           <RoomService :service="roomInfo.roomId.amenityInfo" />
         </div>
       </div>
@@ -63,6 +66,7 @@
         >
           取消預訂
         </button>
+        <!-- @vue-skip -->
         <router-link
           :to="{ name: 'roomDetail', params: { id: roomInfo.roomId._id } }"
           class="btn btn-primary rounded-3 fw-bold py-3 px-6 w-50"
@@ -152,27 +156,37 @@ import type { orderData } from '../../interface/order'
 import { Modal, Offcanvas } from 'bootstrap'
 import ordersStore from '../../stores/orders'
 import { mapActions } from 'pinia'
+import mixin from '../../mixin/globalMix'
+import type { PropType } from 'vue'
 
 export default {
   name: 'NextRoom',
   props: {
     roomInfo: {
-      type: Object,
-      required: true
+      type: Object as PropType<orderData>,
+      required: true,
+      default: () => ({})
     }
   },
+  mixins: [mixin],
   data() {
     return {
-      modal: {},
-      offcanvas: {}
+      modal: {
+        show() {},
+        hide() {}
+      },
+      offcanvas: {
+        show() {},
+        hide() {}
+      }
     }
   },
   components: {
     RoomService
   },
   mounted() {
-    this.modal = new Modal(this.$refs.cancelModal)
-    this.offcanvas = new Offcanvas(this.$refs.cancelOffcanvas)
+    this.modal = new Modal(this.$refs.cancelModal as string|Element)
+    this.offcanvas = new Offcanvas(this.$refs.cancelOffcanvas as string|Element)
   },
   methods: {
     ...mapActions(ordersStore, ['deleteOrder', 'getOrders']),

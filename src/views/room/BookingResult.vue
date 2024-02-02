@@ -65,18 +65,16 @@
           </div>
           <div class="col-md-5 rounded text-black">
             {{ roomInfo }}
-            <NextRoom :room-info="{}" />
+            <NextRoom :room-info="({} as orderData)" />
           </div>
         </div>
       </div>
-
-      <!-- <img src="../../assets//image//Line.png" alt="Line" class="mt-8 py-5" /> -->
+      <img src="../../assets/image/desktop/Line.png" alt="Line" class="mt-8 py-5" />
     </div>
   </main>
 </template>
 
-<style scoped>
-/* Assuming the following classes for your lists */
+<style scoped lang="scss">
 .flex-list {
   display: flex;
   flex-wrap: wrap;
@@ -91,7 +89,9 @@
 </style>
 
 <script setup lang="ts">
-import NextRoom from '@/components/UserCenter/NextRoom.vue'
+import NextRoom from '../../components/UserCenter/NextRoom.vue'
+import type { orderData } from '../../interface/order'
+
 // const props = defineProps(['roomInfo'])
 const { roomInfo } = defineProps(['roomInfo'])
 </script>

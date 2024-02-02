@@ -200,25 +200,26 @@
           </ol>
         </div>
       </div>
-      <div class="right">
+      <div class="right white-box">
+        <h4>預訂房型</h4>
         
       </div>
     </main>
   </div>
 </template>
-<style lang="scss">
+<style lang="scss" scoped>
 .banner {
   margin: 80px;
   border-radius: 20px;
   gap: 8px;
   overflow: hidden;
 
-  .banner-left {
+  .left {
     max-height: 600px;
     flex: 1 1 978px;
   }
 
-  .banner-right {
+  .right {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: auto;
@@ -244,7 +245,6 @@
   margin-bottom: 120px;
   display: flex;
   gap: 72px;
-
   .left {
     flex: 1 1 746px;
     display: flex;
