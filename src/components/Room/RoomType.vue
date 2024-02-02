@@ -87,6 +87,10 @@
               :key="i"
               class="badge rounded-pill text-white bg-primary me-2 mb-2"
             >{{ el.title }}</span>
+            <br />
+            <span v-for="(el, i) in roomInfo.result?.facilityInfo"
+              :key="i"
+              class="badge rounded-pill text-white bg-primary me-2 mb-2">{{ el.title }}</span>
             <p> {{ roomInfo.result?.description }} </p>
           </div>
           <div class="modal-footer">
