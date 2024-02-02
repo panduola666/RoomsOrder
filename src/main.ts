@@ -13,6 +13,10 @@ app.use(createPinia())
 app.use(router)
 app.mixin(mixin)
 
+router.afterEach(() => {
+  window.scrollTo(0, 0)
+})
+
 register();
 
 app.directive('tel', {
