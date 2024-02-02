@@ -19,21 +19,21 @@
         <li v-else class="nav-item position-relative">
           <div class="p-3 header-link nav-link d-flex align-items-center gap-2 pointer" @click="headerMenu.openUserMenu = !headerMenu.openUserMenu">
             <span class="material-symbols-outlined">account_circle</span>
-            Jessica
+            {{ user.name }}
           </div>
-  
+
           <ul class="position-absolute bg-white rounded-6 end-0 userMenu overflow-hidden" v-if="headerMenu.openUserMenu">
             <li>
-              <router-link to="/user" class="d-block px-5 py-3 pointer fw-bold bg-primary-10 text-primary text-decoration-none">我的帳戶</router-link>
+              <router-link to="/user" class="d-block px-5 py-3 pointer fw-bold text-decoration-none" :class="{'bg-primary-10 text-primary': route.path.includes('user')}">我的帳戶</router-link>
             </li>
             <li class="px-5 py-3 pointer fw-bold" @click="signOut">登出</li>
           </ul>
         </li>
-        <li class="nav-item">
-          <input type="button" value="立即訂房" class="btn btn-primary py-3 px-6" />
+        <li class="nav-item" >
+          <input type="button" value="立即訂房" class="btn btn-primary py-3 px-6" @click="router.push('/rooms')" />
         </li>
       </ul>
-  
+
       <span class="material-symbols-outlined text-white p-2 d-lg-none" @click="menuShow = true"> menu </span>
     </nav>
 
@@ -56,13 +56,18 @@
 </template>
 <script setup lang="ts">
 import { ref, computed, onMounted, onDeactivated } from 'vue'
+import type { ComputedRef } from 'vue'
 import { headerMenuStore } from '../../stores/headerMenu'
 import { useRouter, useRoute } from 'vue-router'
+import type { userInfo } from '../../interface/user'
 
 const menuShow = ref<boolean>(false)
 const headerMenu = headerMenuStore()
 const router = useRouter()
-const fixNav = computed(() => (['home', 'rooms'].includes(useRoute().name as string)))
+const route = useRoute()
+const fixNav = computed(() => (['home', 'rooms'].includes(route.name as string)))
+const user: ComputedRef<userInfo> = computed(() => localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user') as string) :  {})
+
 
 const headerNav = ref(null)
 const navTop = ref(0)
@@ -97,5 +102,12 @@ function signOut() {
   padding: 12px 0;
   width: 260px;
   top: calc(100% + 12px);
+  li {
+    color: #000;
+    &:hover{
+      @extend .bg-primary-10;
+      @extend .text-primary;
+    }
+  }
 }
 </style>

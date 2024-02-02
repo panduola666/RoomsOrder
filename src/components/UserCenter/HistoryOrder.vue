@@ -44,9 +44,11 @@
 </template>
 <script lang="ts">
 import type { orderData } from '../../interface/order'
+import mixin from '../../mixin/globalMix'
 
 export default {
   name: 'HistoryOrder',
+  mixins: [mixin],
   props: {
     list: {
       type: Array,

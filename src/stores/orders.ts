@@ -4,9 +4,9 @@ import Swal from 'sweetalert2'
 
 const orderStore = defineStore('orderStore', {
   state() {
-      return{
-       orderList: [] 
-      }
+    return {
+      orderList: []
+    }
   },
   actions: {
     async getOrders():Promise<void> {
