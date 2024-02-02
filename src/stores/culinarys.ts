@@ -2,10 +2,12 @@ import { defineStore } from 'pinia'
 import fetchAPI from '../mixin/fetchAPI'
 
 export const culinaryStore = defineStore('culinaryStore', {
-  state: () => ({
-    culinaryList: [],
-    culinaryInfo: {}
-  }),
+  state() {
+    return {
+      culinaryList: [],
+      culinaryInfo: {},
+    }
+  },
   actions: {
     async getCulinaryList(): Promise<void> {
       const res: any = await fetchAPI('/api/v1/culinary', 'GET')

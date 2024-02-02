@@ -2,10 +2,12 @@ import { defineStore } from 'pinia'
 import fetchAPI from '../mixin/fetchAPI'
 
 export const newsStore = defineStore('newsStore', {
-  state: () => ({
-    newsList: [],
-    newsInfo: {},
-  }),
+  store() {
+    return {
+      newsList: [],
+      newsInfo: {},
+    }
+  },
   actions: {
     async getNewsList(): Promise<void> {
       const res: any = await fetchAPI('/api/v1/home/news', 'GET')
