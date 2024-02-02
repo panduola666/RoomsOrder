@@ -74,7 +74,7 @@ const checkPwd = ref<string>('')
 // 修改密碼
 async function editPwd() {
   if(!checkPassword(data.value.newPassword, checkPwd.value)) return
-  
+
   const res = await fetchAPI('/api/v1/user/', 'PUT', data.value)
 
   Swal.fire({
