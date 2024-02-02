@@ -559,6 +559,7 @@ onMounted(() => {
   })
   setAreaList()
   fullAddress()
+  fetchRoomId()
 })
 function fullAddress() {
   const address = data.value.address
@@ -590,6 +591,10 @@ watch(() => birthYear.value, setDaysRange)
 watch(() => birthMonth.value, setDaysRange)
 
 function autoCompleteMemberData() {}
+async function fetchRoomId() {
+  const roomId = localStorage.getItem('roomid')
+  const res = await fetchAPI(`/api/v1/rooms/${roomId}`, 'GET', '')
+}
 function createOrder() {}
 // 地址設定
 const areaList = ref<AreaListData[]>([])
