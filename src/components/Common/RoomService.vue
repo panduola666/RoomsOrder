@@ -1,16 +1,9 @@
 <template>
   <ul class="service-container p-0 m-0">
-    <li
-      class="d-flex align-items-center fw-bold fs-lg-0 fs-small"
-      v-for="item in service"
-      :key="item.title"
-    >
-      <span
-        class="material-symbols-outlined"
-        :class="{ 'text-primary': item.isProvide, 'text-primary-60': !item.isProvide }"
-      >
-        check </span
-      >{{ item.title }}
+    <li class="d-flex align-items-center fw-bold fs-lg-0 fs-small" v-for="item in service" :key="item.title">
+      <span class="material-symbols-outlined"
+        :class="{ 'text-primary': item.isProvide, 'text-primary-60': !item.isProvide }">
+        check </span>{{ item.title }}
     </li>
   </ul>
 </template>
@@ -33,13 +26,22 @@ export default defineComponent({
   }
 })
 </script>
+
 <style lang="scss" scoped>
 .service-container {
+  width: 100%;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(var(--bs-rows, 1), 1fr);
+  grid-template-columns: repeat(var(--bs-columns, 12), 1fr);
   gap: 8px;
-  @include lg {
-    grid-template-columns: repeat(5, 1fr);
+  --bs-columns: 2;
+
+  @include media-breakpoint-up(sm) {
+    --bs-columns: 3;
+  }
+
+  @include media-breakpoint-up(md) {
+    --bs-columns: 5
   }
 }
 </style>
