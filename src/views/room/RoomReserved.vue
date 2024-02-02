@@ -68,11 +68,16 @@
 
             <div class="py-1 d-flex justify-content-between">
               <h3>訂房人資訊</h3>
-              <span class="text-primary"><a class="link-underline-primary">套用會員資料</a></span>
+              <span class="text-primary cursor-pointer"
+                ><a class="link-underline-primary cursor-pointer" @click="autoCompleteMemberData"
+                  >套用會員資料</a
+                ></span
+              >
             </div>
             <form class="py-5">
               <label class="" for="name">姓名</label>
               <input
+                v-model="data.name"
                 id="name"
                 type="text"
                 class="form-control"
@@ -84,6 +89,7 @@
 
               <label for="name">手機號碼</label>
               <input
+                v-model="data.phone"
                 id="name"
                 type="text"
                 class="form-control"
@@ -95,6 +101,7 @@
 
               <label for="name">電子信箱</label>
               <input
+                v-model="data.email"
                 id="name"
                 type="text"
                 class="form-control"
@@ -106,22 +113,25 @@
 
               <label for="name">地址</label>
               <div class="d-flex justify-content-between">
-                <select class="form-select" aria-label="Default select example">
-                  <option selected>Open this select menu</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                <select id="address" class="form-select p-3 rounded-3" v-model="cityName">
+                  <option
+                    v-for="city in CityCountyData"
+                    :key="city.CityName"
+                    :value="city.CityName"
+                  >
+                    {{ city.CityName }}
+                  </option>
                 </select>
-                <select class="form-select" aria-label="Default select example">
-                  <option selected>Open this select menu</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                <select class="form-select p-3 rounded-3" v-model="data.address.zipcode">
+                  <option v-for="area in areaList" :key="area.ZipCode" :value="area.ZipCode">
+                    {{ area.AreaName }}
+                  </option>
                 </select>
               </div>
               <div class="py-3" />
 
               <input
+                v-model="data.address.detail"
                 id="name"
                 type="text"
                 class="form-control"
@@ -466,7 +476,7 @@
               <span> NT$ 19,000 </span>
             </div>
             <div class="d-flex justify-content-center">
-              <button class="btn btn-primary w-100" @click="showConfirmationModal">確認訂房</button>
+              <button class="btn btn-primary w-100" @click="createOrder">確認訂房</button>
             </div>
           </div>
         </div>
@@ -511,17 +521,81 @@
 }
 </style>
 
-<script lang="ts">
-export default {
-  data() {
-    return {
-      showModal: false
-    }
-  },
-  methods: {
-    showConfirmationModal() {
-      this.showModal = true
-    }
+<script setup lang="ts">
+import { ref, watch, onMounted } from 'vue'
+import fetchAPI from '../../mixin/fetchAPI'
+
+// @ts-ignore
+import CityCountyData from '/public/CityCountyData'
+import type { CityCounty, AreaListData } from '../../interface/signup'
+
+const userData = JSON.parse(localStorage.getItem('user') as string)
+const data = ref({
+  userId: userData._id,
+  name: userData.name,
+  phone: userData.phone,
+  email: userData.email,
+  birthday: new Date(userData.birthday).toLocaleDateString(),
+  address: {
+    zipcode: userData.address.zipcode,
+    detail: userData.address.detail
   }
+})
+const userAddress = ref<string>('')
+
+// 地址轉換
+const cityData = ref<CityCounty>({
+  CityName: '',
+  CityEngName: '',
+  AreaList: []
+})
+onMounted(() => {
+  CityCountyData.forEach((city: CityCounty) => {
+    const currCity = city.AreaList.find((area) => Number(area.ZipCode) === userData.address.zipcode)
+    if (currCity) {
+      cityName.value = city.CityName
+      cityData.value = city
+    }
+  })
+  setAreaList()
+  fullAddress()
+})
+function fullAddress() {
+  const address = data.value.address
+  userAddress.value =
+    cityData.value.CityName +
+    cityData.value.AreaList.find(
+      (area: { ZipCode: string }) => Number(area.ZipCode) === address.zipcode
+    )!.AreaName +
+    address.detail
+}
+
+// 日期區間設定
+const birthArr: string[] = data.value.birthday.split('/')
+
+const birthYear = ref(Number(birthArr[0]))
+const birthMonth = ref(Number(birthArr[1]))
+const birthDay = ref(Number(birthArr[2]))
+const daysRange = ref<number>(31)
+const setDaysRange = () => {
+  if (birthMonth.value === 2) {
+    daysRange.value = birthYear.value % 4 ? 28 : 29
+  } else if ([1, 3, 5, 7, 8, 10, 12].includes(birthMonth.value)) {
+    daysRange.value = 31
+  } else {
+    daysRange.value = 30
+  }
+}
+watch(() => birthYear.value, setDaysRange)
+watch(() => birthMonth.value, setDaysRange)
+
+function autoCompleteMemberData() {}
+function createOrder() {}
+// 地址設定
+const areaList = ref<AreaListData[]>([])
+const cityName = ref<string>('')
+const setAreaList = () => {
+  const currCity = CityCountyData.find((item: CityCounty) => item.CityName === cityName.value)
+  areaList.value = currCity.AreaList
 }
 </script>
