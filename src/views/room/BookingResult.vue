@@ -125,5 +125,4 @@ async function fetchOrderDetail() {
   // console.log(res)
   const { status } = res
 }
-function
 </script>
