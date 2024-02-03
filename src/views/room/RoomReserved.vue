@@ -268,10 +268,7 @@
           </div>
           <div class="p-5 col-md-5 rounded bg-white h-25 text-black">
             <div class="">
-              <img
-                class="rounded img-fluid"
-                src="https://github.com/hexschool/2022-web-layout-training/blob/main/typescript-hotel/%E8%A1%8C%E5%8B%95%E7%89%88/room2-1.png?raw=true"
-              />
+              <img class="rounded img-fluid" :src="_imageUrl" />
             </div>
             <div class="py-3">
               <h3 class="fw-bold">價格詳情</h3>
@@ -419,6 +416,7 @@ const _bedInfo = ref<string>('')
 const _facilityInfo = ref<Array<Service>>([]) //房內設備
 const _amenityInfo = ref<Array<Service>>([]) //備品提供
 const _maxPeople = ref<string>('')
+const _imageUrl = ref<string>('')
 
 const _name = ref<string>('')
 const _price = ref<string>('')
@@ -430,7 +428,8 @@ async function LoadRoomPriceDetailInfoRoomId() {
   console.log(res)
   const { status } = res
   if (status) {
-    const { areaInfo, bedInfo, amenityInfo, facilityInfo, maxPeople, name, price } = res.result
+    const { areaInfo, bedInfo, amenityInfo, facilityInfo, maxPeople, name, price, imageUrl } =
+      res.result
     _areaInfo.value = areaInfo
     _bedInfo.value = bedInfo
     _maxPeople.value = `1-${maxPeople}人`
@@ -438,6 +437,7 @@ async function LoadRoomPriceDetailInfoRoomId() {
     _price.value = price
     _facilityInfo.value = facilityInfo
     _amenityInfo.value = amenityInfo
+    _imageUrl.value = imageUrl
   }
 }
 watch(() => birthYear.value, setDaysRange)
