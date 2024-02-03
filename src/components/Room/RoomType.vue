@@ -69,7 +69,7 @@
         </li>
       </ul>
       <div class="d-flex justify-content-center">
-        <PaginationComponent class="mb-5" :pages="pages" @change="selectPage" />
+        <!-- <PaginationComponent class="mb-5" :pages="pages" @change="selectPage" /> -->
       </div>
     </div>
 
@@ -113,7 +113,7 @@ import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Navigation, Pagination } from 'swiper/modules'
 // import { Modal } from 'bootstrap'
 import  { roomTypeStore }  from '@/stores/room'
-import { paginationStore } from '@/stores/pagination'
+// import { paginationStore } from '@/stores/pagination'
 import PaginationComponent from '@/components/Common/PagePagination.vue'
 
 import 'swiper/css'
@@ -122,12 +122,12 @@ import 'swiper/css/pagination'
 import router from '@/router';
 
 // Pagination
-const pageStore = paginationStore()
-const { pages } = storeToRefs(pageStore)
+// const pageStore = paginationStore()
+// const { pages } = storeToRefs(pageStore)
 
-const { turnPage } = pageStore
+// const { turnPage } = pageStore
 const selectPage = (page: number) => {
-  turnPage(page)
+  // turnPage(page)
 }
 // Bootstrap
 const modules = [Navigation, Pagination]

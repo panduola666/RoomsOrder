@@ -27,5 +27,5 @@ const props = defineProps({
   }
 })
 
-const { pages } = toRefs(props)
+// const { pages } = toRefs(props)
 </script>

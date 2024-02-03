@@ -2,8 +2,34 @@ import { ref } from 'vue'
 import { defineStore, storeToRefs } from 'pinia'
 import { roomTypeStore } from './room'
 
-export const paginationStore = defineStore('paginationStore', () => {
-
+export const paginationStore = defineStore('paginationStore', {
+  state() {
+    return {
+      currentPage: 1,
+      pageSize: 4,
+      pageCount: 1,
+      totalItems: 0,
+    }
+  },
+  actions: {
+    setTotalItems(total: number) {
+      this.totalItems = total
+      this.pageCount = Math.ceil(this.totalItems / this.pageSize)
+    },
+    goToPage(pageNumber: number) {
+      this.currentPage = pageNumber
+    },
+    nextPage() {
+      if (this.currentPage < this.pageCount) {
+        this.currentPage ++
+      }
+    },
+    previousPage() {
+      if (this.currentPage > 1) {
+        this.currentPage --
+      }
+    },
+  }
   // const roomStore = roomTypeStore()
   // const { roomList } = storeToRefs(roomStore) // 保持響應
   // console.log('roomList!!', roomList);
