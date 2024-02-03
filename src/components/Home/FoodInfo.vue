@@ -7,7 +7,7 @@
     <div class="d-flex align-items-center fs-1 text-primary fw-bold mb-7 mb-lg-9">
       <div class="me-7 mb-4">
         <p class="mb-0">佳餚</p>
-        <p class="mb-0">美食</p>
+        <p class="mb-0">美饌</p>
       </div>
       <span class="line"></span>
     </div>
@@ -21,7 +21,7 @@
           :key="item._id"
         >
           <img :src="item.image" :alt="item.title" class="foodImg" />
-          <div class="position-absolute bottom-0 start-0 end-0 text-white p-3 p-lg-5 mark">
+          <div class="position-absolute bottom-0 start-0 end-0 text-white p-3 p-lg-5 mask-bg">
             <p class="fw-bold mb-4 mb-lg-5 d-flex justify-content-between align-items-center">
               <span class="fs-5">{{ item.title }}</span>
               <span class="fs-lg-0 fs-small">{{ item.diningTime }}</span>
@@ -91,7 +91,6 @@ export default {
   width: 161px;
   height: 2px;
   background: linear-gradient(to right, #be9c7c, $white);
-  vertical-align: middle;
 }
 .foodItem {
   width: 300px;
@@ -106,7 +105,7 @@ export default {
     height: 100%;
   }
 }
-.mark {
+.mask-bg {
   background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #140f0a 77.6%);
   backdrop-filter: blur(10px);
 }
