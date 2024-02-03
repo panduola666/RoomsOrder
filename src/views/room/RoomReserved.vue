@@ -339,6 +339,7 @@
 import { useRoute, useRouter } from 'vue-router'
 import { type userInfo } from '@/interface/user'
 const router = useRouter()
+const { id } = router.params
 import RoomService, { type Service } from '../../components/Common/RoomService.vue'
 import { ref, watch, onMounted } from 'vue'
 import fetchAPI from '../../mixin/fetchAPI'
@@ -427,7 +428,7 @@ const _name = ref<string>('')
 const _price = ref<string>('')
 
 async function LoadRoomPriceDetailInfoRoomId() {
-  const roomID = '65b1142f11f699788b5bc8ca' //localStorage.getItem('roomId')
+  const roomID = id //'65b1142f11f699788b5bc8ca' //localStorage.getItem('roomId')
 
   const res = await fetchAPI(`/api/v1/rooms/${roomID}`, 'GET', '')
   // console.log(res)
