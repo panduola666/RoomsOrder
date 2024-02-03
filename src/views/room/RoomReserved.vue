@@ -342,7 +342,8 @@ import { type userInfo } from '@/interface/user'
 const router = useRoute()
 const _router = useRouter()
 
-import RoomService, { type Service } from '../../components/Common/RoomService.vue'
+import RoomService from '../../components/Common/RoomService.vue'
+import { type Service } from '@/interface/order'
 import { ref, watch, onMounted } from 'vue'
 import fetchAPI from '../../mixin/fetchAPI'
 
