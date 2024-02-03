@@ -96,7 +96,20 @@ import fetchAPI from '../../mixin/fetchAPI'
 import type { orderData } from '../../interface/order'
 import { type userInfo } from '@/interface/user'
 
-const _OrderData = ref<Array<PropType<orderData>>>([])
+const _OrderData = ref<orderData>({
+  _id: '',
+  checkInDate: '',
+  checkOutDate: '',
+  peopleNum: 0,
+  roomId: {
+    name: '',
+    amenityInfo: [],
+    facilityInfo: [],
+    imageUrl: '',
+    layoutInfo: [],
+    price: 0
+  }
+})
 
 const { roomInfo } = defineProps(['roomInfo'])
 const userData = JSON.parse(localStorage.getItem('user') as string)
@@ -122,7 +135,10 @@ onMounted(() => {
 })
 async function fetchOrderDetail() {
   const res = await fetchAPI(`/api/v1/orders/`, 'GET', '')
-  // console.log(res)
-  const { status } = res
+  console.log(res)
+  const { status, result } = res
+  if (status) {
+    _OrderData.value = result
+  }
 }
 </script>
