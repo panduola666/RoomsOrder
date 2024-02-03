@@ -337,16 +337,21 @@
 
 <script setup lang="ts">
 import { useRoute, useRouter } from 'vue-router'
+
 import { type userInfo } from '@/interface/user'
-const router = useRouter()
-const { id } = router.params
+const router = useRoute()
+
 import RoomService, { type Service } from '../../components/Common/RoomService.vue'
 import { ref, watch, onMounted } from 'vue'
 import fetchAPI from '../../mixin/fetchAPI'
+
 // @ts-ignore
 import CityCountyData from '../../assets/json/CityCountyData'
 import type { CityCounty, AreaListData } from '../../interface/signup'
 const userData = JSON.parse(localStorage.getItem('user') as string)
+
+const { id } = router.params
+
 const data = ref<userInfo>({
   _id: userData._id,
   name: '',
@@ -395,6 +400,10 @@ function fullAddress() {
     address.detail
 }
 
+const toRoomDetail = (id: string) => {
+  router.push({ name: 'roomDetail', params: { id } })
+  // window.scrollTo({ top: 0, behavior: 'smooth' })
+}
 // 日期區間設定
 const birthArr: string[] = data.value.birthday.split('/')
 
