@@ -409,6 +409,10 @@ const setDaysRange = () => {
   }
 }
 function autoCompleteMemberData() {}
+function createOrder() {
+  alert('aa')
+  router.push(`/BookingResult`)
+}
 const roomId = ref<string>('')
 const _areaInfo = ref<string>('')
 const _bedInfo = ref<string>('')
