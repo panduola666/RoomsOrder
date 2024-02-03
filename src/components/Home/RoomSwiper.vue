@@ -1,10 +1,8 @@
 <template>
-  <div class="bg-black position-relative roomSwiper">
+  <div class="roomSwiper bg-black position-relative py-9 py-lg-0">
     <!-- 橫條背景 -->
-    <img
-      class="bg-horizontal-line position-absolute end-0"
-      src="@/assets/image/desktop/Line3.png"
-    />
+    <div class="bg-hor-linear"></div>
+
     <!-- @vue-ignore -->
     <swiper-container
       ref="swiper"
@@ -13,18 +11,16 @@
       :loop="true"
       class="swiper-container start-0 bottom-0 pb-lg-10"
     >
-    <template v-if="currRoom._id">
-      <!-- @vue-skip  -->
-        <swiper-slide v-for="(img, index) in currRoom.imageUrlList" :key="img">
-          <img :src="img" :alt="`詳情圖${index}`" class="" />
-        </swiper-slide>
+      <template v-if="currRoom._id">
+        <!-- @vue-skip  -->
+          <swiper-slide  v-for="(img, index) in currRoom.imageUrlList" :key="img">
+            <img :src="img" :alt="`詳情圖${index}`" />
+          </swiper-slide>
       </template>
     </swiper-container>
 
     <div class="container position-relative z-3 py-lg-10">
-      <!-- TODO: 電腦版不在容器內 -->
       <!-- 房間圖片 -->
-
       <div class="row justify-content-end room-box" v-if="currRoom._id">
         <div class="col-lg-6 d-flex align-items-end">
           <div class="w-100">
@@ -37,7 +33,7 @@
               <!-- 帶詳情頁面參數 -->
               <p class="btn-line">查看更多</p>
             </div>
-            <div class="text-end">
+            <div class="text-end mt-5 mt-lg-7">
               <button type="button" class="btn pointer" @click="preRoom">
                 <img class="me-6" src="@/assets/icons/arrowLeft.svg" alt="arrowLeft" />
               </button>
@@ -49,7 +45,7 @@
         </div>
       </div>
     </div>
-    <img class="w-100 position-absolute bottom-0" src="@/assets/image/desktop/Bg.png" />
+    <img class="d-none d-lg-block w-100 position-absolute bottom-0" src="@/assets/image/desktop/Bg.png" />
   </div>
 </template>
 <script lang="ts">
@@ -112,10 +108,13 @@ export default {
   --swiper-pagination-bullet-inactive-opacity: 1;
   --swiper-pagination-color: #bf9d7d;
 }
-
 .room-box {
+  margin-top: 24px;
+  margin-bottom: 80px;
   @include lg {
     height: 900px;
+    margin-top: 0;
+    margin-bottom: 0;
   }
 }
 .swiper-container {
@@ -135,12 +134,6 @@ export default {
 .title-description {
   font-weight: 500;
 }
-.pagination-block {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-}
 .line {
   &::after {
     content: '';
@@ -151,6 +144,22 @@ export default {
     background-color: $black;
     vertical-align: middle;
     line-height: 36px;
+  }
+}
+.bg-hor-linear {
+  background: url('@/assets/image/mobile/Line.png');
+  background-size: cover;
+  position: absolute;
+  top: -24px;
+  right: -80px;
+  width: 100%;
+  height: 84px;
+  z-index: 10;
+  @include lg {
+    top: 180px;
+    right: 0;
+    width: 55%;
+    height: 187px;
   }
 }
 </style>
