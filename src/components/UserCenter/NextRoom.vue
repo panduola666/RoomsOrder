@@ -151,7 +151,7 @@
   </div>
 </template>
 <script lang="ts">
-import RoomService from '../Common/'
+import RoomService from '@/components/Common/RoomService.vue'
 import type { orderData } from '../../interface/order'
 import { Modal, Offcanvas } from 'bootstrap'
 import ordersStore from '../../stores/orders'
@@ -185,8 +185,8 @@ export default {
     RoomService
   },
   mounted() {
-    this.modal = new Modal(this.$refs.cancelModal as string|Element)
-    this.offcanvas = new Offcanvas(this.$refs.cancelOffcanvas as string|Element)
+    this.modal = new Modal(this.$refs.cancelModal as string | Element)
+    this.offcanvas = new Offcanvas(this.$refs.cancelOffcanvas as string | Element)
   },
   methods: {
     ...mapActions(ordersStore, ['deleteOrder', 'getOrders']),

@@ -6,11 +6,11 @@
           <button
             type="button"
             class="p-0 border-0 text-primary"
-            @click="router.push(`/rooms/${roomId}`)"
+            @click="_router.push(`/rooms/${roomId}`)"
           >
             <img class="rounded img-fluid" src="../../assets//svg/back.svg" alt="Room Image" />
           </button>
-          <button type="button" class="p-0 border-0" @click="router.push(`/rooms/${roomId}`)">
+          <button type="button" class="p-0 border-0" @click="_router.push(`/rooms/${roomId}`)">
             確認訂房資訊
           </button>
         </div>
@@ -37,7 +37,7 @@
               <button
                 type="button"
                 class="p-0 border-0 text-primary"
-                @click="router.push(`/rooms/${roomId}`)"
+                @click="_router.push(`/rooms/${roomId}`)"
               >
                 編輯
               </button>
@@ -61,7 +61,7 @@
               <button
                 type="button"
                 class="p-0 border-0 text-primary"
-                @click="router.push(`/rooms/${roomId}`)"
+                @click="_router.push(`/rooms/${roomId}`)"
               >
                 編輯
               </button>
@@ -83,7 +83,7 @@
               <button
                 type="button"
                 class="p-0 border-0 text-primary"
-                @click="router.push(`/rooms/${roomId}`)"
+                @click="_router.push(`/rooms/${roomId}`)"
               >
                 編輯
               </button>
@@ -340,6 +340,7 @@ import { useRoute, useRouter } from 'vue-router'
 
 import { type userInfo } from '@/interface/user'
 const router = useRoute()
+const _router = useRouter()
 
 import RoomService, { type Service } from '../../components/Common/RoomService.vue'
 import { ref, watch, onMounted } from 'vue'
@@ -401,7 +402,7 @@ function fullAddress() {
 }
 
 const toRoomDetail = (id: string) => {
-  router.push({ name: 'roomDetail', params: { id } })
+  _router.push({ name: 'roomDetail', params: { id } })
   // window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 // 日期區間設定
@@ -422,7 +423,7 @@ const setDaysRange = () => {
 }
 
 function createOrder() {
-  router.push(`/BookingResult`)
+  _router.push(`/BookingResult`)
 }
 const roomId = ref<string>('')
 const _areaInfo = ref<string>('')
