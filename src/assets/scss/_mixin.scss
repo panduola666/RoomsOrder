@@ -7,10 +7,3 @@
 @mixin letter-spacing($spacing) {
   letter-spacing: $spacing;
 }
-
-// @mixin background-set($mobile-image, $desktop-image) {
-//   background: url($mobile-image) no-repeat;
-//   @include lg {
-//     background: url($desktop-image) no-repeat;
-//   }
-// }

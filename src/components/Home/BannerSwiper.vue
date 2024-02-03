@@ -1,11 +1,11 @@
 <template>
   <div class="banner-wrapper">
-    <swiper-container :pagination="true" :autoplay="false" :loop="true">
+    <swiper :pagination="pagination" :module=[Pagination] :autoplay="false" :loop="true">
       <swiper-slide
-        class="d-flex flex-lg-row flex-column align-items-center justify-content-between gap-7 gap-lg-9 px-4 px-lg-9 banner"
+        class="banner d-flex flex-lg-row flex-column align-items-center justify-content-between gap-7 gap-lg-9 px-4 px-lg-9"
       >
         <div
-          class="text-primary left-box d-flex flex-column align-items-center align-items-lg-start"
+          class="left-box text-primary d-flex flex-column align-items-center align-items-lg-start"
         >
           <p class="fs-2 mb-2">享樂酒店</p>
           <p class="fs-5">Enjoyment Luxury Hotel</p>
@@ -19,7 +19,7 @@
             </h2>
             <router-link
               to="/rooms"
-              class="btn btn-book rounded-3 p-4 p-lg-7 w-100 d-flex align-items-center justify-content-end gap-3"
+              class="btn-book btn rounded-3 p-4 p-lg-7 w-100 d-flex align-items-center justify-content-end gap-3"
             >
               <span class="fs-lg-5">立即訂房</span>
               <span class="btn-book-line"></span>
@@ -27,7 +27,22 @@
           </div>
         </div>
       </swiper-slide>
-    </swiper-container>
+      <!-- Fake Image-->
+      <swiper-slide class="banner align-items-center justify-content-center flex-lg-row flex-column px-4 px-lg-9">
+        <img class="w-100" src="https://fakeimg.pl/350x200/">
+      </swiper-slide>
+      <swiper-slide class="banner align-items-center justify-content-center flex-lg-row flex-column px-4 px-lg-9">
+        <img class="w-100" src="https://fakeimg.pl/400x320/">
+      </swiper-slide>
+      <swiper-slide class="banner align-items-center justify-content-center flex-lg-row flex-column px-4 px-lg-9">
+        <img class="w-100" src="https://fakeimg.pl/500x400/">
+      </swiper-slide>
+      <swiper-slide class="banner align-items-center justify-content-center flex-lg-row flex-column px-4 px-lg-9">
+        <img class="w-100" src="https://fakeimg.pl/350x200/">
+      </swiper-slide>
+
+      <div class="swiper-pagination"></div>
+    </swiper>
   </div>
   <!-- <div class="banner-wrapper position-relative">
     <div class="banner d-flex justify-content-between align-items-center px-2_5 px-lg-9">
@@ -53,31 +68,40 @@
   </div> -->
 </template>
 
-<script lang="ts">
-export default {}
-// @ts-ignore
+<script setup lang="ts">
+// 先暫時用這種舊的寫法改
+import { Pagination } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
+
+const pagination = {
+  clickable: true,
+  el:'.swiper-pagination'
+}
 </script>
 
 <style lang="scss" scoped>
-.banner-wrapper {
-  background:
-    url('@/assets/image/mobile/Banner.png'),
-    rgba($black, 0.6) no-repeat;
-  object-fit: cover;
-  background-size: cover;
-  background-blend-mode: color-burn;
-  @include lg {
-    background:
-      url('@/assets/image/desktop/Banner.png'),
-      rgba($black, 0.6) no-repeat;
-    object-fit: cover;
-    background-size: cover;
-    background-blend-mode: color-burn;
-  }
-  .ls-2 {
-    letter-spacing: 2px;
-  }
-}
+// .banner-wrapper {
+//   background:
+//     url('@/assets/image/mobile/Banner.png'),
+//     rgba($black, 0.6) no-repeat;
+//   object-fit: cover;
+//   background-size: cover;
+//   background-blend-mode: color-burn;
+//   @include lg {
+//     background:
+//       url('@/assets/image/desktop/Banner.png'),
+//       rgba($black, 0.6) no-repeat;
+//     object-fit: cover;
+//     background-size: cover;
+//     background-blend-mode: color-burn;
+//   }
+//   .ls-2 {
+//     letter-spacing: 2px;
+//   }
+// }
 .banner {
   padding-top: 112px;
   padding-bottom: 71px;
@@ -133,28 +157,32 @@ export default {}
   margin-bottom: 60px;
 }
 .btn-book {
-  background: #fff;
+  background: $white;
   &-line {
     display: inline-block;
     width: 80px;
-    border: 1px solid #000;
+    height: 1px;
+    background: $black;
     @include lg {
       width: 150px;
     }
   }
   &:hover {
     background: $primary;
-    color: #fff;
+    color: $white;
+    .btn-book-line {
+      background: $white;
+    }
   }
 }
-.banner-wrapper {
-  --swiper-pagination-bullet-width: 32px;
-  --swiper-pagination-bullet-height: 4px;
-  --swiper-pagination-bullet-border-radius: 0;
-  --swiper-pagination-bullet-inactive-color: #fff;
-  --swiper-pagination-bullet-inactive-opacity: 1;
-  --swiper-pagination-color: #bf9d7d;
-}
+// .banner-wrapper {
+//   --swiper-pagination-bullet-width: 32px;
+//   --swiper-pagination-bullet-height: 4px;
+//   --swiper-pagination-bullet-border-radius: 0;
+//   --swiper-pagination-bullet-inactive-color: #fff;
+//   --swiper-pagination-bullet-inactive-opacity: 1;
+//   --swiper-pagination-color: #bf9d7d;
+// }
 
 // .border-gradient {
 //   border-bottom-color: linear-gradient(to right, #BE9C7C, $white);
