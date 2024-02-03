@@ -2,9 +2,9 @@
   <div class="bg-light">
     <div class="container room-list">
       <div class="my-7 mt-lg-10 mb-lg-9">
-      <p class="text-neutral-80 fs-small fs-lg-6">房型選擇</p>
-      <h2 class="text-primary fs-lg-1 fs-3 fw-bold">各種房型，任您挑選</h2>
-    </div>
+        <p class="text-neutral-80 fs-small fs-lg-6">房型選擇</p>
+        <h2 class="text-primary fs-lg-1 fs-3 fw-bold">各種房型，任您挑選</h2>
+      </div>
       <ul class="ps-0">
         <li v-for="room in roomList" :key="room._id" class="card">
           <div class="row g-0 align-items-center">
@@ -57,19 +57,23 @@
                 <div class="d-flex justify-content-between align-items-center">
                   <p class="mb-0 text-primary fs-3 fw-bold">
                     <span>NT$</span>
-                    {{ room.price.toLocaleString() }}</p>
-                    <button class="show-modal-btn" @click="showModal(room._id)">
-                      <img class="arrow-right-icon" src="@/assets/icons/arrowRight.svg" alt="arrowRight" />
-                    </button>
+                    {{ room.price.toLocaleString() }}
+                  </p>
+                  <button class="detail-btn" @click="toRoomDetail(room._id)" >
+                    <img class="arrow-right-icon" src="@/assets/icons/arrowRight.svg" alt="arrowRight" />
+                  </button>
                 </div>
               </div>
             </div>
           </div>
         </li>
       </ul>
+      <div class="d-flex justify-content-center">
+        <PaginationComponent class="mb-5" :pages="pages" @change="selectPage" />
+      </div>
     </div>
-    <!-- Vertically centered scrollable modal -->
-    <div
+
+    <!-- <div
       ref="roomDetailModalRef"
       class="modal fade"
       tabindex="-1"
@@ -98,7 +102,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -107,13 +111,24 @@ import { onMounted, ref } from 'vue';
 import { storeToRefs } from 'pinia'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Navigation, Pagination } from 'swiper/modules'
-// @ts-ignore
+// import { Modal } from 'bootstrap'
 import  { roomTypeStore }  from '@/stores/room'
-import { Modal } from 'bootstrap'
+import { paginationStore } from '@/stores/pagination'
+import PaginationComponent from '@/components/Common/PagePagination.vue'
+
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
+import router from '@/router';
 
+// Pagination
+const pageStore = paginationStore()
+const { pages } = storeToRefs(pageStore)
+
+const { turnPage } = pageStore
+const selectPage = (page: number) => {
+  turnPage(page)
+}
 // Bootstrap
 const modules = [Navigation, Pagination]
 const navigation = {
@@ -133,22 +148,21 @@ const { roomList, roomInfo, roomStatus } = storeToRefs(roomTypeStoreInfo)
 
 onMounted(async () => {
   await roomTypeStoreInfo.getRoomList()
-  modalInstance = new Modal(roomDetailModalRef.value as Element);
+  // modalInstance = new Modal(roomDetailModalRef.value as Element);
 });
 
-
-// Modal Control
-const showModal = async (id: string) => {
-  await roomTypeStoreInfo.getRoomInfo(id)
-  if (modalInstance && roomInfo.value.result) {
-    modalInstance.show()
-  }
-}
-// const hideModal = () => {
-//   if (modalInstance) {
-//     modalInstance.hide()
+// const showModal = async (id: string) => {
+//   await roomTypeStoreInfo.getRoomInfo(id)
+//   if (modalInstance && roomInfo.value.result) {
+//     modalInstance.show()
 //   }
 // }
+
+const toRoomDetail = (id: string) => {
+  router.push({ name: 'roomDetail', params: { id } })
+  window.scrollTo({ top: 0, behavior: 'smooth' })
+}
+
 </script>
 
 <style lang="scss" scoped>
@@ -212,7 +226,7 @@ const showModal = async (id: string) => {
     right: 24px;
   }
 }
-.show-modal-btn {
+.detail-btn {
   background: none;
   border: 0;
 }

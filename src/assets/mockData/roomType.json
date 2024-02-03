@@ -1,0 +1,74 @@
+{
+  "status": true,
+  "result": [
+    {
+      "_id": "12b1142f11f699788b5bc8ca",
+      "name": "景觀尊榮家庭房",
+      "description": "享受高級的住宿體驗，尊爵雙人房提供給您舒適寬敞的空間和精緻的裝潢。",
+      "imageUrl": "https://github.com/hexschool/2022-web-layout-training/blob/main/typescript-hotel/%E6%A1%8C%E6%A9%9F%E7%89%88/room5-1.png?raw=true",
+      "imageUrlList": [
+        "https://github.com/hexschool/2022-web-layout-training/blob/main/typescript-hotel/%E6%A1%8C%E6%A9%9F%E7%89%88/room5-2.png?raw=true",
+        "https://github.com/hexschool/2022-web-layout-training/blob/main/typescript-hotel/%E6%A1%8C%E6%A9%9F%E7%89%88/room5-3.png?raw=true",
+        "https://github.com/hexschool/2022-web-layout-training/blob/main/typescript-hotel/%E6%A1%8C%E6%A9%9F%E7%89%88/room5-4.png?raw=true",
+        "https://github.com/hexschool/2022-web-layout-training/blob/main/typescript-hotel/%E6%A1%8C%E6%A9%9F%E7%89%88/room5-5.png?raw=true"
+      ],
+      "areaInfo": "48坪",
+      "bedInfo": "兩張大床",
+      "maxPeople": 4,
+      "price": 15000,
+      "status": 1,
+      "layoutInfo": [
+        {
+          "title": "海景",
+          "isProvide": true
+        },
+        {
+          "title": "獨立衛浴",
+          "isProvide": true
+        },
+        {
+          "title": "書房",
+          "isProvide": false
+        }
+      ],
+      "facilityInfo": [
+        {
+          "title": "電視",
+          "isProvide": true
+        },
+        {
+          "title": "吹風機",
+          "isProvide": true
+        },
+        {
+          "title": "除濕機",
+          "isProvide": true
+        }
+      ],
+      "amenityInfo": [
+        {
+          "title": "衛生紙",
+          "isProvide": true
+        },
+        {
+          "title": "拖鞋",
+          "isProvide": true
+        },
+        {
+          "title": "清潔用品",
+          "isProvide": true
+        },
+        {
+          "title": "罐裝水",
+          "isProvide": true
+        },
+        {
+          "title": "浴巾",
+          "isProvide": true
+        }
+      ],
+      "createdAt": "2024-01-24T13:44:15.166Z",
+      "updatedAt": "2024-02-03T12:16:14.524Z"
+    }
+  ]
+}
