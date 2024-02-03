@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-black py-9 py-lg-10">
+  <div class="bg-neutral-bg py-9 py-lg-10">
     <div class="about-us-bg">
       <div class="container pt-7 pt-lg-9 mb-9 pb-lg-10 position-relative">
         <div class="about-square py-5 py-lg-9 position-absolute start-7 start-lg-0 end-5 end-lg-0 bottom-lg-10 border-bottom border-start border-white-100">
