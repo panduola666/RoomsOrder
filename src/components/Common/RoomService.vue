@@ -18,7 +18,7 @@
 import { defineComponent } from 'vue'
 import type { PropType } from 'vue'
 
-interface Service {
+export interface Service {
   title: string
   isProvide: boolean
 }
