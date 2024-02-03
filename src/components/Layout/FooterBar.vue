@@ -3,10 +3,12 @@
     <div class="container">
       <div class="d-flex flex-column flex-lg-row mb-9 justify-content-between">
         <div class="mb-7 mb-lg-0">
-          <img src="../../assets/image/common/Logo_White.png" alt="logo" width="196"  height="72" class="mb-7">
+          <router-link to="/">
+            <img src="../../assets/image/common/Logo_White.png" alt="logo" width="196"  height="72" class="mb-7">
+          </router-link>
           <div class="d-flex gap-3">
-            <img src="../../assets/icons/line.svg" alt="line" width="40" height="40" class="p-2 border border-white rounded-circle">
-            <img src="../../assets/icons/instagram.svg" alt="instagram" width="40" height="40" class="p-2 border border-white rounded-circle">
+            <img src="../../assets/icons/line.svg" alt="line" width="40" height="40" class="p-2 border border-white rounded-circle pointer">
+            <img src="../../assets/icons/instagram.svg" alt="instagram" width="40" height="40" class="p-2 border border-white rounded-circle pointer">
           </div>
         </div>
         <section class="connection d-grid gap-3 gap-lg-7">

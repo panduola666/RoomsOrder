@@ -6,7 +6,7 @@
           class="d-lg-flex flex-lg-row align-items-center gap-5 fs-1 fw-bold text-white py-7 py-lg-10"
         >
           <img src="@/assets/image/common/Avatar _6.png" alt="" class="avatar mb-3 mb-lg-0" />
-          <h1 class="fs-1 fw-bold mb-0">Hello，Jessica</h1>
+          <h1 class="fs-1 fw-bold mb-0">Hello，{{ user.name }}</h1>
         </div>
       </div>
     </div>
@@ -31,8 +31,9 @@
 </template>
 <script setup lang="ts">
 import { useRoute, useRouter } from 'vue-router'
-import { ref, watch  } from 'vue'
-import type { userTab } from '../../interface/user'
+import { ref, watch, computed } from 'vue'
+import type { ComputedRef } from 'vue'
+import type { userTab, userInfo } from '../../interface/user'
 import globalMix from '../../mixin/globalMix'
 
 const route = useRoute()
@@ -50,6 +51,7 @@ const tabs = ref<userTab[]>([
 ])
 
 watch(() => route.path, () => checkAuth())
+const user: ComputedRef<userInfo> = computed(() => localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user') as string) :  {})
 </script>
 <style lang="scss" scoped>
 .userBanner {

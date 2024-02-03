@@ -54,7 +54,9 @@
             <h5 class="fw-bold mb-0">房間格局</h5>
           </div>
           <div class="d-flex gap-7 white-box w-100 p-5">
-            <div class="d-flex align-items-center gap-2">
+            <RoomService :service="[{title: '市景', isProvide: true}, {title: '獨立衛浴', isProvide: true}, {title: '客廳', isProvide: true}, {title: '書房', isProvide: true}, {title: '樓層電梯', isProvide: true}]"/>
+            
+            <!-- <div class="d-flex align-items-center gap-2">
               <img src="@/assets/image/icon/ic_check.svg" class="w-24px" alt="">
               <p class="m-0 fw-bold">市景</p>
             </div>
@@ -73,7 +75,7 @@
             <div class="d-flex align-items-center gap-2">
               <img src="@/assets/image/icon/ic_check.svg" class="w-24px" alt="">
               <p class="m-0 fw-bold">樓層電梯</p>
-            </div>
+            </div> -->
           </div>
         </div>
         <div>
@@ -82,7 +84,10 @@
             <h5 class="fw-bold mb-0">房內設備</h5>
           </div>
           <div class="d-flex gap-1 white-box w-100 p-5 flex-column">
-            <div class="d-flex gap-7">
+            
+            <RoomService :service="[{title: '平面電視', isProvide: true}, {title: '吹風機', isProvide: true}, {title: '冰箱', isProvide: true}, {title: '熱水壺', isProvide: true}, {title: '檯燈', isProvide: true}, {title: '衣櫃', isProvide: true}, {title: '除濕機', isProvide: true}, {title: '浴缸', isProvide: false}]"/>
+            <!-- <div class="d-flex gap-7">
+
               <div class="d-flex align-items-center gap-2">
                 <img src="@/assets/image/icon/ic_check.svg" class="w-24px" alt="">
                 <p class="m-0 fw-bold">平面電視</p>
@@ -103,8 +108,8 @@
                 <img src="@/assets/image/icon/ic_check.svg" class="w-24px" alt="">
                 <p class="m-0 fw-bold">檯燈</p>
               </div>
-            </div>
-            <div class="d-flex gap-7">
+            </div> -->
+            <!-- <div class="d-flex gap-7">
               <div class="d-flex align-items-center gap-2">
                 <img src="@/assets/image/icon/ic_check.svg" class="w-24px" alt="">
                 <p class="m-0 fw-bold">衣櫃</p>
@@ -125,7 +130,7 @@
                 <img src="@/assets/image/icon/ic_check.svg" class="w-24px" alt="">
                 <p class="m-0 fw-bold">音響</p>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
         <div>
@@ -134,7 +139,9 @@
             <h5 class="fw-bold mb-0">備品提供</h5>
           </div>
           <div class="d-flex gap-1 white-box w-100 p-5 flex-column">
-            <div class="d-flex gap-7">
+            <RoomService :service="[{title: '衛生紙', isProvide: true}, {title: '拖鞋', isProvide: true}, {title: '沐浴用品', isProvide: true}, {title: '清潔用品', isProvide: true}, {title: '刮鬍刀', isProvide: true}, {title: '吊衣架', isProvide: true}, {title: '浴巾', isProvide: true}, {title: '刷牙用品', isProvide: false}]"/>
+
+            <!-- <div class="d-flex gap-7">
               <div class="d-flex align-items-center gap-2">
                 <img src="@/assets/image/icon/ic_check.svg" class="w-24px" alt="">
                 <p class="m-0 fw-bold">衛生紙</p>
@@ -177,7 +184,7 @@
                 <img src="@/assets/image/icon/ic_check.svg" class="w-24px" alt="">
                 <p class="m-0 fw-bold">梳子</p>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
         <div>
@@ -207,6 +214,16 @@
     </main>
   </div>
 </template>
+<script lang="ts">
+import RoomService from '../../components/Common/RoomService.vue';
+
+export default {
+  name: 'DetailView',
+  components: {
+    RoomService
+  }
+}
+</script>
 <style lang="scss" scoped>
 .banner {
   margin: 80px;

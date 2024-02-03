@@ -91,6 +91,7 @@
               <input
                 v-model="data.phone"
                 id="name"
+                v-tel
                 type="text"
                 class="form-control"
                 placeholder="請輸入手機號碼"
@@ -202,48 +203,15 @@
             <div class="py-3" />
 
             <div class="bg-white rounded p-4 text-center">
-              <ul class="d-flex flex-wrap gap-6">
-                <li class="flex-item">
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/check.svg"
-                    alt="Room Image"
-                  />
-                  市景
-                </li>
-                <li class="flex-item">
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/check.svg"
-                    alt="Room Image"
-                  />
-                  獨立衛浴
-                </li>
-                <li class="flex-item">
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/check.svg"
-                    alt="Room Image"
-                  />
-                  客廳
-                </li>
-                <li class="flex-item">
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/check.svg"
-                    alt="Room Image"
-                  />
-                  書房
-                </li>
-                <li class="flex-item">
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/check.svg"
-                    alt="Room Image"
-                  />
-                  樓層電梯
-                </li>
-              </ul>
+              <RoomService
+                :service="[
+                  { title: '市景', isProvide: true },
+                  { title: '獨立衛浴', isProvide: true },
+                  { title: '客廳', isProvide: true },
+                  { title: '書房', isProvide: true },
+                  { title: '樓層電梯', isProvide: true }
+                ]"
+              />
             </div>
             <div class="py-3" />
 
@@ -260,93 +228,18 @@
             <div class="py-3" />
 
             <div class="bg-white rounded p-4 text-center">
-              <ul class="d-flex flex-wrap gap-6">
-                <li class="flex-item">
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/check.svg"
-                    alt="Room Image"
-                  />
-                  平面電視
-                </li>
-                <li class="flex-item">
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/check.svg"
-                    alt="Room Image"
-                  />
-                  吹風機
-                </li>
-                <li class="flex-item">
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/check.svg"
-                    alt="Room Image"
-                  />
-                  冰箱
-                </li>
-                <li class="flex-item">
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/check.svg"
-                    alt="Room Image"
-                  />
-                  熱水壺
-                </li>
-                <li class="flex-item">
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/check.svg"
-                    alt="Room Image"
-                  />
-                  檯燈
-                </li>
-
-                <li class="flex-item">
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/check.svg"
-                    alt="Room Image"
-                  />
-                  衣櫃
-                </li>
-
-                <li class="flex-item">
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/check.svg"
-                    alt="Room Image"
-                  />
-                  除濕機
-                </li>
-
-                <li class="flex-item">
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/check.svg"
-                    alt="Room Image"
-                  />
-                  浴缸
-                </li>
-
-                <li class="flex-item">
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/check.svg"
-                    alt="Room Image"
-                  />
-                  書桌
-                </li>
-
-                <li class="flex-item">
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/check.svg"
-                    alt="Room Image"
-                  />
-                  音響
-                </li>
-              </ul>
+              <RoomService
+                :service="[
+                  { title: '平面電視', isProvide: true },
+                  { title: '吹風機', isProvide: true },
+                  { title: '冰箱', isProvide: true },
+                  { title: '熱水壺', isProvide: true },
+                  { title: '檯燈', isProvide: true },
+                  { title: '衣櫃', isProvide: true },
+                  { title: '除濕機', isProvide: true },
+                  { title: '浴缸', isProvide: false }
+                ]"
+              />
             </div>
             <div class="py-3" />
 
@@ -363,93 +256,18 @@
             <div class="py-3" />
 
             <div class="bg-white rounded p-4 text-center">
-              <ul class="d-flex flex-wrap gap-6">
-                <li class="flex-item">
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/check.svg"
-                    alt="Room Image"
-                  />
-                  衛生紙
-                </li>
-                <li class="flex-item">
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/check.svg"
-                    alt="Room Image"
-                  />
-                  拖鞋
-                </li>
-                <li class="flex-item">
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/check.svg"
-                    alt="Room Image"
-                  />
-                  沐浴用品
-                </li>
-                <li class="flex-item">
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/check.svg"
-                    alt="Room Image"
-                  />
-                  清潔用品
-                </li>
-                <li class="flex-item">
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/check.svg"
-                    alt="Room Image"
-                  />
-                  刮鬍刀
-                </li>
-
-                <li class="flex-item">
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/check.svg"
-                    alt="Room Image"
-                  />
-                  吊衣架
-                </li>
-
-                <li class="flex-item">
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/check.svg"
-                    alt="Room Image"
-                  />
-                  浴巾
-                </li>
-
-                <li class="flex-item">
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/check.svg"
-                    alt="Room Image"
-                  />
-                  刷牙用品
-                </li>
-
-                <li class="flex-item">
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/check.svg"
-                    alt="Room Image"
-                  />
-                  罐裝水
-                </li>
-
-                <li class="flex-item">
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/check.svg"
-                    alt="Room Image"
-                  />
-                  梳子
-                </li>
-              </ul>
+              <RoomService
+                :service="[
+                  { title: '衛生紙', isProvide: true },
+                  { title: '拖鞋', isProvide: true },
+                  { title: '沐浴用品', isProvide: true },
+                  { title: '清潔用品', isProvide: true },
+                  { title: '刮鬍刀', isProvide: true },
+                  { title: '吊衣架', isProvide: true },
+                  { title: '浴巾', isProvide: true },
+                  { title: '刷牙用品', isProvide: false }
+                ]"
+              />
             </div>
           </div>
           <div class="p-5 col-md-5 rounded bg-white h-25 text-black">
@@ -521,86 +339,21 @@
 }
 </style>
 
-<script setup lang="ts">
-import { ref, watch, onMounted } from 'vue'
-import fetchAPI from '../../mixin/fetchAPI'
-
-// @ts-ignore
-import CityCountyData from '/public/CityCountyData'
-import type { CityCounty, AreaListData } from '../../interface/signup'
-
-const userData = JSON.parse(localStorage.getItem('user') as string)
-const data = ref({
-  userId: userData._id,
-  name: userData.name,
-  phone: userData.phone,
-  email: userData.email,
-  birthday: new Date(userData.birthday).toLocaleDateString(),
-  address: {
-    zipcode: userData.address.zipcode,
-    detail: userData.address.detail
-  }
-})
-const userAddress = ref<string>('')
-
-// 地址轉換
-const cityData = ref<CityCounty>({
-  CityName: '',
-  CityEngName: '',
-  AreaList: []
-})
-onMounted(() => {
-  CityCountyData.forEach((city: CityCounty) => {
-    const currCity = city.AreaList.find((area) => Number(area.ZipCode) === userData.address.zipcode)
-    if (currCity) {
-      cityName.value = city.CityName
-      cityData.value = city
+<script lang="ts">
+import RoomService from '../../components/Common/RoomService.vue'
+export default {
+  data() {
+    return {
+      showModal: false
     }
-  })
-  setAreaList()
-  fullAddress()
-  fetchRoomId()
-})
-function fullAddress() {
-  const address = data.value.address
-  userAddress.value =
-    cityData.value.CityName +
-    cityData.value.AreaList.find(
-      (area: { ZipCode: string }) => Number(area.ZipCode) === address.zipcode
-    )!.AreaName +
-    address.detail
-}
-
-// 日期區間設定
-const birthArr: string[] = data.value.birthday.split('/')
-
-const birthYear = ref(Number(birthArr[0]))
-const birthMonth = ref(Number(birthArr[1]))
-const birthDay = ref(Number(birthArr[2]))
-const daysRange = ref<number>(31)
-const setDaysRange = () => {
-  if (birthMonth.value === 2) {
-    daysRange.value = birthYear.value % 4 ? 28 : 29
-  } else if ([1, 3, 5, 7, 8, 10, 12].includes(birthMonth.value)) {
-    daysRange.value = 31
-  } else {
-    daysRange.value = 30
+  },
+  components: {
+    RoomService
+  },
+  methods: {
+    showConfirmationModal() {
+      this.showModal = true
+    }
   }
-}
-watch(() => birthYear.value, setDaysRange)
-watch(() => birthMonth.value, setDaysRange)
-
-function autoCompleteMemberData() {}
-async function fetchRoomId() {
-  const roomId = localStorage.getItem('roomid')
-  const res = await fetchAPI(`/api/v1/rooms/${roomId}`, 'GET', '')
-}
-function createOrder() {}
-// 地址設定
-const areaList = ref<AreaListData[]>([])
-const cityName = ref<string>('')
-const setAreaList = () => {
-  const currCity = CityCountyData.find((item: CityCounty) => item.CityName === cityName.value)
-  areaList.value = currCity.AreaList
 }
 </script>
