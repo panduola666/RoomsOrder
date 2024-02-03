@@ -94,11 +94,14 @@
 
             <div class="py-1 d-flex justify-content-between">
               <h3>訂房人資訊</h3>
-              <span class="text-primary cursor-pointer"
-                ><a class="link-underline-primary cursor-pointer" @click="autoCompleteMemberData"
-                  >套用會員資料</a
-                ></span
+
+              <button
+                type="button"
+                class="p-0 border-0 text-primary"
+                @click="autoCompleteMemberData"
               >
+                套用會員資料
+              </button>
             </div>
             <form class="py-5">
               <label class="" for="name">姓名</label>
@@ -128,7 +131,7 @@
 
               <label for="name">電子信箱</label>
               <input
-                v-model="data.email"
+                v-model="data.phone"
                 id="name"
                 type="text"
                 class="form-control"
@@ -334,31 +337,33 @@
 
 <script setup lang="ts">
 import { useRoute, useRouter } from 'vue-router'
+import { type userInfo } from '@/interface/user'
 const router = useRouter()
-
 import RoomService, { type Service } from '../../components/Common/RoomService.vue'
 import { ref, watch, onMounted } from 'vue'
 import fetchAPI from '../../mixin/fetchAPI'
-import Swal from 'sweetalert2'
 // @ts-ignore
 import CityCountyData from '../../assets/json/CityCountyData'
-
 import type { CityCounty, AreaListData } from '../../interface/signup'
-
-const editInfo = ref<boolean>(false)
-
 const userData = JSON.parse(localStorage.getItem('user') as string)
-const data = ref({
-  userId: userData._id,
-  name: userData.name,
-  phone: userData.phone,
+const data = ref<userInfo>({
+  _id: userData._id,
+  name: '',
+  phone: '',
   birthday: new Date(userData.birthday).toLocaleDateString(),
   address: {
     zipcode: userData.address.zipcode,
-    detail: userData.address.detail
-  }
+    detail: ''
+  },
+  email: '',
+  createdAt: '',
+  updatedAt: ''
 })
-
+function autoCompleteMemberData() {
+  data.value.name = userData.name
+  data.value.phone = userData.phone
+  data.value.address.detail = userData.address.detail
+}
 const userAddress = ref<string>('')
 
 // 地址轉換
@@ -405,7 +410,7 @@ const setDaysRange = () => {
     daysRange.value = 30
   }
 }
-function autoCompleteMemberData() {}
+
 function createOrder() {
   router.push(`/BookingResult`)
 }
@@ -425,7 +430,7 @@ async function LoadRoomPriceDetailInfoRoomId() {
   const roomID = '65b1142f11f699788b5bc8ca' //localStorage.getItem('roomId')
 
   const res = await fetchAPI(`/api/v1/rooms/${roomID}`, 'GET', '')
-  console.log(res)
+  // console.log(res)
   const { status } = res
   if (status) {
     const {
