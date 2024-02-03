@@ -85,6 +85,7 @@
               <label for="name">手機號碼</label>
               <input
                 id="name"
+                v-tel
                 type="text"
                 class="form-control"
                 placeholder="請輸入手機號碼"
@@ -192,48 +193,7 @@
             <div class="py-3" />
 
             <div class="bg-white rounded p-4 text-center">
-              <ul class="d-flex flex-wrap gap-6">
-                <li class="flex-item">
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/check.svg"
-                    alt="Room Image"
-                  />
-                  市景
-                </li>
-                <li class="flex-item">
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/check.svg"
-                    alt="Room Image"
-                  />
-                  獨立衛浴
-                </li>
-                <li class="flex-item">
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/check.svg"
-                    alt="Room Image"
-                  />
-                  客廳
-                </li>
-                <li class="flex-item">
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/check.svg"
-                    alt="Room Image"
-                  />
-                  書房
-                </li>
-                <li class="flex-item">
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/check.svg"
-                    alt="Room Image"
-                  />
-                  樓層電梯
-                </li>
-              </ul>
+              <RoomService :service="[{title: '市景', isProvide: true}, {title: '獨立衛浴', isProvide: true}, {title: '客廳', isProvide: true}, {title: '書房', isProvide: true}, {title: '樓層電梯', isProvide: true}]"/>
             </div>
             <div class="py-3" />
 
@@ -250,93 +210,7 @@
             <div class="py-3" />
 
             <div class="bg-white rounded p-4 text-center">
-              <ul class="d-flex flex-wrap gap-6">
-                <li class="flex-item">
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/check.svg"
-                    alt="Room Image"
-                  />
-                  平面電視
-                </li>
-                <li class="flex-item">
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/check.svg"
-                    alt="Room Image"
-                  />
-                  吹風機
-                </li>
-                <li class="flex-item">
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/check.svg"
-                    alt="Room Image"
-                  />
-                  冰箱
-                </li>
-                <li class="flex-item">
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/check.svg"
-                    alt="Room Image"
-                  />
-                  熱水壺
-                </li>
-                <li class="flex-item">
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/check.svg"
-                    alt="Room Image"
-                  />
-                  檯燈
-                </li>
-
-                <li class="flex-item">
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/check.svg"
-                    alt="Room Image"
-                  />
-                  衣櫃
-                </li>
-
-                <li class="flex-item">
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/check.svg"
-                    alt="Room Image"
-                  />
-                  除濕機
-                </li>
-
-                <li class="flex-item">
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/check.svg"
-                    alt="Room Image"
-                  />
-                  浴缸
-                </li>
-
-                <li class="flex-item">
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/check.svg"
-                    alt="Room Image"
-                  />
-                  書桌
-                </li>
-
-                <li class="flex-item">
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/check.svg"
-                    alt="Room Image"
-                  />
-                  音響
-                </li>
-              </ul>
+              <RoomService :service="[{title: '平面電視', isProvide: true}, {title: '吹風機', isProvide: true}, {title: '冰箱', isProvide: true}, {title: '熱水壺', isProvide: true}, {title: '檯燈', isProvide: true}, {title: '衣櫃', isProvide: true}, {title: '除濕機', isProvide: true}, {title: '浴缸', isProvide: false}]"/>
             </div>
             <div class="py-3" />
 
@@ -353,93 +227,7 @@
             <div class="py-3" />
 
             <div class="bg-white rounded p-4 text-center">
-              <ul class="d-flex flex-wrap gap-6">
-                <li class="flex-item">
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/check.svg"
-                    alt="Room Image"
-                  />
-                  衛生紙
-                </li>
-                <li class="flex-item">
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/check.svg"
-                    alt="Room Image"
-                  />
-                  拖鞋
-                </li>
-                <li class="flex-item">
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/check.svg"
-                    alt="Room Image"
-                  />
-                  沐浴用品
-                </li>
-                <li class="flex-item">
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/check.svg"
-                    alt="Room Image"
-                  />
-                  清潔用品
-                </li>
-                <li class="flex-item">
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/check.svg"
-                    alt="Room Image"
-                  />
-                  刮鬍刀
-                </li>
-
-                <li class="flex-item">
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/check.svg"
-                    alt="Room Image"
-                  />
-                  吊衣架
-                </li>
-
-                <li class="flex-item">
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/check.svg"
-                    alt="Room Image"
-                  />
-                  浴巾
-                </li>
-
-                <li class="flex-item">
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/check.svg"
-                    alt="Room Image"
-                  />
-                  刷牙用品
-                </li>
-
-                <li class="flex-item">
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/check.svg"
-                    alt="Room Image"
-                  />
-                  罐裝水
-                </li>
-
-                <li class="flex-item">
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/check.svg"
-                    alt="Room Image"
-                  />
-                  梳子
-                </li>
-              </ul>
+              <RoomService :service="[{title: '衛生紙', isProvide: true}, {title: '拖鞋', isProvide: true}, {title: '沐浴用品', isProvide: true}, {title: '清潔用品', isProvide: true}, {title: '刮鬍刀', isProvide: true}, {title: '吊衣架', isProvide: true}, {title: '浴巾', isProvide: true}, {title: '刷牙用品', isProvide: false}]"/>
             </div>
           </div>
           <div class="p-5 col-md-5 rounded bg-white h-25 text-black">
@@ -512,11 +300,15 @@
 </style>
 
 <script lang="ts">
+import RoomService from '../../components/Common/RoomService.vue';
 export default {
   data() {
     return {
       showModal: false
     }
+  },
+  components: {
+    RoomService
   },
   methods: {
     showConfirmationModal() {

@@ -81,7 +81,8 @@ import { ref, watch, onMounted } from 'vue'
 import fetchAPI from '../../mixin/fetchAPI'
 import Swal from 'sweetalert2'
 // @ts-ignore
-import CityCountyData from '/public/CityCountyData'
+import CityCountyData from '../../assets/json/CityCountyData'
+
 import type {CityCounty,AreaListData} from '../../interface/signup'
 
 const editInfo = ref<boolean>(false)
