@@ -11,11 +11,11 @@
             <div class="col-lg-7">
               <swiper
                 v-if="roomStatus"
+                class="swiper"
                 :modules="modules"
                 :loop="true"
                 :pagination="pagination"
                 :navigation="navigation"
-                class="swiper"
               >
                 <swiper-slide v-for="(src, i) in room.imageUrlList" :key="i">
                   <img :src="src" class="room-img card-img-top rounded-0" alt="room">
@@ -87,6 +87,10 @@
               :key="i"
               class="badge rounded-pill text-white bg-primary me-2 mb-2"
             >{{ el.title }}</span>
+            <br />
+            <span v-for="(el, i) in roomInfo.result?.facilityInfo"
+              :key="i"
+              class="badge rounded-pill text-white bg-primary me-2 mb-2">{{ el.title }}</span>
             <p> {{ roomInfo.result?.description }} </p>
           </div>
           <div class="modal-footer">
@@ -197,11 +201,13 @@ const showModal = async (id: string) => {
   display: flex;
   justify-content: center;
   align-items: center;
-  &-prev{
+
+  &-prev {
     top: 45%;
     left: 24px;
   }
-  &-next{
+
+  &-next {
     top: 45%;
     right: 24px;
   }
