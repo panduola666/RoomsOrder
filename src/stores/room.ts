@@ -18,7 +18,7 @@ export const roomTypeStore = defineStore('roomTypeStore', {
     },
     async getRoomInfo(id: string): Promise<void> {
       const res: {result: Room, status: boolean} = await fetchAPI(`/api/v1/rooms/${id}`, 'GET')
-      this.roomInfo = res
+      this.roomInfo=res.result
     },
   }
 })

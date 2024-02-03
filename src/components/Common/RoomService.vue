@@ -44,4 +44,5 @@ export default defineComponent({
     --bs-columns: 5
   }
 }
+
 </style>
