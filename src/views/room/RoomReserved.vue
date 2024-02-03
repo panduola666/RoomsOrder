@@ -3,8 +3,16 @@
     <div class="container">
       <div class="row">
         <div class="p-5 d-flex gap-3 align-item-center">
-          <img class="rounded img-fluid" src="../../assets//svg/back.svg" alt="Room Image" />
-          <span>確認訂房資訊</span>
+          <button
+            type="button"
+            class="p-0 border-0 text-primary"
+            @click="router.push(`/rooms/${roomId}`)"
+          >
+            <img class="rounded img-fluid" src="../../assets//svg/back.svg" alt="Room Image" />
+          </button>
+          <button type="button" class="p-0 border-0" @click="router.push(`/rooms/${roomId}`)">
+            確認訂房資訊
+          </button>
         </div>
       </div>
 
@@ -221,15 +229,7 @@
             <div class="py-3" />
 
             <div class="bg-white rounded p-4 text-center">
-              <RoomService
-                :service="[
-                  { title: '市景', isProvide: true },
-                  { title: '獨立衛浴', isProvide: true },
-                  { title: '客廳', isProvide: true },
-                  { title: '書房', isProvide: true },
-                  { title: '樓層電梯', isProvide: true }
-                ]"
-              />
+              <RoomService :service="_layoutInfo" />
             </div>
             <div class="py-3" />
 
@@ -407,12 +407,12 @@ const setDaysRange = () => {
 }
 function autoCompleteMemberData() {}
 function createOrder() {
-  alert('aa')
   router.push(`/BookingResult`)
 }
 const roomId = ref<string>('')
 const _areaInfo = ref<string>('')
 const _bedInfo = ref<string>('')
+const _layoutInfo = ref<Array<Service>>([])
 const _facilityInfo = ref<Array<Service>>([]) //房內設備
 const _amenityInfo = ref<Array<Service>>([]) //備品提供
 const _maxPeople = ref<string>('')
@@ -422,15 +422,25 @@ const _name = ref<string>('')
 const _price = ref<string>('')
 
 async function LoadRoomPriceDetailInfoRoomId() {
-  const roomID = '65bbdc5e8f690417bdd17ae3' //localStorage.getItem('roomId')
+  const roomID = '65b1142f11f699788b5bc8ca' //localStorage.getItem('roomId')
 
   const res = await fetchAPI(`/api/v1/rooms/${roomID}`, 'GET', '')
   console.log(res)
   const { status } = res
   if (status) {
-    const { areaInfo, bedInfo, amenityInfo, facilityInfo, maxPeople, name, price, imageUrl } =
-      res.result
+    const {
+      areaInfo,
+      bedInfo,
+      amenityInfo,
+      facilityInfo,
+      layoutInfo,
+      maxPeople,
+      name,
+      price,
+      imageUrl
+    } = res.result
     _areaInfo.value = areaInfo
+    _layoutInfo.value = layoutInfo
     _bedInfo.value = bedInfo
     _maxPeople.value = `1-${maxPeople}人`
     _name.value = name
