@@ -68,7 +68,6 @@
         </li>
       </ul>
     </div>
-    <!-- Vertically centered scrollable modal -->
     <div
       ref="roomDetailModalRef"
       class="modal fade"
