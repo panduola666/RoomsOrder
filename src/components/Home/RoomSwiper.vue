@@ -108,7 +108,6 @@ export default {
   --swiper-pagination-bullet-inactive-opacity: 1;
   --swiper-pagination-color: #bf9d7d;
 }
-
 .room-box {
   margin-top: 24px;
   margin-bottom: 80px;
@@ -134,12 +133,6 @@ export default {
 }
 .title-description {
   font-weight: 500;
-}
-.pagination-block {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
 }
 .line {
   &::after {

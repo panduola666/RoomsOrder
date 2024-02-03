@@ -11,11 +11,11 @@
             <div class="col-lg-7">
               <swiper
                 v-if="roomStatus"
+                class="swiper"
                 :modules="modules"
                 :loop="true"
                 :pagination="pagination"
                 :navigation="navigation"
-                class="swiper"
               >
                 <swiper-slide v-for="(src, i) in room.imageUrlList" :key="i">
                   <img :src="src" class="room-img card-img-top rounded-0" alt="room">
@@ -201,11 +201,13 @@ const showModal = async (id: string) => {
   display: flex;
   justify-content: center;
   align-items: center;
-  &-prev{
+
+  &-prev {
     top: 45%;
     left: 24px;
   }
-  &-next{
+
+  &-next {
     top: 45%;
     right: 24px;
   }

@@ -1,6 +1,6 @@
 <template>
   <div class="banner-wrapper">
-    <swiper :pagination="pagination" :module=[pagination] :autoplay="false" :loop="true">
+    <swiper :pagination="pagination" :module=[Pagination] :autoplay="false" :loop="true">
       <swiper-slide
         class="banner d-flex flex-lg-row flex-column align-items-center justify-content-between gap-7 gap-lg-9 px-4 px-lg-9"
       >
@@ -27,7 +27,6 @@
           </div>
         </div>
       </swiper-slide>
-      <div class="swiper-pagination"></div>
       <!-- Fake Image-->
       <swiper-slide class="banner align-items-center justify-content-center flex-lg-row flex-column px-4 px-lg-9">
         <img class="w-100" src="https://fakeimg.pl/350x200/">
@@ -41,6 +40,8 @@
       <swiper-slide class="banner align-items-center justify-content-center flex-lg-row flex-column px-4 px-lg-9">
         <img class="w-100" src="https://fakeimg.pl/350x200/">
       </swiper-slide>
+
+      <div class="swiper-pagination"></div>
     </swiper>
   </div>
   <!-- <div class="banner-wrapper position-relative">
