@@ -4,6 +4,7 @@
     <main class="rooms-detail container">
       <RoomDetail :room-info="roomInfo" />
       <section class="right d-none d-md-block">
+
         <div class="booking-box  gap-7  d-flex flex-column">
           <h5 class=" fw-bold border-bottom border-neutral-40 pb-3">預訂房型</h5>
           <div>
