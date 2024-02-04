@@ -139,7 +139,7 @@ async function fetchOrderDetail() {
   console.log(res)
   const { status, result } = res
   if (status) {
-    _OrderData.value = result
+    _OrderData.value = result[0]
   } else {
     router.replace('login')
   }

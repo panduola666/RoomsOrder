@@ -425,11 +425,33 @@ const setDaysRange = () => {
 
 async function createOrder() {
   const res = await fetchAPI(`/api/v1/user/check`, 'GET', '')
-  console.log(res)
+  // console.log(res)
   const { status } = res
-  console.log()
-
-  _router.push(`/BookingResult`)
+  if (status) {
+    const _sendData = {
+      roomId: id,
+      checkInDate: '2023/06/18',
+      checkOutDate: '2023/06/19',
+      peopleNum: 2,
+      userInfo: {
+        address: {
+          zipcode: 802,
+          detail: data.value.address
+        },
+        name: data.value.name,
+        phone: data.value.phone,
+        email: data.value.email
+      }
+    }
+    const postOrderRes = await fetchAPI(`/api/v1/orders`, 'POST', _sendData)
+    // console.log(postOrderRes)
+    const { status } = postOrderRes
+    if (status) {
+      _router.push(`/BookingResult`)
+    }
+  } else {
+    _router.replace('login')
+  }
 }
 const roomId = ref<string>('')
 const _areaInfo = ref<string>('')
