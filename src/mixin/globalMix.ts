@@ -37,6 +37,9 @@ const mixin = {
       return `${hour}:${min}`
     },
     moneyFormat(num: number) { // 千分位
+      if (isNaN(num) || num === null || num === undefined) {
+        return '';
+      }
       const reg= new RegExp(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/, 'g')
       return num.toString().replace(reg, ',')
     }

@@ -534,6 +534,7 @@ $utilities: map-merge(
       property: line-height,
       class: lh,
       values: (
+        0: 0,
         1: 1,
         sm: $line-height-sm,
         base: $line-height-base,
