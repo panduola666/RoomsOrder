@@ -352,6 +352,7 @@ import CityCountyData from '../../assets/json/CityCountyData'
 import type { CityCounty, AreaListData } from '../../interface/signup'
 const userData = JSON.parse(localStorage.getItem('user') as string)
 
+
 const { id, startdate, days, people } = router.params
 
 const data = ref<userInfo>({
@@ -396,6 +397,7 @@ onMounted(() => {
 })
 function fullAddress() {
   const address = data.value.address
+
   // userAddress.value =
   //   cityData.value.CityName +
   //   cityData.value.AreaList.find(
@@ -504,6 +506,7 @@ const areaList = ref<AreaListData[]>([])
 const cityName = ref<string>('')
 const setAreaList = () => {
   const currCity = CityCountyData.find((item: CityCounty) => item.CityName === cityName.value)
+
   console.log(currCity)
   areaList.value = currCity.AreaList
 }

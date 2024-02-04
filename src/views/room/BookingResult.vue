@@ -90,6 +90,7 @@
 </style>
 
 <script setup lang="ts">
+
 import { useRouter } from 'vue-router'
 import { ref, watch, onMounted } from 'vue'
 import NextRoom from '../../components/UserCenter/NextRoom.vue'
@@ -115,6 +116,7 @@ const _OrderData = ref<orderData>({
 const { roomInfo } = defineProps(['roomInfo'])
 const userData = JSON.parse(localStorage.getItem('user') as string)
 const data = ref<userInfo>({
+
   _id: '',
   name: '',
   phone: '',
@@ -142,6 +144,7 @@ async function fetchOrderDetail() {
   console.log(res)
   const { status, result } = res
   if (status) {
+
     _OrderData.value = result[0]
   } else {
     router.replace('login')

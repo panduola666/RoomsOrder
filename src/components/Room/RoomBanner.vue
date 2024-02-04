@@ -1,4 +1,24 @@
 <template>
+  <div class="d-md-none">
+    <swiper
+    class="swiper"
+                :modules="modules"
+                :loop="true"
+                :pagination="pagination"
+                :navigation="navigation"
+              >
+                <swiper-slide v-for="(src, i) in roomInfo.imageUrlList" :key="i">
+                  <img :src="src" class="room-img card-img-top rounded-0" alt="room">
+                </swiper-slide>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-btn bg-white d-none d-lg-flex  swiper-btn-prev">
+                  <img src="@/assets/icons/prev.svg" alt="prev arrow">
+                </div>
+                <div class="swiper-btn bg-white d-none d-lg-flex  swiper-btn-next">
+                  <img src="@/assets/icons/next.svg" alt="next arrow">
+                </div>
+            </swiper>
+  </div>
     <div class="banner d-none d-md-flex">
       <div class="left">
         <img :src="roomInfo.imageUrl" alt="">
@@ -18,6 +38,22 @@
 <script setup lang="ts">
 import type { PropType } from 'vue'
 import type { Room } from '@/interface/room'
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import { Navigation, Pagination } from 'swiper/modules'
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
+
+// Bootstrap
+const modules = [Navigation, Pagination]
+const navigation = {
+  nextEl: '.swiper-btn-next',
+  prevEl: '.swiper-btn-prev',
+}
+const pagination = {
+  clickable: true,
+  el:'.swiper-pagination'
+}
 defineProps({
   roomInfo: {
     type: Object as PropType<Room>,
