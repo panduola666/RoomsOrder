@@ -40,7 +40,7 @@
             <div class="py-4"></div>
 
             <div class="d-flex">
-              <button class="btn btn-primary">前往我的訂單</button>
+              <button @click="gotoHistoryOrderPage" class="btn btn-primary">前往我的訂單</button>
             </div>
 
             <div class="py-5"></div>
@@ -90,13 +90,14 @@
 </style>
 
 <script setup lang="ts">
+
+import { useRouter } from 'vue-router'
 import { ref, watch, onMounted } from 'vue'
-import type { PropType } from 'vue'
 import NextRoom from '../../components/UserCenter/NextRoom.vue'
 import fetchAPI from '../../mixin/fetchAPI'
 import type { orderData } from '../../interface/order'
 import { type userInfo } from '@/interface/user'
-
+const router = useRouter()
 const _OrderData = ref<orderData>({
   _id: '',
   checkInDate: '',
@@ -115,12 +116,13 @@ const _OrderData = ref<orderData>({
 const { roomInfo } = defineProps(['roomInfo'])
 const userData = JSON.parse(localStorage.getItem('user') as string)
 const data = ref<userInfo>({
-  _id: userData._id,
+
+  _id: '',
   name: '',
   phone: '',
-  birthday: new Date(userData.birthday).toLocaleDateString(),
+  birthday: '',
   address: {
-    zipcode: userData.address.zipcode,
+    zipcode: 1,
     detail: ''
   },
   email: '',
@@ -134,12 +136,18 @@ const data = ref<userInfo>({
 onMounted(() => {
   fetchOrderDetail()
 })
+function gotoHistoryOrderPage() {
+  router.push('/user/myOrder')
+}
 async function fetchOrderDetail() {
   const res = await fetchAPI(`/api/v1/orders/`, 'GET', '')
   console.log(res)
   const { status, result } = res
   if (status) {
-    _OrderData.value = result
+
+    _OrderData.value = result[0]
+  } else {
+    router.replace('login')
   }
 }
 </script>

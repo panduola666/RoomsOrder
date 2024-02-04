@@ -131,7 +131,7 @@
 
               <label for="name">電子信箱</label>
               <input
-                v-model="data.phone"
+                v-model="data.email"
                 id="name"
                 type="text"
                 class="form-control"
@@ -352,15 +352,16 @@ import CityCountyData from '../../assets/json/CityCountyData'
 import type { CityCounty, AreaListData } from '../../interface/signup'
 const userData = JSON.parse(localStorage.getItem('user') as string)
 
-const { id } = router.params
+
+const { id, startdate, days, people } = router.params
 
 const data = ref<userInfo>({
-  _id: userData._id,
+  _id: userData?._id,
   name: '',
   phone: '',
-  birthday: new Date(userData.birthday).toLocaleDateString(),
+  birthday: new Date(userData?.birthday).toLocaleDateString(),
   address: {
-    zipcode: userData.address.zipcode,
+    zipcode: 100,
     detail: ''
   },
   email: '',
@@ -371,6 +372,8 @@ function autoCompleteMemberData() {
   data.value.name = userData.name
   data.value.phone = userData.phone
   data.value.address.detail = userData.address.detail
+  data.value.email = userData.email
+  data.value.address.zipcode = userData.address.zipcode
 }
 const userAddress = ref<string>('')
 
@@ -394,12 +397,13 @@ onMounted(() => {
 })
 function fullAddress() {
   const address = data.value.address
-  userAddress.value =
-    cityData.value.CityName +
-    cityData.value.AreaList.find(
-      (area: { ZipCode: string }) => Number(area.ZipCode) === address.zipcode
-    )!.AreaName +
-    address.detail
+
+  // userAddress.value =
+  //   cityData.value.CityName +
+  //   cityData.value.AreaList.find(
+  //     (area: { ZipCode: string }) => Number(area.ZipCode) === address.zipcode
+  //   )!.AreaName +
+  //   address.detail
 }
 
 const toRoomDetail = (id: string) => {
@@ -423,8 +427,35 @@ const setDaysRange = () => {
   }
 }
 
-function createOrder() {
-  _router.push(`/BookingResult`)
+async function createOrder() {
+  const res = await fetchAPI(`/api/v1/user/check`, 'GET', '')
+  // console.log(res)
+  const { status } = res
+  if (status) {
+    const _sendData = {
+      roomId: id,
+      checkInDate: startdate,
+      checkOutDate: days,
+      peopleNum: people,
+      userInfo: {
+        address: {
+          zipcode: 802,
+          detail: data.value.address
+        },
+        name: data.value.name,
+        phone: data.value.phone,
+        email: data.value.email
+      }
+    }
+    const postOrderRes = await fetchAPI(`/api/v1/orders`, 'POST', _sendData)
+    // console.log(postOrderRes)
+    const { status } = postOrderRes
+    if (status) {
+      _router.push(`/BookingResult`)
+    }
+  } else {
+    _router.replace('login')
+  }
 }
 const roomId = ref<string>('')
 const _areaInfo = ref<string>('')
@@ -475,6 +506,8 @@ const areaList = ref<AreaListData[]>([])
 const cityName = ref<string>('')
 const setAreaList = () => {
   const currCity = CityCountyData.find((item: CityCounty) => item.CityName === cityName.value)
+
+  console.log(currCity)
   areaList.value = currCity.AreaList
 }
 </script>
