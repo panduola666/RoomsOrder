@@ -29,7 +29,7 @@
             <h5 class="fw-bold mb-0">房間格局</h5>
           </div>
           <div class="d-flex gap-7 white-box w-100 p-5">
-            <RoomService :service="[{ title: '市景', isProvide: true }, { title: '獨立衛浴', isProvide: true }, { title: '客廳', isProvide: true }, { title: '書房', isProvide: true }, { title: '樓層電梯', isProvide: true }]" /> 
+            <RoomService :service="[{ title: '市景', isProvide: true }, { title: '獨立衛浴', isProvide: true }, { title: '客廳', isProvide: true }, { title: '書房', isProvide: true }, { title: '樓層電梯', isProvide: true }]" />
           </div>
         </div>
         <div v-if="roomInfo.facilityInfo">
@@ -129,8 +129,8 @@ defineProps({
     list-style-type: decimal;
   }
   .box-97px {
-  width: 97px;
-  height: 97px;
-}
+    width: 97px;
+    height: 97px;
+  }
 }
 </style>
