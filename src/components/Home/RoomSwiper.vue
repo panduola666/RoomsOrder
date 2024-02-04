@@ -13,9 +13,10 @@
     >
       <template v-if="currRoom._id">
         <!-- @vue-skip  -->
-          <swiper-slide  v-for="(img, index) in currRoom.imageUrlList" :key="img">
+          <swiper-slide v-for="(img, index) in currRoom.imageUrlList" :key="img">
             <img :src="img" :alt="`詳情圖${index}`" />
           </swiper-slide>
+          <!-- <div class="swiper-pagination"></div> -->
       </template>
     </swiper-container>
 
@@ -161,13 +162,12 @@ export default {
   background-size: cover;
   position: absolute;
   top: -24px;
-  right: -80px;
-  width: 100%;
+  right: 0;
+  width: 295px;
   height: 84px;
   z-index: 10;
   @include lg {
     top: 180px;
-    right: 0;
     width: 55%;
     height: 187px;
   }
