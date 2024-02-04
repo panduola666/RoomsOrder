@@ -1,3 +1,2 @@
-## 這是六角學院 2023 TypeScript 30天體驗營的個人專題
-
-僅做 登入, 註冊, 會員列
+## 這是六角學院 2023 TypeScript 30天體驗營的團戰作業
+#### 團隊成員：圈圈、hannahTW、RayChen、Barret
