@@ -10,7 +10,7 @@ const router = createRouter({
       name: 'home',
       component: () => import('../views/HomeView.vue'),
       meta: {
-        hiddenHeader: true,
+        hiddenHeader: true
       }
     },
     {
@@ -28,17 +28,17 @@ const router = createRouter({
       name: 'rooms',
       component: () => import('../views/room/RoomsView.vue'),
       meta: {
-        hiddenHeader: true,
+        hiddenHeader: true
       }
     },
     {
       // path: '/room/:id',
       path: '/roomdetail/:id',
       name: 'roomDetail',
-    component: () => import('../views/room/DetailView.vue')
+      component: () => import('../views/room/DetailView.vue')
     },
     {
-      path: '/roomsReserved',
+      path: '/roomsReserved/:id',
       name: 'roomsReserved',
       component: () => import('../views/room/RoomReserved.vue')
     },

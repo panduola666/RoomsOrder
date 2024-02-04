@@ -355,12 +355,12 @@ const userData = JSON.parse(localStorage.getItem('user') as string)
 const { id } = router.params
 
 const data = ref<userInfo>({
-  _id: userData._id,
+  _id: userData?._id,
   name: '',
   phone: '',
-  birthday: new Date(userData.birthday).toLocaleDateString(),
+  birthday: new Date(userData?.birthday).toLocaleDateString(),
   address: {
-    zipcode: userData.address.zipcode,
+    zipcode: userData?.address.zipcode,
     detail: ''
   },
   email: '',
@@ -423,7 +423,12 @@ const setDaysRange = () => {
   }
 }
 
-function createOrder() {
+async function createOrder() {
+  const res = await fetchAPI(`/api/v1/user/check`, 'GET', '')
+  console.log(res)
+  const { status } = res
+  console.log()
+
   _router.push(`/BookingResult`)
 }
 const roomId = ref<string>('')

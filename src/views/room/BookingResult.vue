@@ -90,12 +90,13 @@
 </style>
 
 <script setup lang="ts">
-import { ref, watch, onMounted, PropType } from 'vue'
+import { ref, watch, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 import NextRoom from '../../components/UserCenter/NextRoom.vue'
 import fetchAPI from '../../mixin/fetchAPI'
 import type { orderData } from '../../interface/order'
 import { type userInfo } from '@/interface/user'
-
+const router = useRouter()
 const _OrderData = ref<orderData>({
   _id: '',
   checkInDate: '',
@@ -114,12 +115,12 @@ const _OrderData = ref<orderData>({
 const { roomInfo } = defineProps(['roomInfo'])
 const userData = JSON.parse(localStorage.getItem('user') as string)
 const data = ref<userInfo>({
-  _id: userData._id,
+  _id: '',
   name: '',
   phone: '',
-  birthday: new Date(userData.birthday).toLocaleDateString(),
+  birthday: '',
   address: {
-    zipcode: userData.address.zipcode,
+    zipcode: 1,
     detail: ''
   },
   email: '',
@@ -139,6 +140,8 @@ async function fetchOrderDetail() {
   const { status, result } = res
   if (status) {
     _OrderData.value = result
+  } else {
+    router.replace('login')
   }
 }
 </script>
