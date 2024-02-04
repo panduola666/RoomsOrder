@@ -132,6 +132,10 @@ const data = ref<userInfo>({
 // const _email = ref<string>('')
 
 onMounted(() => {
+  console.log(userData)
+  data.value.name = userData.name
+  data.value.phone = userData.phone
+  data.value.email = userData.email
   fetchOrderDetail()
 })
 function gotoHistoryOrderPage() {
