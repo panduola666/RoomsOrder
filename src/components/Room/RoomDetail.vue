@@ -1,5 +1,5 @@
 <template>
-  <div class="left">
+  <div class="left" v-if="roomInfo">
 
     <div>
       <h2 class="mb-4 fs-1 fw-bold">{{ roomInfo.name }}</h2>

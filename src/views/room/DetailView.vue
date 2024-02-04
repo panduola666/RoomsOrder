@@ -4,7 +4,6 @@
     <main class="rooms-detail container">
       <RoomDetail :room-info="roomInfo" />
       <section class="right d-none d-md-block">
-
         <div class="booking-box  gap-7  d-flex flex-column">
           <h5 class=" fw-bold border-bottom border-neutral-40 pb-3">預訂房型</h5>
           <div>
@@ -41,15 +40,8 @@
                   </div>
                   <div class="card-body">
 
-                    <VDatePicker
-                      v-model.range="range"
-                      mode="date"
-                      :columns="columns"
-                      :expanded="expanded"
-                      :rows="rows"
-                      :masks="{ title: 'YYYY 年 MM 月' }"
-                      timezone="UTC"
-                    />
+                    <VDatePicker v-model.range="range" mode="date" :columns="columns" :expanded="true" :rows="rows"
+                      :masks="{ title: 'YYYY 年 MM 月' }" timezone="UTC" />
                   </div>
                   <div class="card-footer gap-3">
                     <button type="button" class="btn btn-white px-6 py-3" @click="cleanDate">
@@ -66,44 +58,32 @@
               <div class="d-flex align-items-center justify-content-center gap-3">
                 <button type="button" class="btn rounded-circle btn-outline-neutral-40 lh-0 p-3" @click="decBtn"
                   :disabled="chickinPeople === 1">
-                  <span class="material-symbols-outlined" 
-                  :class="{ 'text-black': chickinPeople !== 1, 'text-neutral-40': chickinPeople === 1 }">
+                  <span class="material-symbols-outlined"
+                    :class="{ 'text-black': chickinPeople !== 1, 'text-neutral-40': chickinPeople === 1 }">
                     remove </span>
                 </button>
                 <h6 class=" fw-bold">
                   {{ chickinPeople }}
                 </h6>
                 <button type="button" class="btn rounded-circle btn-outline-neutral-40 lh-0 p-3" @click="addBtn"
-                :disabled="chickinPeople === roomInfo.maxPeople">
+                  :disabled="chickinPeople === roomInfo.maxPeople">
                   <span class="material-symbols-outlined"
-                  :class="{ 'text-black': chickinPeople !== roomInfo.maxPeople , 'text-neutral-40': chickinPeople === roomInfo.maxPeople }">
+                    :class="{ 'text-black': chickinPeople !== roomInfo.maxPeople, 'text-neutral-40': chickinPeople === roomInfo.maxPeople }">
                     add </span>
                 </button>
               </div>
             </div>
           </div>
-          <!-- <h5 class="text-primary fw-bold">NT$ {{ roomInfo.price }}</h5> -->
-          <h5 class="text-primary fw-bold">NT$ {{moneyFormat(roomInfo.price*nightCount)}}</h5>
-          <button type="button" class="btn btn-primary w-100 px-6 py-3 fw-bold">
+          <h5 class="text-primary fw-bold">NT$ {{ moneyFormat(roomInfo.price * nightCount) }}</h5>
+          <button type="button" class="btn btn-primary w-100 px-6 py-3 fw-bold" @click="toBooking">
 
             立即預訂
           </button>
         </div>
       </section>
     </main>
+    <RoomDatePickerMobile :room-info="roomInfo" />
   </div>
-  <section class="d-dmd-block position-sticky bottom-0 bg-white py-3">
-        <div class="container d-flex justify-content-between align-items-center">
-          <p class="mb-0 fs-small">ＮＴ$ 10,000 / 晚</p>
-          <button
-            type="button"
-            class="btn btn-primary px-6 py-3 fw-bold"
-          >
-          查看可訂日期
-          </button>
-          
-        </div>
-      </section>
 </template>
 <script setup lang="ts">
 import { ref, onMounted, watchEffect } from 'vue'
@@ -115,6 +95,7 @@ import mixin from '@/mixin/globalMix'
 import { roomTypeStore } from '@/stores/room'
 import RoomBanner from '@/components/Room/RoomBanner.vue'
 import RoomDetail from '@/components/Room/RoomDetail.vue'
+import RoomDatePickerMobile from '@/components/Room/RoomDatePickerMobile.vue'
 const { moneyFormat } = mixin.methods
 const showDatePicker = ref<boolean>(false)
 const router = useRouter()
@@ -136,15 +117,15 @@ const rows = mapCurrent({ lg: 1 }, 2)
 const tomorrow = dayjs().add(1, "day");
 const defaultEndDay = tomorrow.add(5, "day");
 
-const toRoomDetail = (id: string) => {
-  router.push({ name: 'roomsReserved', params: { id } })
+function toBooking() {
+  const startdate = new Date(range.value.start.toISOString()).getTime();
+  router.push({ name: 'roomsReserved', params: { id, startdate, days: nightCount.value, people: chickinPeople.value } })
 }
 
 let range = ref({
   start: new Date(tomorrow.format('YYYY-MM-DD')),
   end: new Date(defaultEndDay.format('YYYY-MM-DD')),
 });
-const expanded = mapCurrent({ lg: true }, true)
 
 const nightCount = ref<number>(0);
 
@@ -160,26 +141,24 @@ function cleanDate() {
   }
 }
 function addBtn() {
-  if(chickinPeople.value < roomInfo.value.maxPeople){
-    chickinPeople.value +=1
+  if (chickinPeople.value < roomInfo.value.maxPeople) {
+    chickinPeople.value += 1
   }
 
 }
 
 function decBtn() {
-  if(chickinPeople.value > 1){
-    chickinPeople.value -=1
+  if (chickinPeople.value > 1) {
+    chickinPeople.value -= 1
   }
 }
-
-
-
 </script>
 <style lang="scss" scoped>
 .rooms-detail {
   margin-top: 40px;
   margin-bottom: 40px;
-    .right {
+
+  .right {
     flex: 1 1 478px;
     position: relative;
 
@@ -244,15 +223,15 @@ function decBtn() {
   border: 0;
   padding: 0;
 }
-@include media-breakpoint-up(md){
+
+@include media-breakpoint-up(md) {
   .rooms-detail {
-  margin-top: 120px;
-  margin-bottom: 120px;
-  display: flex;
-  gap: 72px;
-}
+    margin-top: 120px;
+    margin-bottom: 120px;
+    display: flex;
+    gap: 72px;
+  }
 
 }
-
 </style>
 
