@@ -1,5 +1,5 @@
 <template>
-  <section class="mobile-datepicker-bar">
+  <section class="d-none mobile-datepicker-bar">
     <div class="container d-flex justify-content-between align-items-center">
       <p class="mb-0 fs-small">ＮＴ$ 10,000 / 晚</p>
       <button type="button" class="btn btn-primary px-6 py-3 fw-bold" @click="mobileSetp1 = true">
@@ -9,7 +9,7 @@
   </section>
   <section class="mobile-datepicker-box" v-show="mobileSetp1">
     <div class="bg-netural-40">
-      <button type="button" class="btn btn-transparent"> <span class="material-symbols-outlined">
+      <button type="button" class="btn btn-transparent"> <span class="material-symbols-outlined" @click="mobileSetp1 = false">
           Close </span>
 
       </button>
@@ -24,7 +24,7 @@
         清除日期
       </button>
 
-      <button type="button" class="btn btn-primary px-6 py-3 fw-bold" @click="mobileSetp2 = true">
+      <button type="button" class="btn btn-primary px-6 py-3 fw-bold" @click="mobileSetp1 = false">
         確定日期
       </button>
     </div>
@@ -67,6 +67,8 @@ const startdate = ref<Date>(new Date())
   bottom: 0;
   border-radius: 8px 8px 0px 0px;
   z-index: 3;
+  max-height: calc(100vh - 77px);
+  overflow-y: scroll;
 }
 
 // datePicker setting
@@ -86,6 +88,9 @@ const startdate = ref<Date>(new Date())
 .vc-container {
   font-family: var(--bs-body-font-family);
 }
+.vc-arrow{
+  visibility: hidden;
+}
 
 .vc-blue {
   --vc-accent-50: #eff6ff;
@@ -98,6 +103,9 @@ const startdate = ref<Date>(new Date())
   --vc-accent-700: #ffffff;
   --vc-accent-800: #1e40af;
   --vc-accent-900: #000000;
+}
+.vc-light{
+  --vc-day-content-hover-bg: #000000;
 }
 
 @include media-breakpoint-up(md) {
@@ -114,5 +122,8 @@ const startdate = ref<Date>(new Date())
     display: flex;
     justify-content: center;
   }
+  .vc-arrow{
+  visibility: visible;
+}
 }
 </style>
