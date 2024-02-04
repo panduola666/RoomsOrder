@@ -38,7 +38,7 @@ const router = createRouter({
       component: () => import('../views/room/DetailView.vue')
     },
     {
-      path: '/roomsReserved/:id',
+      path: '/roomsReserved/:id/:startdate/:days/:people',
       name: 'roomsReserved',
       component: () => import('../views/room/RoomReserved.vue')
     },
