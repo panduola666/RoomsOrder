@@ -95,7 +95,7 @@ import router from '@/router';
 const selectPage = (page: number) => {
   // turnPage(page)
 }
-// Bootstrap
+// Swiper
 const modules = [Navigation, Pagination]
 const navigation = {
   nextEl: '.swiper-btn-next',
@@ -105,8 +105,6 @@ const pagination = {
   clickable: true,
   el:'.swiper-pagination'
 }
-const roomDetailModalRef = ref<Element | null>(null)
-let modalInstance: any = null;
 
 // Room Data
 const roomTypeStoreInfo = roomTypeStore()
