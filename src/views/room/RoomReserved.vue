@@ -346,7 +346,7 @@ import RoomService from '../../components/Common/RoomService.vue'
 import { type Service } from '@/interface/order'
 import { ref, watch, onMounted } from 'vue'
 import fetchAPI from '../../mixin/fetchAPI'
-
+import dayjs from 'dayjs'
 // @ts-ignore
 import CityCountyData from '../../assets/json/CityCountyData'
 import type { CityCounty, AreaListData } from '../../interface/signup'
@@ -354,6 +354,18 @@ const userData = JSON.parse(localStorage.getItem('user') as string)
 
 
 const { id, startdate, days, people } = router.params
+const numericDays = parseInt(days as string, 10) // 將 days 轉換為數字
+const _startdate = dayjs(startdate as string).format('YYYY/MM/DD')
+
+console.log(router.params)
+// 將 startdate 轉換為日期物件
+const startDateObject = dayjs(_startdate)
+
+// 使用 dayjs 的 add 方法加上指定天數，得到結束日期
+const endDateObject = startDateObject.add(numericDays, 'day') // 將字串轉換為數字
+
+// 將結束日期格式化為 'YYYY/MM/DD'
+const formattedEndDate = endDateObject.format('YYYY/MM/DD')
 
 const data = ref<userInfo>({
   _id: userData?._id,
@@ -428,19 +440,32 @@ const setDaysRange = () => {
 }
 
 async function createOrder() {
+  if (
+    data.value.name.length === 0 ||
+    data.value.phone.length === 0 ||
+    data.value.email.length === 0 ||
+    data.value.address.detail.length === 0
+  ) {
+    alert('有資訊未填寫')
+    return
+  }
+  console.log(data.value.name)
+  console.log(data.value.phone)
+  console.log(data.value.address.detail)
+
   const res = await fetchAPI(`/api/v1/user/check`, 'GET', '')
   // console.log(res)
   const { status } = res
   if (status) {
     const _sendData = {
       roomId: id,
-      checkInDate: startdate,
-      checkOutDate: days,
+      checkInDate: _startdate,
+      checkOutDate: formattedEndDate,
       peopleNum: people,
       userInfo: {
         address: {
           zipcode: 802,
-          detail: data.value.address
+          detail: data.value.address.detail
         },
         name: data.value.name,
         phone: data.value.phone,
@@ -473,7 +498,7 @@ async function LoadRoomPriceDetailInfoRoomId() {
   const roomID = id //'65b1142f11f699788b5bc8ca' //localStorage.getItem('roomId')
 
   const res = await fetchAPI(`/api/v1/rooms/${roomID}`, 'GET', '')
-  // console.log(res)
+  console.log(res)
   const { status } = res
   if (status) {
     const {
@@ -496,6 +521,8 @@ async function LoadRoomPriceDetailInfoRoomId() {
     _facilityInfo.value = facilityInfo
     _amenityInfo.value = amenityInfo
     _imageUrl.value = imageUrl
+  } else {
+    console.log(res)
   }
 }
 watch(() => birthYear.value, setDaysRange)
