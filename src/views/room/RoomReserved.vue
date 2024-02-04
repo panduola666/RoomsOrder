@@ -337,7 +337,7 @@
 
 <script setup lang="ts">
 import { useRoute, useRouter } from 'vue-router'
-
+// import {} from 'sweetalert2'
 import { type userInfo } from '@/interface/user'
 const router = useRoute()
 const _router = useRouter()
@@ -351,6 +351,7 @@ import dayjs from 'dayjs'
 import CityCountyData from '../../assets/json/CityCountyData'
 import type { CityCounty, AreaListData } from '../../interface/signup'
 const userData = JSON.parse(localStorage.getItem('user') as string)
+console.log(userData)
 
 
 const { id, startdate, days, people } = router.params
@@ -396,6 +397,11 @@ const cityData = ref<CityCounty>({
   AreaList: []
 })
 onMounted(() => {
+  if (userData === null) {
+    console.log('replace')
+    _router.push('login')
+    return
+  }
   CityCountyData.forEach((city: CityCounty) => {
     const currCity = city.AreaList.find((area) => Number(area.ZipCode) === userData.address.zipcode)
     if (currCity) {
@@ -403,6 +409,7 @@ onMounted(() => {
       cityData.value = city
     }
   })
+
   setAreaList()
   fullAddress()
   LoadRoomPriceDetailInfoRoomId()
