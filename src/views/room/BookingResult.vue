@@ -40,7 +40,7 @@
             <div class="py-4"></div>
 
             <div class="d-flex">
-              <button class="btn btn-primary">前往我的訂單</button>
+              <button @click="gotoHistoryOrderPage" class="btn btn-primary">前往我的訂單</button>
             </div>
 
             <div class="py-5"></div>
@@ -134,6 +134,9 @@ const data = ref<userInfo>({
 onMounted(() => {
   fetchOrderDetail()
 })
+function gotoHistoryOrderPage() {
+  router.push('/user/myOrder')
+}
 async function fetchOrderDetail() {
   const res = await fetchAPI(`/api/v1/orders/`, 'GET', '')
   console.log(res)
