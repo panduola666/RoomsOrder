@@ -30,8 +30,13 @@
             </div>
             <div class="text-white fs-3 fw-bold mb-7">NT$ {{ moneyFormat(currRoom.price) }}</div>
             <div class="cta-btn">
-              <!-- 帶詳情頁面參數 -->
-              <p class="btn-line">查看更多</p>
+              <button
+                type="button"
+                class="btn-line border-0 bg-none w-100 h-100 btn rounded-3"
+                @click="showMore(currRoom._id)"
+              >
+                查看更多
+              </button>
             </div>
             <div class="text-end mt-5 mt-lg-7">
               <button type="button" class="btn pointer" @click="preRoom">
@@ -50,6 +55,7 @@
 </template>
 <script lang="ts">
 import { mapActions, mapState } from 'pinia'
+import router from '@/router';
 import { roomTypeStore } from '../../stores/room'
 import Swiper from 'swiper'
 import { Pagination } from 'swiper/modules'
@@ -95,6 +101,10 @@ export default {
     },
     preRoom() {
       this.currIndex = this.currIndex - 1 < 0 ? this.roomList.length - 1 : this.currIndex - 1
+    },
+    async showMore(id: string) {
+      await router.push({ name: 'roomDetail', params: { id } })
+      window.scrollTo({ top: 0, behavior: 'smooth' })
     }
   }
 }

@@ -118,7 +118,7 @@ onMounted(async () => {
 
 const toRoomDetail = async (id: string) => {
   await router.push({ name: 'roomDetail', params: { id } })
-  await window.scrollTo({ top: 0, behavior: 'smooth' })
+  window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 
 </script>
