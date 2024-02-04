@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-neutral-bg">
+  <div class="bg-primary-10">
     <div class="position-relative ">
       <img class="bg-dot d-none d-lg-inline-block" src="@/assets/image/desktop/Dot.png" alt="dot" />
       <img class="bg-line" src="@/assets/image/desktop/Line.png" alt="line" />
