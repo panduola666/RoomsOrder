@@ -131,7 +131,7 @@
 
               <label for="name">電子信箱</label>
               <input
-                v-model="data.phone"
+                v-model="data.email"
                 id="name"
                 type="text"
                 class="form-control"
@@ -352,7 +352,7 @@ import CityCountyData from '../../assets/json/CityCountyData'
 import type { CityCounty, AreaListData } from '../../interface/signup'
 const userData = JSON.parse(localStorage.getItem('user') as string)
 
-const { id } = router.params
+const { id, startdate, days, people } = router.params
 
 const data = ref<userInfo>({
   _id: userData?._id,
@@ -360,7 +360,7 @@ const data = ref<userInfo>({
   phone: '',
   birthday: new Date(userData?.birthday).toLocaleDateString(),
   address: {
-    zipcode: userData?.address.zipcode,
+    zipcode: 100,
     detail: ''
   },
   email: '',
@@ -371,6 +371,8 @@ function autoCompleteMemberData() {
   data.value.name = userData.name
   data.value.phone = userData.phone
   data.value.address.detail = userData.address.detail
+  data.value.email = userData.email
+  data.value.address.zipcode = userData.address.zipcode
 }
 const userAddress = ref<string>('')
 
@@ -394,12 +396,12 @@ onMounted(() => {
 })
 function fullAddress() {
   const address = data.value.address
-  userAddress.value =
-    cityData.value.CityName +
-    cityData.value.AreaList.find(
-      (area: { ZipCode: string }) => Number(area.ZipCode) === address.zipcode
-    )!.AreaName +
-    address.detail
+  // userAddress.value =
+  //   cityData.value.CityName +
+  //   cityData.value.AreaList.find(
+  //     (area: { ZipCode: string }) => Number(area.ZipCode) === address.zipcode
+  //   )!.AreaName +
+  //   address.detail
 }
 
 const toRoomDetail = (id: string) => {
@@ -430,9 +432,9 @@ async function createOrder() {
   if (status) {
     const _sendData = {
       roomId: id,
-      checkInDate: '2023/06/18',
-      checkOutDate: '2023/06/19',
-      peopleNum: 2,
+      checkInDate: startdate,
+      checkOutDate: days,
+      peopleNum: people,
       userInfo: {
         address: {
           zipcode: 802,
@@ -502,6 +504,7 @@ const areaList = ref<AreaListData[]>([])
 const cityName = ref<string>('')
 const setAreaList = () => {
   const currCity = CityCountyData.find((item: CityCounty) => item.CityName === cityName.value)
+  console.log(currCity)
   areaList.value = currCity.AreaList
 }
 </script>
