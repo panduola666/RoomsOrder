@@ -134,7 +134,6 @@ const data = ref<userInfo>({
 // const _email = ref<string>('')
 
 onMounted(() => {
-  console.log(userData)
   data.value.name = userData.name
   data.value.phone = userData.phone
   data.value.email = userData.email
@@ -144,14 +143,8 @@ function gotoHistoryOrderPage() {
   router.push('/user/myOrder')
 }
 async function fetchOrderDetail() {
-  const res = await fetchAPI(`/api/v1/orders/`, 'GET', '')
-  console.log(res)
-  const { status, result } = res
-  if (status) {
-
-    _OrderData.value = result[0]
-  } else {
-    router.replace('login')
-  }
+  const res = await fetchAPI(`/api/v1/orders/`, 'GET')
+  const { result } = res
+    _OrderData.value = result.sort((a:any, b:any) => new Date(a.checkInDate).getTime() - new Date(b.checkInDate).getTime()).filter((item: any) => new Date(item.checkInDate).getTime() >= new Date().getTime() && item.status !== -1)[0]
 }
 </script>

@@ -47,6 +47,7 @@ const router = createRouter({
     {
       path: '/BookingResult',
       name: 'BookingResult',
+      beforeEnter: async () => checkAuth(),
       component: () => import('../views/room/BookingResult.vue')
     },
     {
