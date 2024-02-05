@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import fetchAPI from '../mixin/fetchAPI'
 import Swal from 'sweetalert2'
+import { useRouter } from 'vue-router'
 
 const orderStore = defineStore('orderStore', {
   state() {
@@ -14,7 +15,7 @@ const orderStore = defineStore('orderStore', {
       this.orderList = res.result
     },
     async deleteOrder(id: string):Promise<void> {
-        const res: any = await fetchAPI(`/api/v1/admin/orders/65b1138e11f699788b5bc832`, 'DELETE')
+        const res: any = await fetchAPI(`/api/v1/admin/orders/${id}`, 'DELETE')
         if (res.status) {
           Swal.fire('已成功取消')
         } else {
@@ -23,6 +24,16 @@ const orderStore = defineStore('orderStore', {
             title: res.message
           })
         }
+    },
+    async postOrder(data) {
+      const res: any = await fetchAPI(`/api/v1/orders/`, 'POST', data)
+      console.log(useRouter())
+        //   if (!res.status) {
+        //   Swal.fire({
+        //     icon: 'error',
+        //     title: res.message
+        //   })
+        // }
     }
   }
 })
