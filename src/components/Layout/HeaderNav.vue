@@ -49,7 +49,7 @@
         <router-link :to="headerMenu.isLogin ? '/user' : '/login'" class="p-3 nav-link" @click="menuShow = false">{{ headerMenu.isLogin ? '我的帳戶' : '會員登入'}}</router-link>
       </li>
       <li class="nav-item">
-        <input type="button" value="立即訂房" class="btn btn-primary py-3 px-6 w-100" @click="menuShow = false" />
+        <input type="button" value="立即訂房" class="btn btn-primary py-3 px-6 w-100" @click="menuShow = false, router.push('/rooms')" />
       </li>
     </ul>
   </div>

@@ -65,7 +65,7 @@
               <button
                 type="button"
                 class="p-0 border-0 text-primary"
-                @click="$router.push(`/roomdetail/${form.roomId}?start=${new Date(form.checkInDate).getTime()}&end=${new Date(form.checkOutDate).getTime()}`)"
+                @click="$router.push(`/roomdetail/${form.roomId}?start=${new Date(form.checkInDate).getTime()}&end=${new Date(form.checkOutDate).getTime()}&people=${form.peopleNum}`)"
               >
                 編輯
               </button>

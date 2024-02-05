@@ -104,6 +104,16 @@ const roomTypeStoreInfo = roomTypeStore()
 const { id } = route.params
 const chickinPeople = ref<number>(2)
 onMounted(async () => {
+  console.log(route);
+  const { end, people, start } = route.query
+  if (end && people && start) {
+    range.value = {
+      start: dayjs.unix(Number(start) / 1000).format('YYYY-MM-DD') as any,
+      end: dayjs.unix(Number(end) / 1000).format('YYYY-MM-DD') as any
+    } 
+    chickinPeople.value = Number(people)
+  }
+  
   const roomId: string = Array.isArray(id) ? id[0] : id.toString()
   await roomTypeStoreInfo.getRoomInfo(roomId)
 })
