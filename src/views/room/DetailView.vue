@@ -93,8 +93,11 @@ import { useScreens } from 'vue-screen-utils'
 import dayjs from 'dayjs'
 import mixin from '@/mixin/globalMix'
 import { roomTypeStore } from '@/stores/room'
+// @ts-ignore
 import RoomBanner from '@/components/Room/RoomBanner.vue'
+// @ts-ignore
 import RoomDetail from '@/components/Room/RoomDetail.vue'
+// @ts-ignore
 import RoomDatePickerMobile from '@/components/Room/RoomDatePickerMobile.vue'
 const { moneyFormat } = mixin.methods
 const showDatePicker = ref<boolean>(false)

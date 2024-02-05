@@ -25,15 +25,15 @@ const orderStore = defineStore('orderStore', {
           })
         }
     },
-    async postOrder(data) {
+    async postOrder(data: any) {
       const res: any = await fetchAPI(`/api/v1/orders/`, 'POST', data)
       console.log(useRouter())
-        //   if (!res.status) {
-        //   Swal.fire({
-        //     icon: 'error',
-        //     title: res.message
-        //   })
-        // }
+          if (!res.status) {
+          Swal.fire({
+            icon: 'error',
+            title: res.message
+          })
+        }
     }
   }
 })

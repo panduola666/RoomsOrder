@@ -238,6 +238,7 @@
               <div class="py-3" />
   
               <div class="bg-white rounded p-4 text-center">
+                 <!-- @vue-skip -->
                 <RoomService :service="roomInfo.layoutInfo" />
               </div>
               <div class="py-3" />
@@ -257,6 +258,7 @@
               <div class="py-3" />
   
               <div class="bg-white rounded p-4 text-center">
+                 <!-- @vue-skip -->
                 <RoomService :service="roomInfo.facilityInfo" />
               </div>
               <div class="py-3" />
@@ -276,6 +278,7 @@
               <div class="py-3" />
   
               <div class="bg-white rounded p-4 text-center">
+                 <!-- @vue-skip -->
                 <RoomService :service="roomInfo.amenityInfo" />
               </div>
             </template>
@@ -348,11 +351,14 @@
 import { mapActions, mapState } from 'pinia'
 import { roomTypeStore } from '../../stores/room'
 import orderStore from '../../stores/orders'
+// @ts-ignore
 import CityCountyData from '../../assets/json/cityCountyData.json'
 import RoomService from '../../components/Common/RoomService.vue'
 import Swal from 'sweetalert2'
+import mixin from '../../mixin/globalMix'
 
 export default {
+  mixins: [mixin],
   data() {
     return {
       editPeoPle: false,
