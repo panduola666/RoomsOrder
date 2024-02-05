@@ -186,6 +186,7 @@ const forgetData = ref({
 })
 // 發送驗證碼
 async function forgetPwd() {
+  // @ts-ignore
   const { value: email } = await Swal.fire({
     title: '請輸入註冊的電子信箱',
     input: 'text',
