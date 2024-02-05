@@ -332,6 +332,8 @@ $neutral-40: #ECECEC;
 $neutral-10: #F9F9F9;
 $black: #000;
 $white: #fff;
+$white-100: #F5F7F9;
+
 
 $light:         $gray-100 !default;
 $dark:          $gray-900 !default;
@@ -368,7 +370,8 @@ $theme-colors: (
   "neutral-40": $neutral-40,
   "neutral-10": $neutral-10,
   "black": $black,
-  "white": $white
+  "white": $white,
+  "white-100": $white-100,
 ) !default;
 // scss-docs-end theme-colors-map
 
@@ -483,8 +486,9 @@ $spacers: (
 // scss-docs-start position-map
 $position-values: (
   0: 0,
+  5: 5%,
   50: 50%,
-  100: 100%
+  100: 100%,
 ) !default;
 // scss-docs-end position-map
 
@@ -493,7 +497,7 @@ $position-values: (
 // Settings for the `<body>` element.
 
 $body-text-align:           null !default;
-$body-color:                $gray-900 !default;
+$body-color:               $black; // $gray-900 !default;
 $body-bg:                   $white !default;
 
 $body-secondary-color:      rgba($body-color, .75) !default;
@@ -1202,6 +1206,10 @@ $zindex-modal:                      1055 !default;
 $zindex-popover:                    1070 !default;
 $zindex-tooltip:                    1080 !default;
 $zindex-toast:                      1090 !default;
+
+// 自定義
+// $-zindex-10:                        -10 !default;
+// $-zindex-50:                        -50 !default;
 // scss-docs-end zindex-stack
 
 // scss-docs-start zindex-levels-map
@@ -1210,7 +1218,7 @@ $zindex-levels: (
   0: 0,
   1: 1,
   2: 2,
-  3: 3
+  3: 3,
 ) !default;
 // scss-docs-end zindex-levels-map
 

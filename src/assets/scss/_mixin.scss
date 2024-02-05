@@ -1,0 +1,9 @@
+@mixin lg {
+  @media (min-width: 992px) {
+    @content;
+  }
+}
+
+@mixin letter-spacing($spacing) {
+  letter-spacing: $spacing;
+}

@@ -78,7 +78,7 @@
 import { ref, watch, defineProps, onMounted } from 'vue'
 import type {AccountData,UserInfoData,SignInBody,CityCounty,AreaListData} from '../../interface/signup'
 // @ts-ignore
-import CityCountyData from '/public/CityCountyData'
+import CityCountyData from '../../assets/json/CityCountyData'
 import fetchAPI from '../../mixin/fetchAPI'
 import Swal from 'sweetalert2'
 import { useRouter } from 'vue-router'
@@ -119,7 +119,6 @@ const setAreaList = () => {
   userInfo.value.address.zipcode = Number(currCity.AreaList[0].ZipCode)
 }
 
-const newFetch = fetchAPI()
 const userInfo = ref<UserInfoData>({
   name: '',
   phone: '',
@@ -143,7 +142,7 @@ async function singup() {
     ...userInfo.value
   }
 
-  const res = await newFetch._fetch('/api/v1/user/signup', 'POST', data)
+  const res = await fetchAPI('/api/v1/user/signup', 'POST', data)
   const swal = await Swal.fire({
     icon: res.status ? 'success' : 'error',
     title: res.status ? '註冊成功' : res.message

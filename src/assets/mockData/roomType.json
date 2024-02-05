@@ -1,0 +1,397 @@
+{
+  "status": true,
+  "result": [
+    {
+      "_id": "65b1142f11f699788b5bc8ca",
+      "name": "尊爵雙人房",
+      "description": "享受高級的住宿體驗，尊爵雙人房提供給您舒適寬敞的空間和精緻的裝潢。",
+      "imageUrl": "https://raw.githubusercontent.com/hexschool/2022-web-layout-training/main/typescript-hotel/%E6%A1%8C%E6%A9%9F%E7%89%88/room2-1.png",
+      "imageUrlList": [
+        "https://raw.githubusercontent.com/hexschool/2022-web-layout-training/main/typescript-hotel/%E6%A1%8C%E6%A9%9F%E7%89%88/room2-2.png",
+        "https://raw.githubusercontent.com/hexschool/2022-web-layout-training/main/typescript-hotel/%E6%A1%8C%E6%A9%9F%E7%89%88/room2-3.png",
+        "https://raw.githubusercontent.com/hexschool/2022-web-layout-training/main/typescript-hotel/%E6%A1%8C%E6%A9%9F%E7%89%88/room2-4.png",
+        "https://raw.githubusercontent.com/hexschool/2022-web-layout-training/main/typescript-hotel/%E6%A1%8C%E6%A9%9F%E7%89%88/room2-5.png"
+      ],
+      "areaInfo": "24坪",
+      "bedInfo": "一張大床",
+      "maxPeople": 4,
+      "price": 10000,
+      "status": 1,
+      "layoutInfo": [
+        {
+          "title": "市景",
+          "isProvide": true
+        },
+        {
+          "title": "獨立衛浴",
+          "isProvide": true
+        },
+        {
+          "title": "書房",
+          "isProvide": false
+        }
+      ],
+      "facilityInfo": [
+        {
+          "title": "電視",
+          "isProvide": true
+        },
+        {
+          "title": "吹風機",
+          "isProvide": true
+        },
+        {
+          "title": "熱水壺",
+          "isProvide": true
+        },
+        {
+          "title": "衣櫃",
+          "isProvide": true
+        },
+        {
+          "title": "除濕機",
+          "isProvide": true
+        },
+        {
+          "title": "書桌",
+          "isProvide": true
+        },
+        {
+          "title": "冰箱",
+          "isProvide": true
+        },
+        {
+          "title": "浴缸",
+          "isProvide": true
+        },
+        {
+          "title": "檯燈",
+          "isProvide": true
+        },
+        {
+          "title": "音響",
+          "isProvide": true
+        }
+      ],
+      "amenityInfo": [
+        {
+          "title": "衛生紙",
+          "isProvide": true
+        },
+        {
+          "title": "沐浴用品",
+          "isProvide": true
+        },
+        {
+          "title": "刮鬍刀",
+          "isProvide": true
+        },
+        {
+          "title": "吊衣架",
+          "isProvide": true
+        },
+        {
+          "title": "刷牙用品",
+          "isProvide": true
+        },
+        {
+          "title": "梳子",
+          "isProvide": true
+        },
+        {
+          "title": "拖鞋",
+          "isProvide": true
+        },
+        {
+          "title": "清潔用品",
+          "isProvide": true
+        },
+        {
+          "title": "罐裝水",
+          "isProvide": true
+        },
+        {
+          "title": "浴巾",
+          "isProvide": true
+        }
+      ],
+      "createdAt": "2024-01-24T13:44:15.166Z",
+      "updatedAt": "2024-02-03T12:16:14.524Z"
+    },
+    {
+      "_id": "65bbdc5e8f690417bdd17ae3",
+      "name": "街景家庭房",
+      "description": "享受高級的住宿體驗，街景家庭房提供給您最美麗的特色街景。",
+      "imageUrl": "https://raw.githubusercontent.com/hexschool/2022-web-layout-training/main/typescript-hotel/%E6%A1%8C%E6%A9%9F%E7%89%88/room3-1.png",
+      "imageUrlList": [
+        "https://raw.githubusercontent.com/hexschool/2022-web-layout-training/main/typescript-hotel/%E6%A1%8C%E6%A9%9F%E7%89%88/room3-2.png",
+        "https://raw.githubusercontent.com/hexschool/2022-web-layout-training/main/typescript-hotel/%E6%A1%8C%E6%A9%9F%E7%89%88/room3-3.png",
+        "https://raw.githubusercontent.com/hexschool/2022-web-layout-training/main/typescript-hotel/%E6%A1%8C%E6%A9%9F%E7%89%88/room3-4.png",
+        "https://raw.githubusercontent.com/hexschool/2022-web-layout-training/main/typescript-hotel/%E6%A1%8C%E6%A9%9F%E7%89%88/room3-5.png"
+      ],
+      "areaInfo": "24坪",
+      "bedInfo": "一張大床",
+      "maxPeople": 4,
+      "price": 12000,
+      "status": 1,
+      "facilityInfo": [
+        {
+          "title": "電視",
+          "isProvide": true
+        },
+        {
+          "title": "吹風機",
+          "isProvide": true
+        },
+        {
+          "title": "熱水壺",
+          "isProvide": true
+        },
+        {
+          "title": "衣櫃",
+          "isProvide": true
+        },
+        {
+          "title": "除濕機",
+          "isProvide": true
+        },
+        {
+          "title": "書桌",
+          "isProvide": true
+        },
+        {
+          "title": "冰箱",
+          "isProvide": true
+        },
+        {
+          "title": "浴缸",
+          "isProvide": true
+        },
+        {
+          "title": "檯燈",
+          "isProvide": true
+        },
+        {
+          "title": "音響",
+          "isProvide": true
+        }
+      ],
+      "amenityInfo": [
+        {
+          "title": "衛生紙",
+          "isProvide": true
+        },
+        {
+          "title": "沐浴用品",
+          "isProvide": true
+        },
+        {
+          "title": "刮鬍刀",
+          "isProvide": true
+        },
+        {
+          "title": "吊衣架",
+          "isProvide": true
+        },
+        {
+          "title": "刷牙用品",
+          "isProvide": true
+        },
+        {
+          "title": "梳子",
+          "isProvide": true
+        },
+        {
+          "title": "拖鞋",
+          "isProvide": true
+        },
+        {
+          "title": "清潔用品",
+          "isProvide": true
+        },
+        {
+          "title": "罐裝水",
+          "isProvide": false
+        },
+        {
+          "title": "浴巾",
+          "isProvide": true
+        }
+      ],
+      "createdAt": "2024-02-01T18:01:02.156Z",
+      "updatedAt": "2024-02-03T12:21:03.261Z"
+    },
+    {
+      "_id": "65be2f4d00e30b9ce353c97f",
+      "name": "豪華雅緻房",
+      "description": "享受高級的住宿體驗，尊爵雙人房提供給您舒適寬敞的空間和精緻的裝潢。",
+      "imageUrl": "https://raw.githubusercontent.com/hexschool/2022-web-layout-training/main/typescript-hotel/%E6%A1%8C%E6%A9%9F%E7%89%88/room4-1.png",
+      "imageUrlList": [
+        "https://raw.githubusercontent.com/hexschool/2022-web-layout-training/main/typescript-hotel/%E6%A1%8C%E6%A9%9F%E7%89%88/room4-2.png",
+        "https://raw.githubusercontent.com/hexschool/2022-web-layout-training/main/typescript-hotel/%E6%A1%8C%E6%A9%9F%E7%89%88/room4-3.png",
+        "https://raw.githubusercontent.com/hexschool/2022-web-layout-training/main/typescript-hotel/%E6%A1%8C%E6%A9%9F%E7%89%88/room4-4.png",
+        "https://raw.githubusercontent.com/hexschool/2022-web-layout-training/main/typescript-hotel/%E6%A1%8C%E6%A9%9F%E7%89%88/room4-5.png"
+      ],
+      "areaInfo": "36 坪",
+      "bedInfo": "2 張大床",
+      "maxPeople": 4,
+      "price": 10000,
+      "status": 1,
+      "facilityInfo": [
+        {
+          "title": "電視",
+          "isProvide": true
+        },
+        {
+          "title": "吹風機",
+          "isProvide": true
+        },
+        {
+          "title": "熱水壺",
+          "isProvide": true
+        },
+        {
+          "title": "衣櫃",
+          "isProvide": true
+        },
+        {
+          "title": "除濕機",
+          "isProvide": true
+        },
+        {
+          "title": "書桌",
+          "isProvide": true
+        },
+        {
+          "title": "冰箱",
+          "isProvide": true
+        },
+        {
+          "title": "浴缸",
+          "isProvide": true
+        },
+        {
+          "title": "檯燈",
+          "isProvide": true
+        },
+        {
+          "title": "音響",
+          "isProvide": true
+        }
+      ],
+      "amenityInfo": [
+        {
+          "title": "衛生紙",
+          "isProvide": true
+        },
+        {
+          "title": "沐浴用品",
+          "isProvide": true
+        },
+        {
+          "title": "刮鬍刀",
+          "isProvide": true
+        },
+        {
+          "title": "吊衣架",
+          "isProvide": true
+        },
+        {
+          "title": "刷牙用品",
+          "isProvide": true
+        },
+        {
+          "title": "梳子",
+          "isProvide": true
+        },
+        {
+          "title": "拖鞋",
+          "isProvide": true
+        },
+        {
+          "title": "清潔用品",
+          "isProvide": true
+        },
+        {
+          "title": "罐裝水",
+          "isProvide": true
+        },
+        {
+          "title": "浴巾",
+          "isProvide": true
+        }
+      ],
+      "createdAt": "2024-02-03T12:19:25.549Z",
+      "updatedAt": "2024-02-03T12:19:25.549Z"
+    },
+    {
+      "_id": "12b1142f11f699788b5bc8ca",
+      "name": "景觀尊榮家庭房",
+      "description": "享受高級的住宿體驗，尊爵雙人房提供給您舒適寬敞的空間和精緻的裝潢。",
+      "imageUrl": "https://github.com/hexschool/2022-web-layout-training/blob/main/typescript-hotel/%E6%A1%8C%E6%A9%9F%E7%89%88/room5-1.png?raw=true",
+      "imageUrlList": [
+        "https://github.com/hexschool/2022-web-layout-training/blob/main/typescript-hotel/%E6%A1%8C%E6%A9%9F%E7%89%88/room5-2.png?raw=true",
+        "https://github.com/hexschool/2022-web-layout-training/blob/main/typescript-hotel/%E6%A1%8C%E6%A9%9F%E7%89%88/room5-3.png?raw=true",
+        "https://github.com/hexschool/2022-web-layout-training/blob/main/typescript-hotel/%E6%A1%8C%E6%A9%9F%E7%89%88/room5-4.png?raw=true",
+        "https://github.com/hexschool/2022-web-layout-training/blob/main/typescript-hotel/%E6%A1%8C%E6%A9%9F%E7%89%88/room5-5.png?raw=true"
+      ],
+      "areaInfo": "48坪",
+      "bedInfo": "兩張大床",
+      "maxPeople": 4,
+      "price": 15000,
+      "status": 1,
+      "layoutInfo": [
+        {
+          "title": "海景",
+          "isProvide": true
+        },
+        {
+          "title": "獨立衛浴",
+          "isProvide": true
+        },
+        {
+          "title": "書房",
+          "isProvide": false
+        }
+      ],
+      "facilityInfo": [
+        {
+          "title": "電視",
+          "isProvide": true
+        },
+        {
+          "title": "吹風機",
+          "isProvide": true
+        },
+        {
+          "title": "除濕機",
+          "isProvide": true
+        }
+      ],
+      "amenityInfo": [
+        {
+          "title": "衛生紙",
+          "isProvide": true
+        },
+        {
+          "title": "拖鞋",
+          "isProvide": true
+        },
+        {
+          "title": "清潔用品",
+          "isProvide": true
+        },
+        {
+          "title": "罐裝水",
+          "isProvide": true
+        },
+        {
+          "title": "浴巾",
+          "isProvide": true
+        }
+      ],
+      "createdAt": "2024-01-24T13:44:15.166Z",
+      "updatedAt": "2024-02-03T12:16:14.524Z"
+    }
+  ]
+}

@@ -1,4 +1,5 @@
 const { VITE_API_PATH } = import.meta.env
+
 interface requestFormat {
   method:string,
   headers: {
@@ -8,8 +9,7 @@ interface requestFormat {
   body?: any
 }
 
-export default function () {
-  async function _fetch(url: string, method:string = 'GET', body = {}) {
+export default async function (url: string, method:string = 'GET', body = {}): Promise<any> {
     const data: requestFormat = {
       method,
       headers: {
@@ -20,10 +20,7 @@ export default function () {
     if(method !== 'GET') {
       data.body = JSON.stringify(body)
     }
+
     const res = await fetch(`${VITE_API_PATH}${url}`, data)
     return res.json()
-  }
-  return {
-    _fetch
-  }
 }
