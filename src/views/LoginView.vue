@@ -134,9 +134,9 @@ import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 // @ts-ignore
 import { Modal } from 'bootstrap'
-import { headerMenuStore } from '../stores/headerMenu'
+// import { headerMenuStore } from '../stores/headerMenu'
 
-const headerMenu = headerMenuStore()
+// const headerMenu = headerMenuStore()
 const router = useRouter()
 const rememberAcc = ref<boolean>(false)
 const userInfo = ref<AccountData>({
@@ -145,10 +145,10 @@ const userInfo = ref<AccountData>({
 })
 
 onMounted(async () => {
-  if(headerMenu.isLogin) {
-    router.push('/user')
-    return
-  }
+  // if(headerMenu.isLogin) {
+  //   router.push('/user')
+  //   return
+  // }
   if (localStorage.getItem('email')) {
     userInfo.value.email = localStorage.getItem('email') || ''
     rememberAcc.value = true

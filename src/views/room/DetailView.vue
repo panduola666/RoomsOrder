@@ -93,8 +93,11 @@ import { useScreens } from 'vue-screen-utils'
 import dayjs from 'dayjs'
 import mixin from '@/mixin/globalMix'
 import { roomTypeStore } from '@/stores/room'
+// @ts-ignore
 import RoomBanner from '@/components/Room/RoomBanner.vue'
+// @ts-ignore
 import RoomDetail from '@/components/Room/RoomDetail.vue'
+// @ts-ignore
 import RoomDatePickerMobile from '@/components/Room/RoomDatePickerMobile.vue'
 const { moneyFormat } = mixin.methods
 const showDatePicker = ref<boolean>(false)
@@ -104,6 +107,16 @@ const roomTypeStoreInfo = roomTypeStore()
 const { id } = route.params
 const chickinPeople = ref<number>(2)
 onMounted(async () => {
+  console.log(route);
+  const { end, people, start } = route.query
+  if (end && people && start) {
+    range.value = {
+      start: dayjs.unix(Number(start) / 1000).format('YYYY-MM-DD') as any,
+      end: dayjs.unix(Number(end) / 1000).format('YYYY-MM-DD') as any
+    } 
+    chickinPeople.value = Number(people)
+  }
+  
   const roomId: string = Array.isArray(id) ? id[0] : id.toString()
   await roomTypeStoreInfo.getRoomInfo(roomId)
 })

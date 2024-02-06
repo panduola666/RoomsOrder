@@ -40,12 +40,14 @@ const router = createRouter({
     {
       path: '/roomsReserved/:id/:startdate/:days/:people',
       name: 'roomsReserved',
+      beforeEnter: async () => checkAuth(),
       component: () => import('../views/room/RoomReserved.vue')
     },
 
     {
       path: '/BookingResult',
       name: 'BookingResult',
+      beforeEnter: async () => checkAuth(),
       component: () => import('../views/room/BookingResult.vue')
     },
     {
