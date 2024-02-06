@@ -34,6 +34,15 @@ app.directive('tel', {
     })
   }
 })
+app.directive('number', {
+  mounted(el) {
+    el.addEventListener('input', (el:any) => {
+      if(el.target.tagName === 'INPUT') {
+        el.target.value =  el.target.value.replace(/[^\d]/g, '')
+      }
+    })
+  }
+})
 
 
 

@@ -21,26 +21,18 @@
       </div>
 
       <div class="container">
-        <div class="row">
+        <div class="row mb-10">
           <div class="col-md-7">
             <h3>訂房資訊</h3>
 
             <div class="d-flex justify-content-between">
-              <span>
-                <img
-                  class="rounded img-fluid"
-                  src="../../assets//svg/divline.svg"
-                  alt="Room Image"
-                />
-
-                選擇房型
-
-                <br />
+              <div>
+                <p class="sub-title sub-title-primary mb-2">選擇房型</p>
                 {{ roomInfo.name }}
-              </span>
+              </div>
               <button
                 type="button"
-                class="p-0 border-0 text-primary"
+                class="btn text-decoration-underline"
                 @click="$router.push(`/rooms`)"
               >
                 編輯
@@ -49,22 +41,14 @@
 
             <div class="d-flex py-5 justify-content-between">
               <span>
-                <img
-                  class="rounded img-fluid"
-                  src="../../assets//svg/divline.svg"
-                  alt="Room Image"
-                />
-
-                訂房日期
-
-                <br />
+                <p class="sub-title sub-title-primary mb-2">訂房日期</p>
                 入住：{{ getDate(form.checkInDate) }}
                 <br />
                 退房：{{ getDate(form.checkOutDate) }}
               </span>
               <button
                 type="button"
-                class="p-0 border-0 text-primary"
+                class="btn text-decoration-underline"
                 @click="$router.push(`/roomdetail/${form.roomId}?start=${new Date(form.checkInDate).getTime()}&end=${new Date(form.checkOutDate).getTime()}&people=${form.peopleNum}`)"
               >
                 編輯
@@ -73,21 +57,13 @@
 
             <div class="d-flex justify-content-between">
               <span>
-                <img
-                  class="rounded img-fluid"
-                  src="../../assets//svg/divline.svg"
-                  alt="Room Image"
-                />
-
-                房客人數
-
-                <br />
-                <input v-if="editPeoPle" type="number" v-model.number="form.peopleNum">
+                <p class="sub-title sub-title-primary mb-2">房客人數</p>
+                <input v-if="editPeoPle" type="text" v-number class="form-control" v-model.number="form.peopleNum">
                 <span v-else>{{ form.peopleNum }} 人</span>
               </span>
               <button
                 type="button"
-                class="p-0 border-0 text-primary"
+                class="btn text-decoration-underline"
                 @click="editPeoPle = !editPeoPle"
               >
                 編輯
@@ -102,14 +78,14 @@
 
               <button
                 type="button"
-                class="p-0 border-0 text-primary"
+                class="p-0 border-0 text-primary text-decoration-underline"
                 @click="setUserData"
               >
                 套用會員資料
               </button>
             </div>
             <form class="py-5">
-              <label class="" for="name">姓名</label>
+              <label class="" for="name"><span class="text-danger me-2">*</span>姓名</label>
               <input
                 v-model="form.userInfo.name"
                 id="name"
@@ -121,7 +97,7 @@
               />
               <div class="py-3" />
 
-              <label for="name">手機號碼</label>
+              <label for="name"><span class="text-danger me-2">*</span>手機號碼</label>
               <input
                 v-model="form.userInfo.phone"
                 id="name"
@@ -134,7 +110,7 @@
               />
               <div class="py-3" />
 
-              <label for="name">電子信箱</label>
+              <label for="name"><span class="text-danger me-2">*</span>電子信箱</label>
               <input
                 v-model="form.userInfo.email"
                 id="name"
@@ -146,7 +122,7 @@
               />
               <div class="py-3" />
 
-              <label for="name">地址</label>
+              <label for="name"><span class="text-danger me-2">*</span>地址</label>
               <div class="d-flex justify-content-between">
                 <select id="address" class="form-select p-3 rounded-3" v-model="cityIndex">
                   <option
@@ -182,17 +158,7 @@
             <h4>房間資訊</h4>
             <div class="py-2" />
 
-            <div class="d-flex">
-              <span>
-                <img
-                  class="rounded img-fluid"
-                  src="../../assets//svg/divline.svg"
-                  alt="Room Image"
-                />
-                房型基本資訊
-              </span>
-            </div>
-            <div class="py-2" />
+            <p class="sub-title sub-title-primary">房型基本資訊</p>
 
             <div class="d-flex justify-content-center gap-5">
               <span class="rounded bg-white border border-1 w-25 text-center p-3">
@@ -219,23 +185,13 @@
                   src="../../assets//svg/RoomPeople.svg"
                   alt="Room Image"
                 />
-                <div>{{ roomInfo.maxPeople }} 人</div>
+                <div>1-{{ roomInfo.maxPeople }} 人</div>
               </span>
             </div>
             <div class="py-3" />
 
             <template v-if="roomInfo.layoutInfo">
-              <div class="d-flex">
-                <span>
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/divline.svg"
-                    alt="Room Image"
-                  />
-                  房間格局
-                </span>
-              </div>
-              <div class="py-3" />
+              <p class="sub-title sub-title-primary">房間格局</p>
   
               <div class="bg-white rounded p-4 text-center">
                  <!-- @vue-skip -->
@@ -245,17 +201,7 @@
             </template>
 
             <template v-if="roomInfo.facilityInfo">
-              <div class="d-flex">
-                <span>
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/divline.svg"
-                    alt="Room Image"
-                  />
-                  房內設備
-                </span>
-              </div>
-              <div class="py-3" />
+              <p class="sub-title sub-title-primary">房內設備</p>
   
               <div class="bg-white rounded p-4 text-center">
                  <!-- @vue-skip -->
@@ -265,17 +211,7 @@
             </template>
 
             <template v-if="roomInfo.amenityInfo">
-              <div class="d-flex">
-                <span>
-                  <img
-                    class="rounded img-fluid"
-                    src="../../assets//svg/divline.svg"
-                    alt="Room Image"
-                  />
-                  備品提供
-                </span>
-              </div>
-              <div class="py-3" />
+              <p class="sub-title sub-title-primary">備品提供</p>
   
               <div class="bg-white rounded p-4 text-center">
                  <!-- @vue-skip -->
@@ -304,7 +240,7 @@
               <span> NT$ {{ roomInfo.price * Number(routeParams.days) }} </span>
             </div>
             <div class="d-flex justify-content-center">
-              <button class="btn btn-primary w-100" @click="createOrder">確認訂房</button>
+              <button class="btn btn-primary w-100" :class="{disabled: disabledBtn}" @click="createOrder">確認訂房</button>
             </div>
           </div>
         </div>
@@ -356,6 +292,7 @@ import CityCountyData from '../../assets/json/cityCountyData.json'
 import RoomService from '../../components/Common/RoomService.vue'
 import Swal from 'sweetalert2'
 import mixin from '../../mixin/globalMix'
+import { checkMail } from '../../mixin/validate'
 
 export default {
   mixins: [mixin],
@@ -370,8 +307,8 @@ export default {
         peopleNum: 0,
         userInfo: {
           address: {
-            zipcode: 802,
-            detail: '文山路23號'
+            zipcode: 0,
+            detail: ''
           },
           name: '',
           phone: '',
@@ -386,6 +323,10 @@ export default {
   },
   computed: {
     ...mapState(roomTypeStore, ['roomInfo']),
+    disabledBtn() {
+      const {address, name, phone, email} = this.form.userInfo
+      return !this.form.peopleNum || !address.detail || !name || !phone || !email
+    },
     routeParams() {
       return this.$route.params
     },
@@ -400,6 +341,7 @@ export default {
     this.form.checkOutDate = Number(startdate) + Number(days) * 24 * 60 * 60 * 1000
     this.form.peopleNum = Number(people)
     this.getRoomInfo(id as string)
+    this.form.userInfo.address.zipcode = Number(this.CityCountyData[this.cityIndex].AreaList[0].ZipCode)
   },
   methods: {
     ...mapActions(roomTypeStore, ['getRoomInfo']),
@@ -422,7 +364,8 @@ export default {
       })
     },
     createOrder() {
-      console.log(this.form)
+      if(!checkMail(this.form.userInfo.email)) return
+      
       const options: any = { year: "numeric", month: "2-digit", day: "2-digit" };
       const {name, phone, email, address} = this.form.userInfo
       if(!name || !phone || !email || !address.zipcode || !address.detail) {
