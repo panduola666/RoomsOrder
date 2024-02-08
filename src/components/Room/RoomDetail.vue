@@ -85,7 +85,6 @@ defineProps({
 })
 </script>
 <style lang="scss" scoped>
-  
   .left {
     // flex: 1 1 746px;
     display: flex;
@@ -116,7 +115,7 @@ defineProps({
   height: 97px;
 }
 
-@include media-breakpoint-up(md) {    
+@include media-breakpoint-up(md) {
   .left {
     flex: 1 1 746px;
     display: flex;
