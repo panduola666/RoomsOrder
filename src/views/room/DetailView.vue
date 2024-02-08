@@ -1,5 +1,6 @@
 <template>
   <div class="bg-primary-10">
+    <div>isShowDatePicker {{ isShowDatePicker }}</div>
     <RoomBanner :room-info="roomInfo" />
     <main class="rooms-detail container">
       <RoomDetail :room-info="roomInfo" />
@@ -12,13 +13,13 @@
           </div>
           <div>
             <div class="d-flex gap-2 mb-3 position-relative">
-              <div class="check-date-box" @click="showDatePicker">
+              <div class="check-date-box" @click="roomTypeStoreInfo.showDatePicker(true)">
                 <p class="mb-0 fs-tiny">入住</p>
                 <p class="mb-0">
                   {{ dayjs(range.start).format('YYYY/MM/DD') }}
                 </p>
               </div>
-              <div class="check-date-box" @click="showDatePicker()">
+              <div class="check-date-box" @click="roomTypeStoreInfo.showDatePicker(true)">
                 <p class="mb-0 fs-tiny">退房</p>
                 <p class="mb-0">
                   {{ dayjs(range.end).format('YYYY/MM/DD') }}
@@ -47,7 +48,7 @@
                     <div class="card-footer gap-3">
                       <button type="button" class="btn btn-white px-6 py-3" @click="cleanDate">
                         清除日期
-                      </button> <button type="button" class="btn btn-primary px-6 py-3" @click="showDatePicker = false">
+                      </button> <button type="button" class="btn btn-primary px-6 py-3" @click="roomTypeStoreInfo.showDatePicker(false)">
                         確定日期
                       </button>
                     </div>
@@ -95,6 +96,7 @@ import { useScreens } from 'vue-screen-utils'
 import dayjs from 'dayjs'
 import mixin from '@/mixin/globalMix'
 import { roomTypeStore } from '@/stores/room'
+
 // @ts-ignore
 import RoomBanner from '@/components/Room/RoomBanner.vue'
 // @ts-ignore
@@ -103,15 +105,13 @@ import RoomDetail from '@/components/Room/RoomDetail.vue'
 import RoomDatePickerMobile from '@/components/Room/RoomDatePickerMobile.vue'
 
 const { moneyFormat } = mixin.methods
-const isShowDatePicker = ref<boolean>(false)
+// const isShowDatePicker = ref<boolean>(false)
 const router = useRouter()
 const route = useRoute()
 const roomTypeStoreInfo = roomTypeStore()
 const { id } = route.params
 const chickinPeople = ref<number>(2)
-const showDatePicker = () => {
-  return isShowDatePicker.value = true;;
-}
+
 onMounted(async () => {
   const { end, people, start } = route.query
   if (end && people && start) {
@@ -126,7 +126,7 @@ onMounted(async () => {
   await roomTypeStoreInfo.getRoomInfo(roomId)
 })
 
-const { roomInfo } = storeToRefs(roomTypeStoreInfo)
+const { roomInfo, isShowDatePicker } = storeToRefs(roomTypeStoreInfo)
 
 const { mapCurrent } = useScreens({ xs: '0px', sm: '640px', md: '768px', lg: '1024px' })
 const columns = mapCurrent({ lg: 2 }, 1)
@@ -174,7 +174,7 @@ function decBtn() {
 function dialog(e: MouseEvent) {
   const target = e.target as HTMLElement
   if (target.classList.contains('full-bg-black')) {
-    isShowDatePicker.value = false
+    roomTypeStoreInfo.showDatePicker(false)
   }
 }
 </script>

@@ -9,6 +9,7 @@ export const roomTypeStore = defineStore('roomTypeStore', {
       roomList: [] as Room[],
       roomInfo: {} as Room,
       roomStatus: true,
+      isShowDatePicker: false, // 房間詳細頁的日期彈窗
     }
   },
   actions: {
@@ -45,5 +46,8 @@ export const roomTypeStore = defineStore('roomTypeStore', {
       const res: {result: Room, status: boolean} = await fetchAPI(`/api/v1/rooms/${id}`, 'GET')
       this.roomInfo = res.result
     },
+    showDatePicker(value) {
+      this.isShowDatePicker = value
+    }
   }
 })
