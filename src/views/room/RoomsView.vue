@@ -2,7 +2,6 @@
   <div class="banner-wrapper">
     <div class="container position-relative">
       <swiper
-        class="test"
         :pagination="pagination"
         :module="[Pagination]"
         :autoplay="false"
@@ -21,28 +20,6 @@
             </div>
           </div>
         </swiper-slide>
-        <!-- Fake Image -->
-        <swiper-slide
-          class="w-100 min-vh-100 mt-lg-9 d-flex align-items-center justify-content-center"
-        >
-          <img class="w-100" src="https://fakeimg.pl/350x200/" />
-        </swiper-slide>
-        <swiper-slide
-          class="w-100 min-vh-100 mt-lg-9 d-flex align-items-center justify-content-center"
-        >
-          <img class="w-100" src="https://fakeimg.pl/350x200/" />
-        </swiper-slide>
-        <swiper-slide
-          class="w-100 min-vh-100 mt-lg-9 d-flex align-items-center justify-content-center"
-        >
-          <img class="w-100" src="https://fakeimg.pl/350x200/" />
-        </swiper-slide>
-        <swiper-slide
-          class="w-100 min-vh-100 mt-lg-9 d-flex align-items-center justify-content-center"
-        >
-          <img class="w-100" src="https://fakeimg.pl/350x200/" />
-        </swiper-slide>
-
         <div class="swiper-pagination"></div>
       </swiper>
     </div>

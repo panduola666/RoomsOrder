@@ -28,14 +28,27 @@
             <div class="d-flex justify-content-between">
               <div>
                 <p class="sub-title sub-title-primary mb-2">選擇房型</p>
-                {{ roomInfo.name }}
+                <p v-if="!isEdit.roomType"> {{ roomInfo.name }}</p>
+                <select v-else class="form-select" v-model="form.roomId" aria-label="select">
+                  <option selected>請選擇</option>
+                  <option v-for="room in roomList" :key="room._id" :value="room._id">{{ room.name }}</option>
+                </select>
               </div>
               <button
+                v-if="!isEdit.roomType"
                 type="button"
                 class="btn text-decoration-underline"
-                @click="$router.push(`/rooms`)"
+                @click="toggleEdit('roomType')"
               >
                 編輯
+              </button>
+              <button
+                v-else
+                class="btn text-decoration-underline"
+                type="button"
+                @click="toggleEdit('roomType')"
+              >
+                確認
               </button>
             </div>
 
@@ -47,26 +60,47 @@
                 退房：{{ getDate(form.checkOutDate) }}
               </span>
               <button
+                v-if="!isEdit.reservationDate"
                 type="button"
                 class="btn text-decoration-underline"
-                @click="$router.push(`/roomdetail/${form.roomId}?start=${new Date(form.checkInDate).getTime()}&end=${new Date(form.checkOutDate).getTime()}&people=${form.peopleNum}`)"
+                @click="toggleEdit('reservationDate')"
               >
                 編輯
               </button>
+              <button
+                v-else
+                type="button"
+                class="btn text-decoration-underline"
+                @click="toggleEdit('reservationDate')"
+              >
+                確認
+              </button>
+
+              <!-- <VDatePicker v-model.range="range" mode="date" :columns="columns" :expanded="true" :rows="rows"
+                :masks="{ title: 'YYYY 年 MM 月' }" timezone="UTC" />  -->
             </div>
 
             <div class="d-flex justify-content-between">
               <span>
                 <p class="sub-title sub-title-primary mb-2">房客人數</p>
-                <input v-if="editPeoPle" type="text" v-number class="form-control" v-model.number="form.peopleNum">
+                <input v-if="isEdit.peopleNum" type="text" v-number class="form-control" v-model.number="form.peopleNum">
                 <span v-else>{{ form.peopleNum }} 人</span>
               </span>
               <button
+                v-if="!isEdit.peopleNum"
                 type="button"
                 class="btn text-decoration-underline"
-                @click="editPeoPle = !editPeoPle"
+                @click="toggleEdit('peopleNum')"
               >
                 編輯
+              </button>
+              <button
+                v-else
+                type="button"
+                class="btn text-decoration-underline"
+                @click="toggleEdit('peopleNum')"
+              >
+                確認
               </button>
             </div>
 
@@ -192,7 +226,7 @@
 
             <template v-if="roomInfo.layoutInfo">
               <p class="sub-title sub-title-primary">房間格局</p>
-  
+
               <div class="bg-white rounded p-4 text-center">
                  <!-- @vue-skip -->
                 <RoomService :service="roomInfo.layoutInfo" />
@@ -202,7 +236,6 @@
 
             <template v-if="roomInfo.facilityInfo">
               <p class="sub-title sub-title-primary">房內設備</p>
-  
               <div class="bg-white rounded p-4 text-center">
                  <!-- @vue-skip -->
                 <RoomService :service="roomInfo.facilityInfo" />
@@ -212,7 +245,6 @@
 
             <template v-if="roomInfo.amenityInfo">
               <p class="sub-title sub-title-primary">備品提供</p>
-  
               <div class="bg-white rounded p-4 text-center">
                  <!-- @vue-skip -->
                 <RoomService :service="roomInfo.amenityInfo" />
@@ -299,9 +331,18 @@ export default {
   data() {
     return {
       editPeoPle: false,
+      isEdit: {
+        roomType: false,
+        peopleNum: false,
+        reservationDate: false
+      },
       cityIndex: 0,
       form: {
         roomId: '',
+        // range: {
+        //   start: '',
+        //   end: '',
+        // },
         checkInDate: 0,
         checkOutDate: 0,
         peopleNum: 0,
@@ -321,8 +362,16 @@ export default {
   components: {
     RoomService
   },
+  watch: {
+    'form.roomId': function(newVal) {
+      const selectedRoom = this.roomList.find(room => room._id === newVal);
+      if (selectedRoom) {
+        this.roomInfo.name = selectedRoom.name;
+      }
+    }
+  },
   computed: {
-    ...mapState(roomTypeStore, ['roomInfo']),
+    ...mapState(roomTypeStore, ['roomInfo', 'roomList']),
     disabledBtn() {
       const {address, name, phone, email} = this.form.userInfo
       return !this.form.peopleNum || !address.detail || !name || !phone || !email
@@ -342,9 +391,10 @@ export default {
     this.form.peopleNum = Number(people)
     this.getRoomInfo(id as string)
     this.form.userInfo.address.zipcode = Number(this.CityCountyData[this.cityIndex].AreaList[0].ZipCode)
+    this.getRoomList()
   },
   methods: {
-    ...mapActions(roomTypeStore, ['getRoomInfo']),
+    ...mapActions(roomTypeStore, ['getRoomInfo', 'getRoomList']),
     ...mapActions(orderStore, ['postOrder']),
     setUserData() {
       const { address, name, phone, email } = JSON.parse(JSON.stringify(this.user))
@@ -365,7 +415,7 @@ export default {
     },
     createOrder() {
       if(!checkMail(this.form.userInfo.email)) return
-      
+
       const options: any = { year: "numeric", month: "2-digit", day: "2-digit" };
       const {name, phone, email, address} = this.form.userInfo
       if(!name || !phone || !email || !address.zipcode || !address.detail) {
@@ -383,6 +433,9 @@ export default {
       .then(() => {
         this.$router.push('/BookingResult')
       })
+    },
+    toggleEdit(field: string): void {
+      this.isEdit[field as keyof typeof this.isEdit] = !this.isEdit[field as keyof typeof this.isEdit]
     }
   },
 }

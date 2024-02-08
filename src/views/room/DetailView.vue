@@ -1,6 +1,5 @@
 <template>
   <div class="bg-primary-10">
-    <div>isShowDatePicker {{ isShowDatePicker }}</div>
     <RoomBanner :room-info="roomInfo" />
     <main class="rooms-detail container">
       <RoomDetail :room-info="roomInfo" />
@@ -96,7 +95,6 @@ import { useScreens } from 'vue-screen-utils'
 import dayjs from 'dayjs'
 import mixin from '@/mixin/globalMix'
 import { roomTypeStore } from '@/stores/room'
-
 // @ts-ignore
 import RoomBanner from '@/components/Room/RoomBanner.vue'
 // @ts-ignore
@@ -105,7 +103,6 @@ import RoomDetail from '@/components/Room/RoomDetail.vue'
 import RoomDatePickerMobile from '@/components/Room/RoomDatePickerMobile.vue'
 
 const { moneyFormat } = mixin.methods
-// const isShowDatePicker = ref<boolean>(false)
 const router = useRouter()
 const route = useRoute()
 const roomTypeStoreInfo = roomTypeStore()
