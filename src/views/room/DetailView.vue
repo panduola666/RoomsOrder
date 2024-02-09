@@ -47,7 +47,8 @@
                     <div class="card-footer gap-3">
                       <button type="button" class="btn btn-white px-6 py-3" @click="cleanDate">
                         清除日期
-                      </button> <button type="button" class="btn btn-primary px-6 py-3" @click="roomTypeStoreInfo.showDatePicker(false)">
+                      </button>
+                      <button type="button" class="btn btn-primary px-6 py-3" @click="roomTypeStoreInfo.showDatePicker(false)">
                         確定日期
                       </button>
                     </div>

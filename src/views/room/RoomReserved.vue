@@ -35,30 +35,36 @@
                 </select>
               </div>
               <button
-                v-if="!isEdit.roomType"
                 type="button"
                 class="btn text-decoration-underline"
                 @click="toggleEdit('roomType')"
               >
-                編輯
-              </button>
-              <button
-                v-else
-                class="btn text-decoration-underline"
-                type="button"
-                @click="toggleEdit('roomType')"
-              >
-                確認
+                {{ !isEdit.roomType ? '編輯' : '確認' }}
               </button>
             </div>
 
             <div class="d-flex py-5 justify-content-between">
-              <span>
+              <div v-if="!isEdit.reservationDate">
                 <p class="sub-title sub-title-primary mb-2">訂房日期</p>
                 入住：{{ getDate(form.checkInDate) }}
                 <br />
                 退房：{{ getDate(form.checkOutDate) }}
-              </span>
+              </div>
+              <div class="w-100 d-flex flex-column" v-else>
+                <VDatePicker v-model.range="form.range" mode="date" :columns="columns" :expanded="true" :rows="rows"
+                  :masks="{ title: 'YYYY 年 MM 月' }" timezone="UTC" />
+                <div class="mt-5 align-self-end">
+                  <button type="button" class="btn btn-white p-2 me-2" @click="toggleEdit('reservationDate')">
+                    取消
+                  </button>
+                  <button type="button" class="btn btn-white p-2 me-2" @click="cleanDate">
+                    清除日期
+                  </button>
+                  <button type="button" class="btn btn-primary p-2" @click="updateDate">
+                    確定日期
+                  </button>
+                </div>
+              </div>
               <button
                 v-if="!isEdit.reservationDate"
                 type="button"
@@ -67,17 +73,6 @@
               >
                 編輯
               </button>
-              <button
-                v-else
-                type="button"
-                class="btn text-decoration-underline"
-                @click="toggleEdit('reservationDate')"
-              >
-                確認
-              </button>
-
-              <!-- <VDatePicker v-model.range="range" mode="date" :columns="columns" :expanded="true" :rows="rows"
-                :masks="{ title: 'YYYY 年 MM 月' }" timezone="UTC" />  -->
             </div>
 
             <div class="d-flex justify-content-between">
@@ -87,20 +82,11 @@
                 <span v-else>{{ form.peopleNum }} 人</span>
               </span>
               <button
-                v-if="!isEdit.peopleNum"
                 type="button"
                 class="btn text-decoration-underline"
                 @click="toggleEdit('peopleNum')"
               >
-                編輯
-              </button>
-              <button
-                v-else
-                type="button"
-                class="btn text-decoration-underline"
-                @click="toggleEdit('peopleNum')"
-              >
-                確認
+                {{ !isEdit.peopleNum ? '編輯' : '確認' }}
               </button>
             </div>
 
@@ -339,10 +325,10 @@ export default {
       cityIndex: 0,
       form: {
         roomId: '',
-        // range: {
-        //   start: '',
-        //   end: '',
-        // },
+        range: {
+          start: new Date(),
+          end: new Date(),
+        },
         checkInDate: 0,
         checkOutDate: 0,
         peopleNum: 0,
@@ -436,6 +422,17 @@ export default {
     },
     toggleEdit(field: string): void {
       this.isEdit[field as keyof typeof this.isEdit] = !this.isEdit[field as keyof typeof this.isEdit]
+    },
+    updateDate() {
+      this.form.checkInDate = Number(this.form.range.start)
+      this.form.checkOutDate = Number(this.form.range.end)
+      this.toggleEdit('reservationDate')
+    },
+    cleanDate() {
+      this.form.range = {
+        start: new Date(),
+        end: new Date(),
+      }
     }
   },
 }
