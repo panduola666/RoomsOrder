@@ -51,6 +51,7 @@
                 退房：{{ getDate(form.checkOutDate) }}
               </div>
               <div class="w-100 d-flex flex-column" v-else>
+                <!-- @vue-ignore -->
                 <VDatePicker v-model.range="form.range" mode="date" :columns="columns" :expanded="true" :rows="rows"
                   :masks="{ title: 'YYYY 年 MM 月' }" timezone="UTC" />
                 <div class="mt-5 align-self-end">
