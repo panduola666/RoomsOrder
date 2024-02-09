@@ -1,11 +1,11 @@
 <template>
-  <nav class="d-flex align-items-center justify-content-between py-3  py-lg-5 px-2_5 px-lg-9"
+  <nav class="headerTest d-flex align-items-center justify-content-between py-3  py-lg-5 px-2_5 px-lg-9"
   ref="headerNav"
   :class="{
     'bg-neutral-bg': !fixNav || navTop,
     'fixed-top': fixNav,
     'sticky-top': !fixNav,
-    'z-0': route.path.includes('roomdetail/'),
+    'z-0': isShowDatePicker,
     }">
     <router-link to="/">
       <img src="../../assets/image/common/Logo_White.png" alt="logo" class="logo object-fit-contain " />
@@ -57,10 +57,15 @@
 </template>
 <script setup lang="ts">
 import { ref, computed, onMounted, onDeactivated } from 'vue'
+import { storeToRefs } from 'pinia'
 import type { ComputedRef } from 'vue'
 import { headerMenuStore } from '../../stores/headerMenu'
 import { useRouter, useRoute } from 'vue-router'
 import type { userInfo } from '../../interface/user'
+import { roomTypeStore } from '@/stores/room'
+
+const roomTypeStoreInfo = roomTypeStore()
+const { isShowDatePicker } = storeToRefs(roomTypeStoreInfo)
 
 const menuShow = ref<boolean>(false)
 const headerMenu = headerMenuStore()
