@@ -46,7 +46,7 @@ export const roomTypeStore = defineStore('roomTypeStore', {
       const res: {result: Room, status: boolean} = await fetchAPI(`/api/v1/rooms/${id}`, 'GET')
       this.roomInfo = res.result
     },
-    showDatePicker(value) {
+    showDatePicker(value: boolean) {
       this.isShowDatePicker = value
     }
   }
