@@ -88,7 +88,7 @@ const startdate = ref<Date>(new Date())
 .vc-container {
   font-family: var(--bs-body-font-family);
 }
-.vc-arrow{
+.vc-arrow {
   visibility: hidden;
 }
 
@@ -104,8 +104,36 @@ const startdate = ref<Date>(new Date())
   --vc-accent-800: #1e40af;
   --vc-accent-900: #000000;
 }
-.vc-light{
+
+// TODO: hover 的日期顏色
+.vc-light {
   --vc-day-content-hover-bg: #000000;
+  --vc-day-content-hover: #ffffff;
+  --vc-highlight-light-content-color:#ffffff;
+  --vc-highlight-solid-content-color: #ffffff;
+  --vc-highlight-light-bg: transparent;
+}
+
+.vc-light .vc-attr {
+  --vc-highlight-outline-bg: #000000;
+}
+
+.vc-highlight {
+  width: 40px;
+  height: 40px;
+  @include lg {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+.vc-highlight-bg-solid {
+  --vc-rounded-full: 100px;
+}
+
+.vc-day-content {
+  width: 44px;
+  height: 44px;
 }
 
 @include media-breakpoint-up(md) {

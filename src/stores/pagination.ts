@@ -1,3 +1,4 @@
+// 暫時沒用到
 import { ref } from 'vue'
 import { defineStore, storeToRefs } from 'pinia'
 import { roomTypeStore } from './room'
