@@ -12,43 +12,46 @@
           </div>
           <div>
             <div class="d-flex gap-2 mb-3 position-relative">
-              <div class="check-date-box" @click="showDatePicker = true">
+              <div class="check-date-box" @click="roomTypeStoreInfo.showDatePicker(true)">
                 <p class="mb-0 fs-tiny">入住</p>
                 <p class="mb-0">
                   {{ dayjs(range.start).format('YYYY/MM/DD') }}
                 </p>
               </div>
-              <div class="check-date-box" @click="showDatePicker = true">
+              <div class="check-date-box" @click="roomTypeStoreInfo.showDatePicker(true)">
                 <p class="mb-0 fs-tiny">退房</p>
                 <p class="mb-0">
                   {{ dayjs(range.end).format('YYYY/MM/DD') }}
                 </p>
               </div>
               <!-- modal -->
-              <div class="full-bg-black" v-show="showDatePicker"></div>
-              <div class="card-box" v-show="showDatePicker">
-                <div class="card text-start">
-                  <div class="card-top">
-                    <div class="d-flex gap-2 flex-column">
-                      <h5 class="mb-2 fw-bold">{{ nightCount }} 晚</h5>
-                      <div class="d-flex gap-2">
-                        <p class="text-neutral-80 mb-0">{{ dayjs(range.start).format('YYYY/ MM / DD') }}</p>
-                        <p class="text-neutral-80 mb-0">-</p>
-                        <p class="text-neutral-80 mb-0">{{ dayjs(range.end).format('YYYY/ MM / DD') }}</p>
+              <div class="full-bg-black" v-show="isShowDatePicker" @click="dialog"></div>
+              <div :class="{ 'dialog-wrapper': isShowDatePicker }">
+                <div class="card-box" v-show="isShowDatePicker">
+                  <div class="card text-start">
+                    <div class="card-top">
+                      <div class="d-flex gap-2 flex-column">
+                        <h5 class="mb-2 fw-bold">{{ nightCount }} 晚</h5>
+                        <div class="d-flex gap-2">
+                          <p class="text-neutral-80 mb-0">{{ dayjs(range.start).format('YYYY/ MM / DD') }}</p>
+                          <p class="text-neutral-80 mb-0">-</p>
+                          <p class="text-neutral-80 mb-0">{{ dayjs(range.end).format('YYYY/ MM / DD') }}</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="card-body">
+                    <div class="card-body">
 
-                    <VDatePicker v-model.range="range" mode="date" :columns="columns" :expanded="true" :rows="rows"
-                      :masks="{ title: 'YYYY 年 MM 月' }" timezone="UTC" />
-                  </div>
-                  <div class="card-footer gap-3">
-                    <button type="button" class="btn btn-white px-6 py-3" @click="cleanDate">
-                      清除日期
-                    </button> <button type="button" class="btn btn-primary px-6 py-3" @click="showDatePicker = false">
-                      確定日期
-                    </button>
+                      <VDatePicker v-model.range="range" mode="date" :columns="columns" :expanded="true" :rows="rows"
+                        :masks="{ title: 'YYYY 年 MM 月' }" timezone="UTC" />
+                    </div>
+                    <div class="card-footer gap-3">
+                      <button type="button" class="btn btn-white px-6 py-3" @click="cleanDate">
+                        清除日期
+                      </button>
+                      <button type="button" class="btn btn-primary px-6 py-3" @click="roomTypeStoreInfo.showDatePicker(false)">
+                        確定日期
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -93,22 +96,35 @@ import { useScreens } from 'vue-screen-utils'
 import dayjs from 'dayjs'
 import mixin from '@/mixin/globalMix'
 import { roomTypeStore } from '@/stores/room'
+// @ts-ignore
 import RoomBanner from '@/components/Room/RoomBanner.vue'
+// @ts-ignore
 import RoomDetail from '@/components/Room/RoomDetail.vue'
+// @ts-ignore
 import RoomDatePickerMobile from '@/components/Room/RoomDatePickerMobile.vue'
+
 const { moneyFormat } = mixin.methods
-const showDatePicker = ref<boolean>(false)
 const router = useRouter()
 const route = useRoute()
 const roomTypeStoreInfo = roomTypeStore()
 const { id } = route.params
 const chickinPeople = ref<number>(2)
+
 onMounted(async () => {
+  const { end, people, start } = route.query
+  if (end && people && start) {
+    range.value = {
+      start: dayjs.unix(Number(start) / 1000).format('YYYY-MM-DD') as any,
+      end: dayjs.unix(Number(end) / 1000).format('YYYY-MM-DD') as any
+    }
+    chickinPeople.value = Number(people)
+  }
+
   const roomId: string = Array.isArray(id) ? id[0] : id.toString()
   await roomTypeStoreInfo.getRoomInfo(roomId)
 })
 
-const { roomInfo } = storeToRefs(roomTypeStoreInfo)
+const { roomInfo, isShowDatePicker } = storeToRefs(roomTypeStoreInfo)
 
 const { mapCurrent } = useScreens({ xs: '0px', sm: '640px', md: '768px', lg: '1024px' })
 const columns = mapCurrent({ lg: 2 }, 1)
@@ -121,6 +137,7 @@ function toBooking() {
   const startdate = new Date(range.value.start.toISOString()).getTime();
   router.push({ name: 'roomsReserved', params: { id, startdate, days: nightCount.value, people: chickinPeople.value } })
 }
+
 
 let range = ref({
   start: new Date(tomorrow.format('YYYY-MM-DD')),
@@ -152,7 +169,15 @@ function decBtn() {
     chickinPeople.value -= 1
   }
 }
+
+function dialog(e: MouseEvent) {
+  const target = e.target as HTMLElement
+  if (target.classList.contains('full-bg-black')) {
+    roomTypeStoreInfo.showDatePicker(false)
+  }
+}
 </script>
+
 <style lang="scss" scoped>
 .rooms-detail {
   margin-top: 40px;
@@ -191,6 +216,7 @@ function decBtn() {
   top: 0;
   left: 0;
   transition: all 0.3s;
+  z-index: 2;
 }
 
 .card-box {
@@ -214,6 +240,15 @@ function decBtn() {
 
 .card-body {
   margin-bottom: 40px;
+}
+
+.dialog-wrapper {
+  // position: fixed;
+  // top: 100px;
+  // left: -320px;
+  // width: 100%;
+  // height: 100%;
+  z-index: 3;
 }
 
 .card-footer {
