@@ -86,7 +86,6 @@ defineProps({
 </script>
 <style lang="scss" scoped>
   .left {
-    // flex: 1 1 746px;
     display: flex;
     flex-direction: column;
     gap: 40px;

@@ -138,6 +138,7 @@ function toBooking() {
   router.push({ name: 'roomsReserved', params: { id, startdate, days: nightCount.value, people: chickinPeople.value } })
 }
 
+
 let range = ref({
   start: new Date(tomorrow.format('YYYY-MM-DD')),
   end: new Date(defaultEndDay.format('YYYY-MM-DD')),
@@ -215,7 +216,7 @@ function dialog(e: MouseEvent) {
   top: 0;
   left: 0;
   transition: all 0.3s;
-  z-index: 990;
+  z-index: 2;
 }
 
 .card-box {
@@ -242,12 +243,12 @@ function dialog(e: MouseEvent) {
 }
 
 .dialog-wrapper {
-  position: fixed;
-  top: 100px;
-  left: -320px;
-  width: 100%;
-  height: 100%;
-  z-index: 1000;
+  // position: fixed;
+  // top: 100px;
+  // left: -320px;
+  // width: 100%;
+  // height: 100%;
+  z-index: 3;
 }
 
 .card-footer {
